@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stratum Prism | Business consulting, AI and SaaS</title>
+<meta name="description" content="Stratum Prism is a Chennai-based business consulting and technology company: strategy, AI adoption, SaaS and data analytics.">
+<meta property="og:title" content="Stratum Prism">
+<meta property="og:description" content="Business consulting, AI and SaaS from Chennai.">
+<meta property="og:url" content="https://stratumprism.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg transform='skewX(-14) translate(6 0)'%3E%3Crect y='2' width='24' height='6' fill='%231f4e5f'/%3E%3Crect y='10' width='24' height='6' fill='%232f7f7a'/%3E%3Crect y='18' width='24' height='6' fill='%23c9a227'/%3E%3Crect y='26' width='24' height='5' fill='%23c4572e'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f3ec; --ink:#16181d; --muted:#5b5f68; --line:#d9d3c5; --card:#fffdf8;
+  --s1:#1f4e5f; --s2:#2f7f7a; --s3:#c9a227; --s4:#c4572e; --accent:#1f4e5f; --accent-ink:#fff;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111317; --ink:#ece8df; --muted:#9a9ea7; --line:#2a2d34; --card:#171a1f;
+    --s1:#3f8aa3; --s2:#4fb3a9; --s3:#e0bb45; --s4:#e07a50; --accent:#4fb3a9; --accent-ink:#0d1013;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111317; --ink:#ece8df; --muted:#9a9ea7; --line:#2a2d34; --card:#171a1f;
+  --s1:#3f8aa3; --s2:#4fb3a9; --s3:#e0bb45; --s4:#e07a50; --accent:#4fb3a9; --accent-ink:#0d1013;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;line-height:1.05;margin:0}
+/* nav */
+nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;letter-spacing:.02em}
+.mark{width:28px;height:28px;display:grid;grid-template-rows:repeat(4,1fr);gap:2px;transform:skewX(-14deg)}
+.mark i{display:block;border-radius:1px}
+.mark i:nth-child(1){background:var(--s1)}.mark i:nth-child(2){background:var(--s2)}.mark i:nth-child(3){background:var(--s3)}.mark i:nth-child(4){background:var(--s4)}
+.links{display:flex;gap:22px;align-items:center;font-size:15px}
+.links a{text-decoration:none;color:var(--muted)}.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-ink)!important;border:0;border-radius:999px;padding:11px 20px;font:500 15px "IBM Plex Sans",sans-serif;text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink)!important;border:1px solid var(--line)}
+@media (max-width:720px){.links a:not(.btn){display:none}}
+/* hero */
+.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:end;padding:56px 0 72px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(46px,7.4vw,92px)}
+.hero h1 em{color:var(--accent)}
+.hero p{max-width:560px;color:var(--muted);font-size:19px;margin:24px 0 32px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.strata{display:flex;flex-direction:column;gap:10px}
+.strata div{height:46px;border-radius:3px;transform:skewX(-14deg);display:flex;align-items:center;padding:0 18px}
+.strata span{transform:skewX(14deg);font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+.strata div:nth-child(1){background:var(--s1);width:100%}
+.strata div:nth-child(2){background:var(--s2);width:88%;margin-left:6%}
+.strata div:nth-child(3){background:var(--s3);width:76%;margin-left:12%}
+.strata div:nth-child(4){background:var(--s4);width:64%;margin-left:18%}
+.strata div:nth-child(3) span{color:#1a1505}
+@media (max-width:820px){.hero{grid-template-columns:1fr;padding-top:28px}.strata{max-width:420px}}
+/* sections */
+section{padding:80px 0;border-bottom:1px solid var(--line)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.head h2{font-size:clamp(36px,5vw,56px)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.card{background:var(--card);padding:32px}
+.card .bar{width:36px;height:6px;border-radius:2px;margin-bottom:22px;transform:skewX(-14deg)}
+.card h3{font-size:30px;margin-bottom:10px}
+.card p{color:var(--muted);margin:0 0 14px}
+.card ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px}
+@media (max-width:720px){.grid{grid-template-columns:1fr}}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:s}
+.step{border-top:2px solid var(--ink);padding-top:16px}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted)}
+.step h3{font-size:26px;margin:8px 0}
+.step p{color:var(--muted);font-size:15px;margin:0}
+@media (max-width:820px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+.about blockquote{margin:0;font-family:"Instrument Serif",serif;font-size:clamp(28px,3.6vw,40px);line-height:1.2}
+.about p{color:var(--muted);margin:0 0 16px}
+@media (max-width:820px){.about{grid-template-columns:1fr}}
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.email{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:20px 0}
+.email code{font:500 18px "IBM Plex Mono",monospace;background:var(--card);border:1px solid var(--line);padding:10px 14px;border-radius:6px}
+form{display:grid;gap:14px}
+label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+input,textarea,select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.note{font-size:14px;color:var(--accent);min-height:20px}
+@media (max-width:820px){.contact{grid-template-columns:1fr}}
+footer{padding:36px 0 48px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+footer .legal{max-width:520px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#top"><span class="mark"><i></i><i></i><i></i><i></i></span>STRATUM PRISM</a>
+    <div class="links">
+      <a href="#services">Services</a><a href="#approach">Approach</a><a href="#about">About</a>
+      <a class="btn" href="#contact">Book a call</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <div class="mono">Business consulting · AI · SaaS — Chennai</div>
+      <h1 style="margin-top:18px">See every layer of your business <em>clearly.</em></h1>
+      <p>We help growing companies sort out strategy and operations, then build the AI and software that makes the plan actually run.</p>
+      <div class="cta"><a class="btn" href="#contact">Book a free 30‑min call</a><a class="btn ghost" href="#services">What we do</a></div>
+    </div>
+    <div class="strata" aria-hidden="true">
+      <div><span>Strategy</span></div><div><span>Operations</span></div><div><span>Data &amp; AI</span></div><div><span>Software</span></div>
+    </div>
+  </header>
+
+  <section id="services">
+    <div class="head"><h2>Services</h2><span class="mono">From advice to working product</span></div>
+    <div class="grid">
+      <div class="card"><div class="bar" style="background:var(--s1)"></div><h3>Business consulting</h3><p>Clear-eyed advice on where to grow and what to fix first.</p><ul><li>Strategy and market entry</li><li>Process and cost review</li><li>Go-to-market planning</li></ul></div>
+      <div class="card"><div class="bar" style="background:var(--s2)"></div><h3>AI adoption</h3><p>Find the tasks AI can take off your team's plate, and roll it out safely.</p><ul><li>AI readiness assessment</li><li>Automation of repetitive work</li><li>Custom assistants and agents</li></ul></div>
+      <div class="card"><div class="bar" style="background:var(--s3)"></div><h3>SaaS &amp; software</h3><p>Web apps and internal tools, designed and built end to end.</p><ul><li>Product discovery and MVPs</li><li>Dashboards and internal tools</li><li>Integrations with your existing systems</li></ul></div>
+      <div class="card"><div class="bar" style="background:var(--s4)"></div><h3>Data &amp; analytics</h3><p>Turn scattered spreadsheets into numbers you can trust.</p><ul><li>Reporting and KPI design</li><li>Data cleanup and pipelines</li><li>Forecasting</li></ul></div>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="head"><h2>How we work</h2><span class="mono">Simple, fixed‑scope steps</span></div>
+    <div class="steps">
+      <div class="step"><h3>Listen</h3><p>A free call to understand your business and the problem.</p></div>
+      <div class="step"><h3>Diagnose</h3><p>We map the layers: people, process, data and tools.</p></div>
+      <div class="step"><h3>Build</h3><p>A focused plan, then the automation or software to deliver it.</p></div>
+      <div class="step"><h3>Hand over</h3><p>Training and documentation so your team owns the result.</p></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about">
+      <blockquote>“A prism doesn’t add light. It shows you what was already there.”</blockquote>
+      <div>
+        <div class="mono" style="margin-bottom:14px">About</div>
+        <p>Stratum Prism is a Chennai-based consulting and technology company founded by Prasanth Sethuraman. We combine business consulting with hands-on AI and software delivery, so advice doesn’t stop at a slide deck.</p>
+        <p>We work with founders and small-to-mid-sized businesses who want practical, measurable change.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="border-bottom:0">
+    <div class="contact">
+      <div>
+        <h2 style="font-size:clamp(36px,5vw,56px)">Let’s talk.</h2>
+        <p style="color:var(--muted);margin-top:16px">Tell us a little about what you need and we’ll reply within one working day to set up a call.</p>
+        <div class="email"><code id="em">contact@stratumprism.com</code><button class="btn ghost" id="copy" type="button">Copy</button></div>
+        <div class="mono">Phone · +91 75500 59511</div>
+      </div>
+      <form id="f">
+        <label>Name<input required name="name" autocomplete="name"></label>
+        <label>Email<input required type="email" name="email" autocomplete="email"></label>
+        <label>Interested in<select name="topic"><option>Business consulting</option><option>AI adoption</option><option>SaaS &amp; software</option><option>Data &amp; analytics</option><option>Not sure yet</option></select></label>
+        <label>Message<textarea name="msg" rows="4"></textarea></label>
+        <button class="btn" type="submit" style="justify-self:start">Request a call</button>
+        <div class="note" id="note" role="status"></div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<div class="wrap" style="border-top:1px solid var(--line)">
+  <footer>
+    <div class="legal"><strong style="color:var(--ink)">Stratum Prism Private Limited</strong><br>Registered office: Alwarpet, Chennai, Tamil Nadu<br>CIN: to be added after incorporation</div>
+    <div>© 2026 Stratum Prism</div>
+  </footer>
+</div>
+
+<script>
+document.getElementById('copy').addEventListener('click',async e=>{
+  const t=document.getElementById('em').textContent;
+  try{await navigator.clipboard.writeText(t);e.target.textContent='Copied'}catch(_){e.target.textContent='Select & copy'}
+  setTimeout(()=>e.target.textContent='Copy',1800);
+});
+document.getElementById('f').addEventListener('submit',e=>{
+  e.preventDefault();
+  const d=new FormData(e.target);
+  const subj='Call request: '+d.get('topic')+' - '+d.get('name');
+  const b='Name: '+d.get('name')+'\nEmail: '+d.get('email')+'\nInterested in: '+d.get('topic')+'\n\n'+(d.get('msg')||'');
+  window.location.href='mailto:contact@stratumprism.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(b);
+  document.getElementById('note').textContent='Opening your email app. If nothing happens, write to contact@stratumprism.com.';
+});
+</script>
+</body>
+</html>
