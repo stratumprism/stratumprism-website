@@ -1,0 +1,281 @@
+<title>Stratum Prism</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080a;--ink:#ecebe6;--mut:#8b8d93;--line:#1d1f24;--card:#0d0f12;
+--r:#ff5a4e;--o:#ffb547;--y:#f4f06a;--g:#5be08a;--b:#4fb7ff;--v:#9a7bff}
+/* the site is intentionally dark in both themes */
+:root[data-theme="light"],:root[data-theme="dark"]{--bg:#07080a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Familjen Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--b);color:#000}
+a{color:inherit}
+.w{max-width:1200px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.serif{font-family:"Gloock",Georgia,serif;font-weight:400}
+.mono{font:400 12px/1.4 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.spec{background:linear-gradient(90deg,var(--r),var(--o),var(--y),var(--g),var(--b),var(--v));-webkit-background-clip:text;background-clip:text;color:transparent}
+.grain{position:fixed;inset:-50%;pointer-events:none;z-index:50;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:40;transition:background .4s,backdrop-filter .4s}
+nav.solid{background:rgba(7,8,10,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .w{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:500;letter-spacing:.22em;font-size:13px}
+.logo svg{width:22px;height:20px}
+.nl{display:flex;gap:30px;align-items:center;font-size:15px}
+.nl a{text-decoration:none;color:var(--mut);transition:color .2s}.nl a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--ink);color:var(--ink)!important;padding:12px 20px;text-decoration:none;font:500 15px "Familjen Grotesk";background:transparent;cursor:pointer;position:relative;overflow:hidden;transition:color .35s}
+.btn::before{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .35s cubic-bezier(.7,0,.2,1);z-index:-1}
+.btn:hover{color:var(--bg)!important}.btn:hover::before{transform:none}
+.btn{isolation:isolate}
+@media (max-width:760px){.nl a:not(.btn){display:none}}
+
+/* hero */
+.hero{min-height:100vh;min-height:100svh;position:relative;display:flex;align-items:center;padding:110px 0 60px}
+.hero .w{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center;width:100%}
+.hero h1{font-size:clamp(48px,6.6vw,104px);line-height:.96;margin:20px 0 0;letter-spacing:-.015em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.hero h1 .ln span{display:block}
+.hero p{color:var(--mut);font-size:clamp(17px,1.5vw,20px);max-width:470px;margin:28px 0 36px}
+.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px}
+.scrollcue i{width:1px;height:46px;background:linear-gradient(var(--ink),transparent);animation:cue 2s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+#prism{width:100%;height:auto;overflow:visible}
+@media (max-width:900px){.hero .w{grid-template-columns:1fr}.hero .viz{order:-1;margin:0 -20px}}
+
+/* statement */
+.state{padding:150px 0;border-top:1px solid var(--line)}
+.state h2{font-size:clamp(32px,4.6vw,64px);line-height:1.12;margin:0;max-width:1000px}
+.state h2 .wd{opacity:.14;transition:opacity .2s}
+
+/* lenses */
+.lenses{padding:120px 0 80px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:56px}
+.head h2{font-size:clamp(38px,5vw,72px);line-height:1;margin:14px 0 0}
+.head p{max-width:380px;color:var(--mut);margin:0}
+.lens{display:grid;grid-template-columns:90px 1.1fr 1.4fr 40px;gap:24px;align-items:center;padding:34px 0;border-top:1px solid var(--line);position:relative;cursor:default}
+.lens:last-child{border-bottom:1px solid var(--line)}
+.lens::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--c);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.7,0,.2,1)}
+.lens:hover::after{transform:scaleX(1)}
+.lens .k{font:400 12px "JetBrains Mono";color:var(--c);letter-spacing:.08em}
+.lens h3{font:400 clamp(30px,3.4vw,48px)/1 "Gloock";margin:0;transition:transform .5s cubic-bezier(.7,0,.2,1)}
+.lens:hover h3{transform:translateX(12px)}
+.lens p{margin:0;color:var(--mut);font-size:16px}
+.lens p b{color:var(--ink);font-weight:500}
+.lens .dot{width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 0 0 var(--c);transition:box-shadow .5s;justify-self:end}
+.lens:hover .dot{box-shadow:0 0 24px 6px var(--c)}
+@media (max-width:820px){.lens{grid-template-columns:1fr;gap:10px}.lens .dot{display:none}}
+
+/* process */
+.proc{padding:120px 0;border-top:1px solid var(--line)}
+.track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:30px}
+.track::before{content:"";position:absolute;top:7px;left:0;right:0;height:1px;background:var(--line)}
+.track .bar{position:absolute;top:7px;left:0;height:1px;width:100%;background:linear-gradient(90deg,var(--r),var(--o),var(--g),var(--b));transform-origin:left;transform:scaleX(0)}
+.st{padding-right:30px;position:relative}
+.st .pt{width:15px;height:15px;border-radius:50%;background:var(--bg);border:1px solid var(--ink);margin-bottom:30px;position:relative;z-index:1}
+.st h3{font:400 30px "Gloock";margin:10px 0 10px}
+.st p{color:var(--mut);margin:0;font-size:15px}
+@media (max-width:820px){.track{grid-template-columns:1fr 1fr;row-gap:40px}.track::before,.track .bar{display:none}}
+@media (max-width:480px){.track{grid-template-columns:1fr}}
+
+/* founder */
+.founder{padding:120px 0;border-top:1px solid var(--line)}
+.founder .w{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}
+.portrait{aspect-ratio:4/5;background:radial-gradient(120% 80% at 30% 20%,#1a1d22,#0b0c0e);border:1px solid var(--line);position:relative;overflow:hidden;display:grid;place-items:center}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,90,78,.12) 50%,rgba(79,183,255,.12) 58%,transparent 66%)}
+.portrait span{color:var(--mut)}
+.founder blockquote{font:400 clamp(28px,3.2vw,44px)/1.18 "Gloock";margin:18px 0 28px}
+.founder p{color:var(--mut);max-width:560px}
+@media (max-width:820px){.founder .w{grid-template-columns:1fr;gap:40px}.portrait{max-width:360px}}
+
+/* contact */
+.contact{padding:140px 0 100px;border-top:1px solid var(--line);position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;left:50%;top:-40%;width:140%;height:120%;transform:translateX(-50%);background:conic-gradient(from 200deg at 50% 0,transparent 0deg,rgba(255,90,78,.10) 20deg,rgba(244,240,106,.08) 35deg,rgba(91,224,138,.08) 50deg,rgba(79,183,255,.10) 65deg,rgba(154,123,255,.10) 80deg,transparent 100deg);pointer-events:none}
+.contact .w{display:grid;grid-template-columns:1fr 1fr;gap:70px;position:relative}
+.contact h2{font-size:clamp(46px,6vw,92px);line-height:.98;margin:16px 0 26px}
+.mail{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:28px 0 14px}
+.mail code{font:400 16px "JetBrains Mono";padding:12px 14px;border:1px solid var(--line);background:var(--card)}
+form{display:grid;gap:16px}
+.f{position:relative}
+.f input,.f textarea,.f select{width:100%;font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:1px solid #2b2e35;padding:22px 0 10px;outline:none;border-radius:0;transition:border-color .3s}
+.f select{appearance:none}
+.f select option{background:#0d0f12}
+.f label{position:absolute;left:0;top:22px;color:var(--mut);pointer-events:none;transition:.25s}
+.f input:focus,.f textarea:focus,.f select:focus{border-color:var(--ink)}
+.f input:focus+label,.f input:not(:placeholder-shown)+label,.f textarea:focus+label,.f textarea:not(:placeholder-shown)+label,.f select+label{top:0;font-size:12px;letter-spacing:.06em}
+.note{min-height:22px;font-size:14px;color:var(--g)}
+@media (max-width:820px){.contact .w{grid-template-columns:1fr;gap:50px}}
+footer{border-top:1px solid var(--line);padding:34px 0 44px;font-size:13px;color:var(--mut)}
+footer .w{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="grain" aria-hidden="true"></div>
+
+<nav id="nav"><div class="w">
+  <a class="logo" href="#top"><svg viewBox="0 0 22 20"><path d="M11 1 21 19H1Z" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M11 10 21 7" stroke="#ff5a4e"/><path d="M11 10 21 10" stroke="#5be08a"/><path d="M11 10 21 13" stroke="#4fb7ff"/></svg>STRATUM PRISM</a>
+  <div class="nl"><a href="#lenses">What we do</a><a href="#process">How we work</a><a href="#founder">About</a><a class="btn" href="#contact">Book a call</a></div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="w">
+    <div>
+      <div class="mono">Business consulting · AI · Software — Chennai</div>
+      <h1 class="serif"><span class="ln"><span>One problem.</span></span><span class="ln"><span>Every <em class="spec" style="font-style:normal">angle.</em></span></span></h1>
+      <p class="rv">A prism splits one beam of light into its true colours. We do the same with your business, then build the software that acts on what we find.</p>
+      <a class="btn rv" href="#contact">Book a 30‑minute call <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="viz" aria-hidden="true">
+      <svg id="prism" viewBox="0 0 600 460">
+        <defs>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity=".02"/></linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="soft"><feGaussianBlur stdDeviation="10"/></filter>
+        </defs>
+        <g id="raysSoft" filter="url(#soft)" opacity=".55"></g>
+        <line id="beam" x1="-40" y1="252" x2="214" y2="232" stroke="#fff" stroke-width="2.4" filter="url(#glow)"/>
+        <path id="inner" d="M214 232 L318 226 L318 242 Z" fill="#fff" opacity=".18"/>
+        <g id="rays" filter="url(#glow)"></g>
+        <path id="tri" d="M260 92 L372 316 L148 316 Z" fill="url(#glass)" stroke="#fff" stroke-opacity=".75" stroke-width="1.2"/>
+        <path d="M260 92 L300 172" stroke="#fff" stroke-opacity=".35" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+  <div class="scrollcue mono"><i></i></div>
+</header>
+
+<section class="state"><div class="w">
+  <div class="mono" style="margin-bottom:26px">Why we exist</div>
+  <h2 class="serif" id="statement">Most advice ends as a slide deck. Ours ends as a working system: a cleaner process, a sharper decision, or software your team actually uses on Monday morning.</h2>
+</div></section>
+
+<section class="lenses" id="lenses"><div class="w">
+  <div class="head"><div><div class="mono">What we do</div><h2 class="serif">Four lenses.<br>One business.</h2></div><p>Every engagement looks through all four. Most problems that look like one turn out to be another.</p></div>
+  <div class="lens" style="--c:var(--r)"><span class="k">01 / RED</span><h3>Strategy</h3><p><b>What to change, and in what order.</b> Market, pricing and growth decisions backed by your own numbers, not frameworks.</p><span class="dot"></span></div>
+  <div class="lens" style="--c:var(--o)"><span class="k">02 / AMBER</span><h3>Operations</h3><p><b>Fewer steps, fewer handoffs.</b> We map how work really moves through your company and take out what slows it down.</p><span class="dot"></span></div>
+  <div class="lens" style="--c:var(--g)"><span class="k">03 / GREEN</span><h3>AI &amp; data</h3><p><b>Automation that pays for itself.</b> Clean data first, then AI on the two or three tasks where it saves real hours.</p><span class="dot"></span></div>
+  <div class="lens" style="--c:var(--b)"><span class="k">04 / BLUE</span><h3>Software</h3><p><b>Tools built to last.</b> Internal systems, dashboards and SaaS products, designed and built by the same people who did the diagnosis.</p><span class="dot"></span></div>
+</div></section>
+
+<section class="proc" id="process"><div class="w">
+  <div class="head"><div><div class="mono">How we work</div><h2 class="serif">From first call<br>to handover.</h2></div><p>Fixed scope, clear price, no lock-in. You own everything we build.</p></div>
+  <div class="track" id="track"><div class="bar" id="bar"></div>
+    <div class="st"><div class="pt"></div><span class="mono">Week 0</span><h3>Listen</h3><p>A free 30‑minute call. You talk, we ask questions.</p></div>
+    <div class="st"><div class="pt"></div><span class="mono">Weeks 1–2</span><h3>Diagnose</h3><p>We look through all four lenses and give you a ranked list of moves.</p></div>
+    <div class="st"><div class="pt"></div><span class="mono">Weeks 3–8</span><h3>Build</h3><p>We fix the process and build the tools, showing progress every week.</p></div>
+    <div class="st"><div class="pt"></div><span class="mono">After</span><h3>Hand over</h3><p>Training, documentation and support, so your team runs it without us.</p></div>
+  </div>
+</div></section>
+
+<section class="founder" id="founder"><div class="w">
+  <div class="portrait"><span class="mono">Founder photo</span></div>
+  <div>
+    <div class="mono">Founder</div>
+    <blockquote>“I started Stratum Prism because good advice kept dying in slide decks.”</blockquote>
+    <p>Prasanth Sethuraman founded Stratum Prism in Chennai to bring consulting and engineering under one roof. [Your background goes here: past roles, industries, and one result you’re proud of.]</p>
+    <p class="mono" style="margin-top:26px">Prasanth Sethuraman · Founder &amp; Director</p>
+  </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="w">
+  <div>
+    <div class="mono">Contact</div>
+    <h2 class="serif">Bring us the<br><span class="spec">tangled</span> problem.</h2>
+    <p style="color:var(--mut);max-width:440px">Tell us what’s going on. We reply within one working day to set up a call.</p>
+    <div class="mail"><code id="em">contact@stratumprism.com</code><button class="btn" type="button" id="cp">Copy</button></div>
+  </div>
+  <form id="form" novalidate>
+    <div class="f"><input id="n" name="name" placeholder=" " required><label for="n">Your name</label></div>
+    <div class="f"><input id="e" name="email" type="email" placeholder=" " required><label for="e">Work email</label></div>
+    <div class="f"><select id="t" name="topic"><option>Strategy</option><option>Operations</option><option>AI &amp; data</option><option>Software</option><option>Not sure yet</option></select><label for="t">Interested in</label></div>
+    <div class="f"><textarea id="m" name="msg" rows="3" placeholder=" "></textarea><label for="m">What’s going on?</label></div>
+    <div><button class="btn" type="submit">Request a call →</button></div>
+    <div class="note" id="note" role="status"></div>
+  </form>
+</div></section>
+
+<footer><div class="w">
+  <div><span style="color:var(--ink)">Stratum Prism Private Limited</span><br>Alwarpet, Chennai, Tamil Nadu, India · CIN: to be added</div>
+  <div>© 2026 Stratum Prism</div>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+const NS='http://www.w3.org/2000/svg';
+const cols=['#ff5a4e','#ffb547','#f4f06a','#5be08a','#4fb7ff','#9a7bff'];
+const rays=document.getElementById('rays'),soft=document.getElementById('raysSoft');
+const ox=318,oy=234,len=420,lines=[],softs=[];
+cols.forEach((c,i)=>{
+  const mk=(g,w)=>{const l=document.createElementNS(NS,'line');l.setAttribute('x1',ox);l.setAttribute('y1',oy);l.setAttribute('stroke',c);l.setAttribute('stroke-width',w);l.setAttribute('stroke-linecap','round');g.appendChild(l);return l};
+  lines.push(mk(rays,2.2));softs.push(mk(soft,9));
+});
+let spread=1,tilt=0,reach=1;
+function draw(){
+  lines.forEach((l,i)=>{
+    const a=(-14+i*6.2)*spread+tilt; const rad=a*Math.PI/180;
+    const x=ox+Math.cos(rad)*len*reach, y=oy+Math.sin(rad)*len*reach;
+    [l,softs[i]].forEach(n=>{n.setAttribute('x2',x);n.setAttribute('y2',y)});
+  });
+}
+draw();
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!window.gsap||reduce){document.querySelectorAll('.state .wd').forEach(w=>w.style.opacity=1);return;}
+gsap.registerPlugin(ScrollTrigger);
+
+// split statement into words
+const st=document.getElementById('statement');
+st.innerHTML=st.textContent.split(' ').map(w=>'<span class="wd">'+w+'</span>').join(' ');
+
+// intro
+const beam=document.getElementById('beam');
+const bl=beam.getTotalLength?beam.getTotalLength():260;
+gsap.set(beam,{strokeDasharray:bl,strokeDashoffset:bl});
+const o={r:0};
+const tl=gsap.timeline({defaults:{ease:'power3.out'}});
+tl.from('.hero h1 .ln span',{yPercent:110,duration:1.1,stagger:.12})
+  .from('.hero .mono',{opacity:0,y:10,duration:.6},'<.1')
+  .from('.rv',{opacity:0,y:20,duration:.8,stagger:.1},'<.3')
+  .from('#tri',{opacity:0,scale:.92,transformOrigin:'50% 70%',duration:1},'<')
+  .to(beam,{strokeDashoffset:0,duration:.8,ease:'power2.in'},'<.2')
+  .from('#inner',{opacity:0,duration:.3})
+  .fromTo(o,{r:0},{r:1,duration:1.2,ease:'expo.out',onUpdate:()=>{reach=o.r;draw()}},'<');
+
+// mouse tilt
+let tx=0;
+addEventListener('pointermove',e=>{tx=(e.clientY/innerHeight-.5)*8;});
+gsap.ticker.add(()=>{tilt+= (tx-tilt)*.06; draw();});
+
+// scroll: rays spread as you leave the hero
+ScrollTrigger.create({trigger:'.hero',start:'top top',end:'bottom top',scrub:true,onUpdate:s=>{spread=1+s.progress*1.4}});
+
+// statement reveal
+gsap.to('#statement .wd',{opacity:1,stagger:.05,ease:'none',scrollTrigger:{trigger:'.state',start:'top 75%',end:'bottom 60%',scrub:true}});
+
+// lenses
+gsap.utils.toArray('.lens').forEach(l=>gsap.from(l,{opacity:0,y:40,duration:.9,ease:'power3.out',scrollTrigger:{trigger:l,start:'top 88%'}}));
+// process bar
+gsap.to('#bar',{scaleX:1,ease:'none',scrollTrigger:{trigger:'#track',start:'top 80%',end:'bottom 55%',scrub:true}});
+gsap.from('.st',{opacity:0,y:30,stagger:.12,duration:.8,scrollTrigger:{trigger:'#track',start:'top 82%'}});
+gsap.from('.portrait',{clipPath:'inset(100% 0 0 0)',duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'.founder',start:'top 75%'}});
+gsap.from('.founder blockquote, .founder p',{opacity:0,y:24,stagger:.1,duration:.9,scrollTrigger:{trigger:'.founder',start:'top 70%'}});
+})();
+
+// nav
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
+// copy
+document.getElementById('cp').addEventListener('click',async e=>{
+  try{await navigator.clipboard.writeText('contact@stratumprism.com');e.target.textContent='Copied ✓'}catch(_){e.target.textContent='Select & copy'}
+  setTimeout(()=>e.target.textContent='Copy',1800)});
+// form
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const n=document.getElementById('note');
+  const el=e.target.elements;if(!el.name.value.trim()||!el.email.value.trim()){n.style.color='var(--r)';n.textContent='Please add your name and email.';return}
+  n.style.color='var(--g)';n.textContent='Thanks. In this preview the form doesn’t send yet; on the live site it will reach contact@.';
+});
+</script>
