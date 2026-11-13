@@ -30,6 +30,7 @@ nav .w{display:flex;align-items:center;justify-content:space-between;height:72px
 .btn::before{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .35s cubic-bezier(.7,0,.2,1);z-index:-1}
 .btn:hover{color:var(--bg)!important}.btn:hover::before{transform:none}
 .btn{isolation:isolate}
+.btn.ghost{border-color:#2b2e35;color:var(--mut)!important}.btn.ghost::before{background:#1a1c21}.btn.ghost:hover{color:var(--ink)!important}
 @media (max-width:760px){.nl a:not(.btn){display:none}}
 
 /* hero */
@@ -55,7 +56,7 @@ nav .w{display:flex;align-items:center;justify-content:space-between;height:72px
 .head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:56px}
 .head h2{font-size:clamp(38px,5vw,72px);line-height:1;margin:14px 0 0}
 .head p{max-width:380px;color:var(--mut);margin:0}
-.lens{display:grid;grid-template-columns:90px 1.1fr 1.4fr 40px;gap:24px;align-items:center;padding:34px 0;border-top:1px solid var(--line);position:relative;cursor:default}
+.lens{display:grid;grid-template-columns:130px 1.1fr 1.4fr 40px;gap:24px;align-items:center;padding:34px 0;border-top:1px solid var(--line);position:relative;cursor:default}
 .lens:last-child{border-bottom:1px solid var(--line)}
 .lens::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--c);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.7,0,.2,1)}
 .lens:hover::after{transform:scaleX(1)}
@@ -88,11 +89,12 @@ nav .w{display:flex;align-items:center;justify-content:space-between;height:72px
 .portrait span{color:var(--mut)}
 .founder blockquote{font:400 clamp(28px,3.2vw,44px)/1.18 "Gloock";margin:18px 0 28px}
 .founder p{color:var(--mut);max-width:560px}
+.stats{display:flex;gap:36px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}.stats b{display:block;font-size:30px;line-height:1.1;margin-bottom:4px}
 @media (max-width:820px){.founder .w{grid-template-columns:1fr;gap:40px}.portrait{max-width:360px}}
 
 /* contact */
 .contact{padding:140px 0 100px;border-top:1px solid var(--line);position:relative;overflow:hidden}
-.contact::before{content:"";position:absolute;left:50%;top:-40%;width:140%;height:120%;transform:translateX(-50%);background:conic-gradient(from 200deg at 50% 0,transparent 0deg,rgba(255,90,78,.10) 20deg,rgba(244,240,106,.08) 35deg,rgba(91,224,138,.08) 50deg,rgba(79,183,255,.10) 65deg,rgba(154,123,255,.10) 80deg,transparent 100deg);pointer-events:none}
+.contact::before{content:"";position:absolute;left:50%;top:-40%;width:140%;height:180%;transform:translateX(-50%);background:conic-gradient(from 200deg at 50% 0,transparent 0deg,rgba(255,90,78,.10) 20deg,rgba(244,240,106,.08) 35deg,rgba(91,224,138,.08) 50deg,rgba(79,183,255,.10) 65deg,rgba(154,123,255,.10) 80deg,transparent 100deg);pointer-events:none}
 .contact .w{display:grid;grid-template-columns:1fr 1fr;gap:70px;position:relative}
 .contact h2{font-size:clamp(46px,6vw,92px);line-height:.98;margin:16px 0 26px}
 .mail{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:28px 0 14px}
@@ -116,16 +118,16 @@ footer .w{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 
 <nav id="nav"><div class="w">
   <a class="logo" href="#top"><svg viewBox="0 0 22 20"><path d="M11 1 21 19H1Z" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M11 10 21 7" stroke="#ff5a4e"/><path d="M11 10 21 10" stroke="#5be08a"/><path d="M11 10 21 13" stroke="#4fb7ff"/></svg>STRATUM PRISM</a>
-  <div class="nl"><a href="#lenses">What we do</a><a href="#process">How we work</a><a href="#founder">About</a><a class="btn" href="#contact">Book a call</a></div>
+  <div class="nl"><a href="#lenses">Offers</a><a href="#process">How we work</a><a href="#founder">About</a><a class="btn" href="#contact">Book a call</a></div>
 </div></nav>
 
 <header class="hero" id="top">
   <div class="w">
     <div>
-      <div class="mono">Business consulting · AI · Software — Chennai</div>
+      <div class="mono">Strategy · Transformation · AI — Chennai</div>
       <h1 class="serif"><span class="ln"><span>One problem.</span></span><span class="ln"><span>Every <em class="spec" style="font-style:normal">angle.</em></span></span></h1>
-      <p class="rv">A prism splits one beam of light into its true colours. We do the same with your business, then build the software that acts on what we find.</p>
-      <a class="btn rv" href="#contact">Book a 30‑minute call <span aria-hidden="true">→</span></a>
+      <p class="rv">Five people describe five problems. We find the one thread that connects them, get your team to own it, and stay until it’s fixed.</p>
+      <div class="rv" style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#contact">Book a 30‑minute call <span aria-hidden="true">→</span></a><a class="btn ghost" href="https://wa.me/917550059511" target="_blank" rel="noopener">WhatsApp us</a></div>
     </div>
     <div class="viz" aria-hidden="true">
       <svg id="prism" viewBox="0 0 600 460">
@@ -147,34 +149,34 @@ footer .w{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 </header>
 
 <section class="state"><div class="w">
-  <div class="mono" style="margin-bottom:26px">Why we exist</div>
-  <h2 class="serif" id="statement">Most advice ends as a slide deck. Ours ends as a working system: a cleaner process, a sharper decision, or software your team actually uses on Monday morning.</h2>
+  <div class="mono" style="margin-bottom:26px">What most consultants get wrong</div>
+  <h2 class="serif" id="statement">A chart showing the cause and the cure doesn’t fix anything. Change starts when your people see the problem for themselves and decide to own it. That’s where we begin, and we stay for the part most consultants skip.</h2>
 </div></section>
 
 <section class="lenses" id="lenses"><div class="w">
-  <div class="head"><div><div class="mono">What we do</div><h2 class="serif">Four lenses.<br>One business.</h2></div><p>Every engagement looks through all four. Most problems that look like one turn out to be another.</p></div>
-  <div class="lens" style="--c:var(--r)"><span class="k">01 / RED</span><h3>Strategy</h3><p><b>What to change, and in what order.</b> Market, pricing and growth decisions backed by your own numbers, not frameworks.</p><span class="dot"></span></div>
-  <div class="lens" style="--c:var(--o)"><span class="k">02 / AMBER</span><h3>Operations</h3><p><b>Fewer steps, fewer handoffs.</b> We map how work really moves through your company and take out what slows it down.</p><span class="dot"></span></div>
-  <div class="lens" style="--c:var(--g)"><span class="k">03 / GREEN</span><h3>AI &amp; data</h3><p><b>Automation that pays for itself.</b> Clean data first, then AI on the two or three tasks where it saves real hours.</p><span class="dot"></span></div>
-  <div class="lens" style="--c:var(--b)"><span class="k">04 / BLUE</span><h3>Software</h3><p><b>Tools built to last.</b> Internal systems, dashboards and SaaS products, designed and built by the same people who did the diagnosis.</p><span class="dot"></span></div>
+  <div class="head"><div><div class="mono">What we do</div><h2 class="serif">Three ways<br>we work.</h2></div><p>Built for founder‑led companies of 50 to 500 people, starting with logistics, manufacturing and industrial services in South India.</p></div>
+  <div class="lens" style="--c:var(--r)"><span class="k">01 · 2–3 WEEKS</span><h3>The Diagnostic</h3><p><b>Find the real problem.</b> We talk to leadership and the people on the ground separately, find the thread connecting what they say, and run a workshop where your team sees it and owns it. You get a one‑page problem statement and a ranked plan. Fixed price.</p><span class="dot"></span></div>
+  <div class="lens" style="--c:var(--o)"><span class="k">02 · 3–6 MONTHS</span><h3>Execution Partner</h3><p><b>Make the plan happen.</b> We stay on as your part‑time strategy head: weekly reviews, clear KPIs, and unblocking people until the change sticks.</p><span class="dot"></span></div>
+  <div class="lens" style="--c:var(--g)"><span class="k">03 · ONGOING</span><h3>Build</h3><p><b>Lock it in with tools.</b> Dashboards, automation and custom software that turn the fixed process into the way your company runs every day.</p><span class="dot"></span></div>
+  <div class="lens" style="--c:var(--b)"><span class="k">ADD‑ON</span><h3>Insight decks</h3><p><b>Tell the story that wins the room.</b> Board, bank and investor presentations built the way top strategy firms build them: research first, one clear message per page.</p><span class="dot"></span></div>
 </div></section>
 
 <section class="proc" id="process"><div class="w">
-  <div class="head"><div><div class="mono">How we work</div><h2 class="serif">From first call<br>to handover.</h2></div><p>Fixed scope, clear price, no lock-in. You own everything we build.</p></div>
+  <div class="head"><div><div class="mono">How we work</div><h2 class="serif">From first call<br>to lasting change.</h2></div><p>Fixed price for the Diagnostic, monthly after that, no lock‑in. You own everything we build.</p></div>
   <div class="track" id="track"><div class="bar" id="bar"></div>
-    <div class="st"><div class="pt"></div><span class="mono">Week 0</span><h3>Listen</h3><p>A free 30‑minute call. You talk, we ask questions.</p></div>
-    <div class="st"><div class="pt"></div><span class="mono">Weeks 1–2</span><h3>Diagnose</h3><p>We look through all four lenses and give you a ranked list of moves.</p></div>
-    <div class="st"><div class="pt"></div><span class="mono">Weeks 3–8</span><h3>Build</h3><p>We fix the process and build the tools, showing progress every week.</p></div>
-    <div class="st"><div class="pt"></div><span class="mono">After</span><h3>Hand over</h3><p>Training, documentation and support, so your team runs it without us.</p></div>
+    <div class="st"><div class="pt"></div><span class="mono">Day 1</span><h3>Listen</h3><p>A free 30‑minute call. You talk, we ask questions.</p></div>
+    <div class="st"><div class="pt"></div><span class="mono">Weeks 1–3</span><h3>Connect</h3><p>Interviews across levels to find the one problem behind the many.</p></div>
+    <div class="st"><div class="pt"></div><span class="mono">Workshop</span><h3>Own</h3><p>Your team sees the problem, agrees on it, and commits to the plan.</p></div>
+    <div class="st"><div class="pt"></div><span class="mono">Months 1–6</span><h3>Execute</h3><p>We drive the plan with you and build the tools that keep it running.</p></div>
   </div>
 </div></section>
 
 <section class="founder" id="founder"><div class="w">
-  <div class="portrait"><span class="mono">Founder photo</span></div>
+  <div class="portrait"><span class="serif" style="font-size:clamp(90px,12vw,170px);color:var(--ink);opacity:.9">PS</span></div>
   <div>
     <div class="mono">Founder</div>
-    <blockquote>“I started Stratum Prism because good advice kept dying in slide decks.”</blockquote>
-    <p>Prasanth Sethuraman founded Stratum Prism in Chennai to bring consulting and engineering under one roof. [Your background goes here: past roles, industries, and one result you’re proud of.]</p>
+    <blockquote>“Five people, five problems. My job is to find the one thread that connects them.”</blockquote>
+    <p>Prasanth spent five years at McKinsey, starting as a presentation specialist and growing into a junior consultant, learning how the firm’s consultants turn raw research into insight. He then spent five years at Cognizant leading STEP, a standalone strategy and transformation team covering market intelligence, strategy and employee engagement.</p><p>He founded Stratum Prism in Chennai to pair that discipline with the speed of AI, and to stay for the part most consultants skip: getting it done.</p><div class="stats"><div><b class="serif">10</b><span class="mono">years in strategy</span></div><div><b class="serif">McKinsey</b><span class="mono">5 years</span></div><div><b class="serif">Cognizant</b><span class="mono">5 years</span></div></div>
     <p class="mono" style="margin-top:26px">Prasanth Sethuraman · Founder &amp; Director</p>
   </div>
 </div></section>
@@ -183,13 +185,13 @@ footer .w{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
   <div>
     <div class="mono">Contact</div>
     <h2 class="serif">Bring us the<br><span class="spec">tangled</span> problem.</h2>
-    <p style="color:var(--mut);max-width:440px">Tell us what’s going on. We reply within one working day to set up a call.</p>
-    <div class="mail"><code id="em">contact@stratumprism.com</code><button class="btn" type="button" id="cp">Copy</button></div>
+    <p style="color:var(--mut);max-width:440px">Tell us what’s going on. We reply within one working day to set up a call. Prefer to talk? Call or WhatsApp.</p>
+    <div class="mail"><code id="em">contact@stratumprism.com</code><button class="btn" type="button" id="cp">Copy</button></div><div class="mail"><a class="btn ghost" href="tel:+917550059511">+91 75500 59511</a><a class="btn ghost" href="https://wa.me/917550059511" target="_blank" rel="noopener">WhatsApp</a></div>
   </div>
   <form id="form" novalidate>
     <div class="f"><input id="n" name="name" placeholder=" " required><label for="n">Your name</label></div>
     <div class="f"><input id="e" name="email" type="email" placeholder=" " required><label for="e">Work email</label></div>
-    <div class="f"><select id="t" name="topic"><option>Strategy</option><option>Operations</option><option>AI &amp; data</option><option>Software</option><option>Not sure yet</option></select><label for="t">Interested in</label></div>
+    <div class="f"><select id="t" name="topic"><option>The Diagnostic</option><option>Execution Partner</option><option>Build (AI &amp; software)</option><option>Insight decks</option><option>Not sure yet</option></select><label for="t">Interested in</label></div>
     <div class="f"><textarea id="m" name="msg" rows="3" placeholder=" "></textarea><label for="m">What’s going on?</label></div>
     <div><button class="btn" type="submit">Request a call →</button></div>
     <div class="note" id="note" role="status"></div>
@@ -197,7 +199,7 @@ footer .w{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 </div></section>
 
 <footer><div class="w">
-  <div><span style="color:var(--ink)">Stratum Prism Private Limited</span><br>Alwarpet, Chennai, Tamil Nadu, India · CIN: to be added</div>
+  <div><span style="color:var(--ink)">Stratum Prism Private Limited</span> (incorporation in progress)<br>Alwarpet, Chennai, Tamil Nadu, India</div>
   <div>© 2026 Stratum Prism</div>
 </div></footer>
 
