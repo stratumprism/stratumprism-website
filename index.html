@@ -3,191 +3,432 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Stratum Prism | Business consulting, AI and SaaS</title>
-<meta name="description" content="Stratum Prism is a Chennai-based business consulting and technology company: strategy, AI adoption, SaaS and data analytics.">
+<title>Stratum Prism | Strategy, transformation and AI consulting, Chennai</title>
+<meta name="description" content="Stratum Prism helps founder-led companies find the one problem behind the many, get their team to own it, and stay until it is fixed. Strategy, transformation and AI, from Chennai.">
 <meta property="og:title" content="Stratum Prism">
-<meta property="og:description" content="Business consulting, AI and SaaS from Chennai.">
+<meta property="og:description" content="One problem. Every angle. Strategy, transformation and AI consulting from Chennai.">
 <meta property="og:url" content="https://stratumprism.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg transform='skewX(-14) translate(6 0)'%3E%3Crect y='2' width='24' height='6' fill='%231f4e5f'/%3E%3Crect y='10' width='24' height='6' fill='%232f7f7a'/%3E%3Crect y='18' width='24' height='6' fill='%23c9a227'/%3E%3Crect y='26' width='24' height='5' fill='%23c4572e'/%3E%3C/g%3E%3C/svg%3E">
+<meta name="theme-color" content="#07080a">
+<link rel="canonical" href="https://stratumprism.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 20'%3E%3Crect width='22' height='20' fill='%2307080a'/%3E%3Cpath d='M11 2 20 18H2Z' fill='none' stroke='%23ecebe6' stroke-width='1.4'/%3E%3Cpath d='M11 10 21 7' stroke='%23ff5a4e'/%3E%3Cpath d='M11 10 21 10' stroke='%235be08a'/%3E%3Cpath d='M11 10 21 13' stroke='%234fb7ff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Familjen+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove('js')},2500)</script>
 <style>
 :root{
-  --paper:#f6f3ec; --ink:#16181d; --muted:#5b5f68; --line:#d9d3c5; --card:#fffdf8;
-  --s1:#1f4e5f; --s2:#2f7f7a; --s3:#c9a227; --s4:#c4572e; --accent:#1f4e5f; --accent-ink:#fff;
+  --bg:#07080a;--ink:#ecebe6;--mut:#8f9198;--line:#1c1e23;--line-2:#2a2d34;--card:#0d0f12;
+  --r:#ff5a4e;--o:#ffb547;--y:#f4f06a;--g:#5be08a;--b:#4fb7ff;--v:#9a7bff;
+  --serif:"Gloock",Georgia,"Times New Roman",serif;
+  --sans:"Familjen Grotesk",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --gut:max(20px,env(safe-area-inset-left,0px));
+  --sec:clamp(96px,12vw,168px);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease-io:cubic-bezier(.7,0,.2,1);
+  color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#111317; --ink:#ece8df; --muted:#9a9ea7; --line:#2a2d34; --card:#171a1f;
-    --s1:#3f8aa3; --s2:#4fb3a9; --s3:#e0bb45; --s4:#e07a50; --accent:#4fb3a9; --accent-ink:#0d1013;
-  }
+/* the site is intentionally dark in both themes */
+:root[data-theme="light"],:root[data-theme="dark"]{--bg:#07080a}
+*,*::before,*::after{box-sizing:border-box}
+html{scrollbar-color:var(--line-2) var(--bg);overflow-x:clip;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.62 var(--sans);letter-spacing:.005em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip;caret-color:var(--o);accent-color:var(--o);font-kerning:normal}
+::selection{background:var(--b);color:#05070a}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
+:focus-visible{outline:2px solid var(--b);outline-offset:4px;border-radius:1px}
+p{text-wrap:pretty}
+h1,h2,h3,blockquote{text-wrap:balance;font-feature-settings:"kern","liga"}
+[id]{scroll-margin-top:88px}
+.w{max-width:1240px;margin:0 auto;padding-left:var(--gut);padding-right:max(20px,env(safe-area-inset-right,0px))}
+.serif{font-family:var(--serif);font-weight:400}
+.mono{font:400 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.grain{position:fixed;inset:-50%;pointer-events:none;z-index:50;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* refracted word: ink letters over a six-band spectrum, the beam leaving the prism */
+.spec{position:relative;display:inline-block;white-space:nowrap;padding-bottom:.08em}
+.spec::after{content:"";position:absolute;left:.03em;right:.02em;bottom:-.16em;height:.1em;
+  background:linear-gradient(var(--r) 0 16.6%,var(--o) 0 33.3%,var(--y) 0 50%,var(--g) 0 66.6%,var(--b) 0 83.3%,var(--v) 0);
+  clip-path:inset(0 var(--draw,0%) 0 0);opacity:.95}
+
+/* section marker: a hairline in the section's hue, set in the margin beside the heading */
+.lbl{display:flex;align-items:center;gap:12px;margin:0 0 22px}
+.lbl::before{content:"";width:18px;height:1px;background:var(--hue,var(--ink));flex:none}
+@media (min-width:1000px){
+  .split{display:grid;grid-template-columns:12rem minmax(0,1fr);column-gap:clamp(32px,4vw,64px);align-items:start}
+  .split>.lbl{margin:0;padding-top:.9em}
 }
-:root[data-theme="dark"]{
-  --paper:#111317; --ink:#ece8df; --muted:#9a9ea7; --line:#2a2d34; --card:#171a1f;
-  --s1:#3f8aa3; --s2:#4fb3a9; --s3:#e0bb45; --s4:#e07a50; --accent:#4fb3a9; --accent-ink:#0d1013;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 "IBM Plex Sans",system-ui,sans-serif}
-.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-a{color:inherit}
-.mono{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-h1,h2,h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;line-height:1.05;margin:0}
+
 /* nav */
-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;gap:16px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;letter-spacing:.02em}
-.mark{width:28px;height:28px;display:grid;grid-template-rows:repeat(4,1fr);gap:2px;transform:skewX(-14deg)}
-.mark i{display:block;border-radius:1px}
-.mark i:nth-child(1){background:var(--s1)}.mark i:nth-child(2){background:var(--s2)}.mark i:nth-child(3){background:var(--s3)}.mark i:nth-child(4){background:var(--s4)}
-.links{display:flex;gap:22px;align-items:center;font-size:15px}
-.links a{text-decoration:none;color:var(--muted)}.links a:hover{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-ink)!important;border:0;border-radius:999px;padding:11px 20px;font:500 15px "IBM Plex Sans",sans-serif;text-decoration:none;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--ink)!important;border:1px solid var(--line)}
-@media (max-width:720px){.links a:not(.btn){display:none}}
+nav{position:fixed;top:0;left:0;right:0;z-index:40;border-bottom:1px solid transparent;transition:background-color .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s}
+nav.solid{background:rgba(7,8,10,.78);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border-bottom-color:var(--line)}
+nav .w{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:500;letter-spacing:.22em;font-size:13px;min-height:44px}
+.logo svg{width:22px;height:20px;flex:none}
+.nl{display:flex;gap:32px;align-items:center;font-size:15px}
+.nl a:not(.btn){text-decoration:none;color:var(--mut);transition:color .2s;padding:10px 0;background:linear-gradient(currentColor,currentColor) 0 calc(100% - 6px)/0 1px no-repeat;transition:color .2s,background-size .35s var(--ease)}
+.nl a:not(.btn):hover{color:var(--ink);background-size:100% 1px}
+@media (max-width:760px){.nl a:not(.btn){display:none}}
+
+/* buttons */
+.btn{--fill:var(--ink);--on:var(--bg);display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:0 20px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;font:500 15px/1 var(--sans);letter-spacing:.01em;background:transparent;cursor:pointer;position:relative;overflow:hidden;isolation:isolate;border-radius:0;transition:color .35s var(--ease-io),border-color .35s}
+.btn::before{content:"";position:absolute;inset:0;background:var(--fill);transform:translateY(101%);transition:transform .38s var(--ease-io);z-index:-1}
+.btn:hover,.btn:focus-visible{color:var(--on)}
+.btn:hover::before,.btn:focus-visible::before{transform:none}
+.btn:active::before{transition-duration:.12s}
+.btn .ar{display:inline-block;transition:transform .35s var(--ease)}
+.btn:hover .ar{transform:translateX(4px)}
+.btn.ghost{--fill:#191b20;--on:var(--ink);border-color:var(--line-2);color:var(--mut)}
+.btn.ghost:hover{border-color:#3a3d45}
+.btn[disabled]{opacity:.5;cursor:progress}
+
 /* hero */
-.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:end;padding:56px 0 72px;border-bottom:1px solid var(--line)}
-.hero h1{font-size:clamp(46px,7.4vw,92px)}
-.hero h1 em{color:var(--accent)}
-.hero p{max-width:560px;color:var(--muted);font-size:19px;margin:24px 0 32px}
+.hero{min-height:100vh;min-height:100svh;position:relative;display:grid;grid-template-rows:1fr auto;padding:96px 0 0}
+.hero-main{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(20px,3vw,48px);align-items:center;width:100%}
+.hero h1{font-size:clamp(50px,6.4vw,96px);line-height:.95;margin:0;letter-spacing:-.018em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.22em;margin-bottom:-.22em}
+.hero h1 .ln>span{display:block}
+.hero p{color:var(--mut);font-size:clamp(17px,1.45vw,20px);line-height:1.55;max-width:31em;margin:32px 0 40px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
-.strata{display:flex;flex-direction:column;gap:10px}
-.strata div{height:46px;border-radius:3px;transform:skewX(-14deg);display:flex;align-items:center;padding:0 18px}
-.strata span{transform:skewX(14deg);font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#fff}
-.strata div:nth-child(1){background:var(--s1);width:100%}
-.strata div:nth-child(2){background:var(--s2);width:88%;margin-left:6%}
-.strata div:nth-child(3){background:var(--s3);width:76%;margin-left:12%}
-.strata div:nth-child(4){background:var(--s4);width:64%;margin-left:18%}
-.strata div:nth-child(3) span{color:#1a1505}
-@media (max-width:820px){.hero{grid-template-columns:1fr;padding-top:28px}.strata{max-width:420px}}
-/* sections */
-section{padding:80px 0;border-bottom:1px solid var(--line)}
-.head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
-.head h2{font-size:clamp(36px,5vw,56px)}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.card{background:var(--card);padding:32px}
-.card .bar{width:36px;height:6px;border-radius:2px;margin-bottom:22px;transform:skewX(-14deg)}
-.card h3{font-size:30px;margin-bottom:10px}
-.card p{color:var(--muted);margin:0 0 14px}
-.card ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px}
-@media (max-width:720px){.grid{grid-template-columns:1fr}}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:s}
-.step{border-top:2px solid var(--ink);padding-top:16px}
-.step::before{counter-increment:s;content:"0" counter(s);font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted)}
-.step h3{font-size:26px;margin:8px 0}
-.step p{color:var(--muted);font-size:15px;margin:0}
-@media (max-width:820px){.steps{grid-template-columns:1fr 1fr}}
-@media (max-width:480px){.steps{grid-template-columns:1fr}}
-.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
-.about blockquote{margin:0;font-family:"Instrument Serif",serif;font-size:clamp(28px,3.6vw,40px);line-height:1.2}
-.about p{color:var(--muted);margin:0 0 16px}
-@media (max-width:820px){.about{grid-template-columns:1fr}}
+.hero-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:28px;padding-bottom:28px;width:100%}
+.hero-foot .mono{color:var(--mut)}
+.scrollcue{display:block;width:1px;height:44px;background:linear-gradient(var(--ink),transparent);transform-origin:top;animation:cue 2.4s var(--ease-io) infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+#prism{display:block;width:100%;height:auto;overflow:visible}
+@media (max-width:900px){
+  .hero{padding-top:72px}
+  .hero-main{grid-template-columns:1fr;gap:0}
+  .hero .viz{order:-1;margin:0 calc(-1 * var(--gut)) -10vw}
+  #prism{max-height:46svh;margin:0 auto}
+  .hero p{margin:24px 0 32px}
+}
+@media (max-width:480px){.cta .btn{flex:1 1 auto}}
+
+/* statement */
+.state{padding:var(--sec) 0;border-top:1px solid var(--line);--hue:var(--r)}
+.state h2{font-size:clamp(30px,4.3vw,60px);line-height:1.14;letter-spacing:-.01em;margin:0;max-width:21em}
+.state h2 .wd{opacity:.16}
+
+/* lenses */
+.lenses{padding:var(--sec) 0 calc(var(--sec) * .6);--hue:var(--o)}
+.head{display:flex;justify-content:space-between;align-items:end;gap:32px 48px;flex-wrap:wrap;margin-bottom:clamp(48px,6vw,80px)}
+.head h2{font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.012em;margin:0}
+.head p{max-width:24em;color:var(--mut);margin:0;font-size:16px}
+.lens{--sweep:0;--fade:1;display:grid;grid-template-columns:8.5rem minmax(0,1.05fr) minmax(0,1.45fr) 24px;gap:28px;align-items:baseline;padding:36px 0 38px;border-top:1px solid var(--line);position:relative}
+.lens:last-child{border-bottom:1px solid var(--line)}
+.lens::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--c);transform:scaleX(var(--sweep));transform-origin:left;opacity:var(--fade)}
+.lens::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--c);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease-io)}
+.lens:hover::after{transform:scaleX(1)}
+.lens .k{font:400 12px/1.4 var(--mono);color:var(--c);letter-spacing:.08em}
+.lens h3{font:400 clamp(30px,3.3vw,46px)/1.02 var(--serif);letter-spacing:-.008em;margin:0;transition:transform .5s var(--ease)}
+.lens:hover h3{transform:translateX(10px)}
+.lens p{margin:0;color:var(--mut);font-size:16px;line-height:1.6;max-width:36em}
+.lens p b{color:var(--ink);font-weight:500}
+.lens .dot{width:9px;height:9px;border-radius:50%;background:var(--c);justify-self:end;align-self:center;transition:box-shadow .5s var(--ease),transform .5s var(--ease)}
+.lens:hover .dot{transform:scale(1.25);box-shadow:0 0 18px 4px color-mix(in srgb,var(--c) 55%,transparent)}
+@media (max-width:860px){.lens{grid-template-columns:1fr;gap:12px;padding:30px 0 32px}.lens .dot{display:none}.lens:hover h3{transform:none}}
+
+/* process */
+.proc{padding:var(--sec) 0;border-top:1px solid var(--line);--hue:var(--g)}
+.track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:relative;margin:8px 0 0;padding:0;list-style:none}
+.track::before{content:"";position:absolute;top:7px;left:0;right:0;height:1px;background:var(--line-2)}
+.track .bar{position:absolute;top:7px;left:0;height:1px;width:100%;background:linear-gradient(90deg,var(--r),var(--o) 33%,var(--g) 66%,var(--b));transform-origin:left;transform:scaleX(var(--p,1))}
+.st{padding-right:32px;position:relative}
+.st .pt{width:15px;height:15px;border-radius:50%;background:var(--bg);border:1px solid var(--ink);margin-bottom:32px;position:relative;z-index:1;transition:background-color .4s var(--ease),border-color .4s var(--ease),box-shadow .6s var(--ease)}
+.st.lit .pt{background:var(--sc);border-color:var(--sc);box-shadow:0 0 14px 2px color-mix(in srgb,var(--sc) 45%,transparent)}
+.st h3{font:400 30px/1.1 var(--serif);margin:12px 0 10px}
+.st p{color:var(--mut);margin:0;font-size:16px;max-width:22em}
+@media (max-width:860px){
+  .track{grid-template-columns:1fr;row-gap:0;padding-left:34px}
+  .track::before,.track .bar{top:0;bottom:0;left:7px;right:auto;width:1px;height:auto}
+  .track .bar{background:linear-gradient(var(--r),var(--o) 33%,var(--g) 66%,var(--b));transform:scaleY(var(--p,1));transform-origin:top}
+  .st{padding:0 0 40px}.st:last-child{padding-bottom:0}
+  .st .pt{position:absolute;left:-34px;top:2px;margin:0}
+  .st h3{margin-top:8px}
+}
+
+/* founder */
+.founder{padding:var(--sec) 0;border-top:1px solid var(--line);--hue:var(--b)}
+.founder .w{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,6vw,88px);align-items:center}
+.portrait{aspect-ratio:4/5;background:radial-gradient(120% 80% at 30% 20%,#1a1d22,#0b0c0e);border:1px solid var(--line);position:relative;overflow:hidden;display:grid;place-items:center}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,90,78,.12) 50%,rgba(79,183,255,.12) 58%,transparent 66%)}
+.portrait span{font-size:clamp(90px,12vw,170px);line-height:1;color:var(--ink);opacity:.9;letter-spacing:-.02em}
+.founder blockquote{font:400 clamp(28px,3.1vw,44px)/1.16 var(--serif);letter-spacing:-.008em;margin:0 0 32px;text-indent:-.4em}
+.founder .bio p{color:var(--mut);max-width:34em;margin:0 0 1em}
+.stats{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:0;margin:32px 0 0;padding:0;border-top:1px solid var(--line)}
+.stats div{padding:22px 32px 0 0;margin-right:32px;border-right:1px solid var(--line)}
+.stats div:last-child{border-right:0;margin-right:0}
+.stats b{display:block;font-size:28px;line-height:1.1;margin-bottom:6px;font-variant-numeric:lining-nums}
+.byline{margin-top:32px!important}
+@media (max-width:860px){.founder .w{grid-template-columns:1fr}.portrait{max-width:340px;width:100%}}
+@media (max-width:520px){.stats{grid-template-columns:1fr}.stats div{border-right:0;margin:0;padding:16px 0;border-bottom:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:16px}.stats b{font-size:24px;margin:0}}
+
 /* contact */
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.email{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:20px 0}
-.email code{font:500 18px "IBM Plex Mono",monospace;background:var(--card);border:1px solid var(--line);padding:10px 14px;border-radius:6px}
-form{display:grid;gap:14px}
-label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
-input,textarea,select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
-input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
-.note{font-size:14px;color:var(--accent);min-height:20px}
-@media (max-width:820px){.contact{grid-template-columns:1fr}}
-footer{padding:36px 0 48px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
-footer .legal{max-width:520px}
+.contact{padding:var(--sec) 0 calc(var(--sec) * .7);border-top:1px solid var(--line);position:relative;overflow:hidden;--hue:var(--v)}
+.contact::before{content:"";position:absolute;left:50%;top:-40%;width:140%;height:180%;transform:translateX(-50%);background:conic-gradient(from 200deg at 50% 0,transparent 0deg,rgba(255,90,78,.10) 20deg,rgba(244,240,106,.07) 35deg,rgba(91,224,138,.07) 50deg,rgba(79,183,255,.10) 65deg,rgba(154,123,255,.10) 80deg,transparent 100deg);pointer-events:none}
+.contact .w{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(48px,7vw,96px);position:relative;align-items:start}
+.contact h2{font-size:clamp(46px,5.8vw,88px);line-height:.98;letter-spacing:-.015em;margin:0 0 28px}
+.contact .lede{color:var(--mut);max-width:28em;margin:0}
+.mail{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap;margin:32px 0 0}
+.mail+.mail{margin-top:10px}
+.mail code{display:inline-flex;align-items:center;min-height:46px;font:400 15px/1 var(--mono);padding:0 16px;border:1px solid var(--line-2);background:var(--card);user-select:all}
+form{display:grid;gap:8px;padding-top:6px}
+.f{position:relative}
+.f input,.f textarea,.f select{display:block;width:100%;font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line-2);padding:26px 0 12px;outline:none;border-radius:0;transition:border-color .3s var(--ease)}
+.f textarea{resize:vertical;min-height:7.5em;line-height:1.5}
+.f select{appearance:none;-webkit-appearance:none;padding-right:28px;cursor:pointer;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5 6 6.5l5-5' stroke='%238f9198' stroke-width='1.3'/%3E%3C/svg%3E") right 4px center/12px 8px no-repeat}
+.f select option{background:var(--card);color:var(--ink)}
+.f label{position:absolute;left:0;top:26px;color:var(--mut);pointer-events:none;transform-origin:left top;transition:transform .3s var(--ease),color .3s,letter-spacing .3s;line-height:1.62}
+.f::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.f:focus-within::after{transform:scaleX(1)}
+.f:focus-within label{color:var(--ink)}
+.f input:focus+label,.f input:not(:placeholder-shown)+label,.f textarea:focus+label,.f textarea:not(:placeholder-shown)+label,.f select+label{transform:translateY(-24px) scale(.72);letter-spacing:.05em}
+.f [aria-invalid="true"]{border-bottom-color:var(--r)}
+.f [aria-invalid="true"]+label{color:var(--r)}
+.f input:-webkit-autofill{-webkit-text-fill-color:var(--ink);-webkit-box-shadow:0 0 0 100px var(--bg) inset;caret-color:var(--o)}
+.submit{padding-top:24px}
+.note{min-height:24px;font-size:15px;color:var(--g);margin:6px 0 0}
+.note.err{color:var(--r)}
+@media (max-width:860px){.contact .w{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding:36px 0 calc(44px + env(safe-area-inset-bottom,0px));font-size:13px;line-height:1.7;color:var(--mut)}
+footer .w{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+footer .co{color:var(--ink)}
+
+/* pre-hide only what the intro timeline reveals, and only once scripting is confirmed */
+.js .hero h1 .ln>span{transform:translateY(112%)}
+.js .hero [data-in]{opacity:0}
+.js .hero .spec{--draw:100%}
+@media (prefers-reduced-motion:reduce){
+  .js .hero h1 .ln>span{transform:none}
+  .js .hero [data-in]{opacity:1}
+  .js .hero .spec{--draw:0%}
+  .scrollcue{animation:none;transform:none;opacity:.5}
+  .lens h3,.lens:hover h3,.btn .ar,.btn:hover .ar{transform:none;transition:none}
+  .btn::before{transition-duration:.01s}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <nav>
-    <a class="brand" href="#top"><span class="mark"><i></i><i></i><i></i><i></i></span>STRATUM PRISM</a>
-    <div class="links">
-      <a href="#services">Services</a><a href="#approach">Approach</a><a href="#about">About</a>
-      <a class="btn" href="#contact">Book a call</a>
-    </div>
-  </nav>
+<div class="grain" aria-hidden="true"></div>
 
-  <header class="hero" id="top">
+<nav id="nav" aria-label="Primary"><div class="w">
+  <a class="logo" href="#top"><svg viewBox="0 0 22 20" aria-hidden="true"><path d="M11 1 21 19H1Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M11 10 21 7" stroke="#ff5a4e"/><path d="M11 10 21 10" stroke="#5be08a"/><path d="M11 10 21 13" stroke="#4fb7ff"/></svg>STRATUM PRISM</a>
+  <div class="nl"><a href="#lenses">Offers</a><a href="#process">How we work</a><a href="#founder">About</a><a class="btn" href="#contact">Book a call</a></div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="w hero-main">
     <div>
-      <div class="mono">Business consulting · AI · SaaS — Chennai</div>
-      <h1 style="margin-top:18px">See every layer of your business <em>clearly.</em></h1>
-      <p>We help growing companies sort out strategy and operations, then build the AI and software that makes the plan actually run.</p>
-      <div class="cta"><a class="btn" href="#contact">Book a free 30‑min call</a><a class="btn ghost" href="#services">What we do</a></div>
+      <h1 class="serif"><span class="ln"><span>One problem.</span></span><span class="ln"><span>Every <span class="spec">angle.</span></span></span></h1>
+      <p data-in>Five people describe five problems. We find the one thread that connects them, get your team to own it, and stay until it’s fixed.</p>
+      <div class="cta" data-in><a class="btn" href="#contact">Book a 30‑minute call <span class="ar" aria-hidden="true">→</span></a><a class="btn ghost" href="https://wa.me/917550059511" target="_blank" rel="noopener">WhatsApp us</a></div>
     </div>
-    <div class="strata" aria-hidden="true">
-      <div><span>Strategy</span></div><div><span>Operations</span></div><div><span>Data &amp; AI</span></div><div><span>Software</span></div>
+    <div class="viz" aria-hidden="true">
+      <svg id="prism" viewBox="0 0 600 460">
+        <defs>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity=".02"/></linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="soft" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="10"/></filter>
+        </defs>
+        <g id="raysSoft" filter="url(#soft)" opacity=".5"></g>
+        <line id="beam" x1="-40" y1="252" x2="214" y2="232" stroke="#fff" stroke-width="2.4" stroke-linecap="round" filter="url(#glow)"/>
+        <path id="inner" d="M214 232 L318 226 L318 242 Z" fill="#fff" opacity=".18"/>
+        <g id="rays" filter="url(#glow)"></g>
+        <path id="tri" d="M260 92 L372 316 L148 316 Z" fill="url(#glass)" stroke="#fff" stroke-opacity=".75" stroke-width="1.2" stroke-linejoin="round"/>
+        <path id="edge" d="M260 92 L300 172" stroke="#fff" stroke-opacity=".35" stroke-width="1"/>
+      </svg>
     </div>
-  </header>
+  </div>
+  <div class="w hero-foot" data-in>
+    <span class="mono">Strategy · Transformation · AI — Chennai</span>
+    <i class="scrollcue" aria-hidden="true"></i>
+  </div>
+</header>
 
-  <section id="services">
-    <div class="head"><h2>Services</h2><span class="mono">From advice to working product</span></div>
-    <div class="grid">
-      <div class="card"><div class="bar" style="background:var(--s1)"></div><h3>Business consulting</h3><p>Clear-eyed advice on where to grow and what to fix first.</p><ul><li>Strategy and market entry</li><li>Process and cost review</li><li>Go-to-market planning</li></ul></div>
-      <div class="card"><div class="bar" style="background:var(--s2)"></div><h3>AI adoption</h3><p>Find the tasks AI can take off your team's plate, and roll it out safely.</p><ul><li>AI readiness assessment</li><li>Automation of repetitive work</li><li>Custom assistants and agents</li></ul></div>
-      <div class="card"><div class="bar" style="background:var(--s3)"></div><h3>SaaS &amp; software</h3><p>Web apps and internal tools, designed and built end to end.</p><ul><li>Product discovery and MVPs</li><li>Dashboards and internal tools</li><li>Integrations with your existing systems</li></ul></div>
-      <div class="card"><div class="bar" style="background:var(--s4)"></div><h3>Data &amp; analytics</h3><p>Turn scattered spreadsheets into numbers you can trust.</p><ul><li>Reporting and KPI design</li><li>Data cleanup and pipelines</li><li>Forecasting</li></ul></div>
-    </div>
-  </section>
+<main>
+<section class="state" aria-labelledby="statement"><div class="w split">
+  <div class="mono lbl">What most consultants get wrong</div>
+  <h2 class="serif" id="statement">A chart showing the cause and the cure doesn’t fix anything. Change starts when your people see the problem for themselves and decide to own it. That’s where we begin, and we stay for the part most consultants skip.</h2>
+</div></section>
 
-  <section id="approach">
-    <div class="head"><h2>How we work</h2><span class="mono">Simple, fixed‑scope steps</span></div>
-    <div class="steps">
-      <div class="step"><h3>Listen</h3><p>A free call to understand your business and the problem.</p></div>
-      <div class="step"><h3>Diagnose</h3><p>We map the layers: people, process, data and tools.</p></div>
-      <div class="step"><h3>Build</h3><p>A focused plan, then the automation or software to deliver it.</p></div>
-      <div class="step"><h3>Hand over</h3><p>Training and documentation so your team owns the result.</p></div>
-    </div>
-  </section>
+<section class="lenses" id="lenses" aria-labelledby="lenses-h"><div class="w">
+  <div class="head"><div><div class="mono lbl">What we do</div><h2 class="serif" id="lenses-h">Three ways<br>we work.</h2></div><p>Built for founder‑led companies of 50 to 500 people, starting with logistics, manufacturing and industrial services in South India.</p></div>
+  <div class="lens" style="--c:var(--r)"><span class="k">01 · 2–3 WEEKS</span><h3>The Diagnostic</h3><p><b>Find the real problem.</b> We talk to leadership and the people on the ground separately, find the thread connecting what they say, and run a workshop where your team sees it and owns it. You get a one‑page problem statement and a ranked plan. Fixed price.</p><span class="dot" aria-hidden="true"></span></div>
+  <div class="lens" style="--c:var(--o)"><span class="k">02 · 3–6 MONTHS</span><h3>Execution Partner</h3><p><b>Make the plan happen.</b> We stay on as your part‑time strategy head: weekly reviews, clear KPIs, and unblocking people until the change sticks.</p><span class="dot" aria-hidden="true"></span></div>
+  <div class="lens" style="--c:var(--g)"><span class="k">03 · ONGOING</span><h3>Build</h3><p><b>Lock it in with tools.</b> Dashboards, automation and custom software that turn the fixed process into the way your company runs every day.</p><span class="dot" aria-hidden="true"></span></div>
+  <div class="lens" style="--c:var(--b)"><span class="k">ADD‑ON</span><h3>Insight decks</h3><p><b>Tell the story that wins the room.</b> Board, bank and investor presentations built the way top strategy firms build them: research first, one clear message per page.</p><span class="dot" aria-hidden="true"></span></div>
+</div></section>
 
-  <section id="about">
-    <div class="about">
-      <blockquote>“A prism doesn’t add light. It shows you what was already there.”</blockquote>
-      <div>
-        <div class="mono" style="margin-bottom:14px">About</div>
-        <p>Stratum Prism is a Chennai-based consulting and technology company founded by Prasanth Sethuraman. We combine business consulting with hands-on AI and software delivery, so advice doesn’t stop at a slide deck.</p>
-        <p>We work with founders and small-to-mid-sized businesses who want practical, measurable change.</p>
-      </div>
-    </div>
-  </section>
+<section class="proc" id="process" aria-labelledby="proc-h"><div class="w">
+  <div class="head"><div><div class="mono lbl">How we work</div><h2 class="serif" id="proc-h">From first call<br>to lasting change.</h2></div><p>Fixed price for the Diagnostic, monthly after that, no lock‑in. You own everything we build.</p></div>
+  <ol class="track" id="track"><li class="bar" id="bar" aria-hidden="true"></li>
+    <li class="st" style="--sc:var(--r)"><div class="pt" aria-hidden="true"></div><span class="mono">Day 1</span><h3>Listen</h3><p>A free 30‑minute call. You talk, we ask questions.</p></li>
+    <li class="st" style="--sc:var(--o)"><div class="pt" aria-hidden="true"></div><span class="mono">Weeks 1–3</span><h3>Connect</h3><p>Interviews across levels to find the one problem behind the many.</p></li>
+    <li class="st" style="--sc:var(--g)"><div class="pt" aria-hidden="true"></div><span class="mono">Workshop</span><h3>Own</h3><p>Your team sees the problem, agrees on it, and commits to the plan.</p></li>
+    <li class="st" style="--sc:var(--b)"><div class="pt" aria-hidden="true"></div><span class="mono">Months 1–6</span><h3>Execute</h3><p>We drive the plan with you and build the tools that keep it running.</p></li>
+  </ol>
+</div></section>
 
-  <section id="contact" style="border-bottom:0">
-    <div class="contact">
-      <div>
-        <h2 style="font-size:clamp(36px,5vw,56px)">Let’s talk.</h2>
-        <p style="color:var(--muted);margin-top:16px">Tell us a little about what you need and we’ll reply within one working day to set up a call.</p>
-        <div class="email"><code id="em">contact@stratumprism.com</code><button class="btn ghost" id="copy" type="button">Copy</button></div>
-        <div class="mono">Phone · +91 75500 59511</div>
-      </div>
-      <form id="f">
-        <label>Name<input required name="name" autocomplete="name"></label>
-        <label>Email<input required type="email" name="email" autocomplete="email"></label>
-        <label>Interested in<select name="topic"><option>Business consulting</option><option>AI adoption</option><option>SaaS &amp; software</option><option>Data &amp; analytics</option><option>Not sure yet</option></select></label>
-        <label>Message<textarea name="msg" rows="4"></textarea></label>
-        <button class="btn" type="submit" style="justify-self:start">Request a call</button>
-        <div class="note" id="note" role="status"></div>
-      </form>
-    </div>
-  </section>
-</div>
+<section class="founder" id="founder" aria-label="Founder"><div class="w">
+  <div class="portrait" aria-hidden="true"><span class="serif">PS</span></div>
+  <div class="bio">
+    <div class="mono lbl">Founder</div>
+    <blockquote>“Five people, five problems. My job is to find the one thread that connects them.”</blockquote>
+    <p>Prasanth spent five years at McKinsey, starting as a presentation specialist and growing into a junior consultant, learning how the firm’s consultants turn raw research into insight. He then spent five years at Cognizant leading STEP, a standalone strategy and transformation team covering market intelligence, strategy and employee engagement.</p><p>He founded Stratum Prism in Chennai to pair that discipline with the speed of AI, and to stay for the part most consultants skip: getting it done.</p><div class="stats"><div><b class="serif">10</b><span class="mono">years in strategy</span></div><div><b class="serif">McKinsey</b><span class="mono">5 years</span></div><div><b class="serif">Cognizant</b><span class="mono">5 years</span></div></div>
+    <p class="mono byline">Prasanth Sethuraman · Founder &amp; Director</p>
+  </div>
+</div></section>
 
-<div class="wrap" style="border-top:1px solid var(--line)">
-  <footer>
-    <div class="legal"><strong style="color:var(--ink)">Stratum Prism Private Limited</strong><br>Registered office: Alwarpet, Chennai, Tamil Nadu<br>CIN: to be added after incorporation</div>
-    <div>© 2026 Stratum Prism</div>
-  </footer>
-</div>
+<section class="contact" id="contact" aria-labelledby="contact-h"><div class="w">
+  <div>
+    <div class="mono lbl">Contact</div>
+    <h2 class="serif" id="contact-h">Bring us the<br><span class="spec">tangled</span> problem.</h2>
+    <p class="lede">Tell us what’s going on. We reply within one working day to set up a call. Prefer to talk? Call or WhatsApp.</p>
+    <div class="mail"><code id="em">contact@stratumprism.com</code><button class="btn" type="button" id="cp">Copy</button></div><div class="mail"><a class="btn ghost" href="tel:+917550059511">+91 75500 59511</a><a class="btn ghost" href="https://wa.me/917550059511" target="_blank" rel="noopener">WhatsApp</a></div>
+    <span class="sr" id="cpst" role="status"></span>
+  </div>
+  <form id="form" novalidate>
+    <div class="f"><input id="n" name="name" placeholder=" " required aria-required="true" autocomplete="name"><label for="n">Your name</label></div>
+    <div class="f"><input id="e" name="email" type="email" placeholder=" " required aria-required="true" autocomplete="email" inputmode="email"><label for="e">Work email</label></div>
+    <div class="f"><select id="t" name="topic"><option>The Diagnostic</option><option>Execution Partner</option><option>Build (AI &amp; software)</option><option>Insight decks</option><option>Not sure yet</option></select><label for="t">Interested in</label></div>
+    <div class="f"><textarea id="m" name="msg" rows="3" placeholder=" "></textarea><label for="m">What’s going on?</label></div>
+    <div class="submit"><button class="btn" type="submit">Request a call <span class="ar" aria-hidden="true">→</span></button></div>
+    <p class="note" id="note" role="status"></p>
+  </form>
+</div></section>
+</main>
 
+<footer><div class="w">
+  <div><span class="co">Stratum Prism Private Limited</span> (incorporation in progress)<br>Alwarpet, Chennai, Tamil Nadu, India</div>
+  <div>© 2026 Stratum Prism</div>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-document.getElementById('copy').addEventListener('click',async e=>{
-  const t=document.getElementById('em').textContent;
-  try{await navigator.clipboard.writeText(t);e.target.textContent='Copied'}catch(_){e.target.textContent='Select & copy'}
-  setTimeout(()=>e.target.textContent='Copy',1800);
+(function(){
+const root=document.documentElement;
+const NS='http://www.w3.org/2000/svg';
+const cols=['#ff5a4e','#ffb547','#f4f06a','#5be08a','#4fb7ff','#9a7bff'];
+const rays=document.getElementById('rays'),soft=document.getElementById('raysSoft');
+const ox=318,oy=234,len=420,lines=[],softs=[];
+cols.forEach(c=>{
+  const mk=(g,w)=>{const l=document.createElementNS(NS,'line');l.setAttribute('x1',ox);l.setAttribute('y1',oy);l.setAttribute('stroke',c);l.setAttribute('stroke-width',w);l.setAttribute('stroke-linecap','round');g.appendChild(l);return l};
+  lines.push(mk(rays,2.2));softs.push(mk(soft,9));
 });
-document.getElementById('f').addEventListener('submit',e=>{
+let spread=1,tilt=0,reach=1;
+function draw(){
+  lines.forEach((l,i)=>{
+    const rad=((-14+i*6.2)*spread+tilt)*Math.PI/180;
+    const x=ox+Math.cos(rad)*len*reach,y=oy+Math.sin(rad)*len*reach;
+    l.setAttribute('x2',x);l.setAttribute('y2',y);softs[i].setAttribute('x2',x);softs[i].setAttribute('y2',y);
+  });
+}
+draw();
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!window.gsap||!window.ScrollTrigger){root.classList.remove('js');return;}
+if(reduce){
+  // static, fully drawn composition; colour feedback on the process steps still works
+  document.querySelectorAll('.st').forEach(s=>s.classList.add('lit'));
+  return;
+}
+gsap.registerPlugin(ScrollTrigger);
+
+// statement: split into words for the scrubbed read-along (accessible name stays on the h2)
+const st=document.getElementById('statement');
+st.setAttribute('aria-label',st.textContent);
+st.innerHTML=st.textContent.split(' ').map(w=>'<span class="wd" aria-hidden="true">'+w+'</span>').join(' ');
+
+// intro: one authored sequence — headline rises, light enters the glass, splits, and the spectrum lands under "angle."
+const beam=document.getElementById('beam');
+const bl=beam.getTotalLength?beam.getTotalLength():260;
+gsap.set(beam,{strokeDasharray:bl,strokeDashoffset:bl});
+const o={r:0};reach=0;draw();
+const heroSpec=document.querySelector('.hero .spec');
+const tl=gsap.timeline({defaults:{ease:'expo.out'}});
+tl.fromTo('.hero h1 .ln>span',{y:0,yPercent:112},{y:0,yPercent:0,duration:1.2,stagger:.1})
+  .fromTo('#tri,#edge',{opacity:0,scale:.94,transformOrigin:'50% 70%'},{opacity:1,scale:1,duration:1.1},'<.1')
+  .to(beam,{strokeDashoffset:0,duration:.7,ease:'power2.in'},'<.25')
+  .fromTo('#inner',{opacity:0},{opacity:.18,duration:.25,ease:'none'})
+  .to(o,{r:1,duration:1.3,onUpdate:()=>{reach=o.r;draw()}},'<')
+  .to(heroSpec,{'--draw':'0%',duration:.9,ease:'expo.inOut'},'<.15')
+  .to('.hero [data-in]',{opacity:1,duration:.9,stagger:.08,ease:'power2.out'},'<-.2')
+  .fromTo('.hero [data-in]',{y:14},{y:0,duration:.9,stagger:.08,clearProps:'transform'},'<');
+
+// pointer tilt: fine pointers only, and only while the hero is on screen
+let tx=0,heroOn=true;
+if(matchMedia('(pointer:fine)').matches){
+  addEventListener('pointermove',e=>{tx=(e.clientY/innerHeight-.5)*8},{passive:true});
+}
+gsap.ticker.add(()=>{if(!heroOn)return;const d=tx-tilt;if(Math.abs(d)<.002)return;tilt+=d*.06;draw();});
+
+// scroll: rays fan wider as you leave the hero
+ScrollTrigger.create({trigger:'.hero',start:'top top',end:'bottom top',scrub:true,
+  onUpdate:s=>{spread=1+s.progress*1.4;if(tl.progress()===1)draw()},
+  onToggle:s=>{heroOn=s.isActive}});
+
+// statement read-along
+gsap.to('#statement .wd',{opacity:1,stagger:.05,ease:'none',scrollTrigger:{trigger:'.state',start:'top 72%',end:'bottom 62%',scrub:.4}});
+
+// contact spectrum draws once in view
+gsap.fromTo('.contact .spec',{'--draw':'100%'},{'--draw':'0%',duration:1.1,ease:'expo.inOut',scrollTrigger:{trigger:'.contact h2',start:'top 80%'}});
+
+// lenses: a ray of the row's own colour sweeps its top rule, then settles back to hairline
+gsap.utils.toArray('.lens').forEach(l=>{
+  const kids=l.querySelectorAll('.k,h3,p');
+  gsap.set(kids,{opacity:0,y:10});
+  gsap.timeline({scrollTrigger:{trigger:l,start:'top 88%'}})
+    .fromTo(l,{'--sweep':0,'--fade':1},{'--sweep':1,duration:1,ease:'expo.out'})
+    .to(kids,{opacity:1,y:0,duration:.7,stagger:.06,ease:'expo.out',clearProps:'transform'},'<.1')
+    .to(l,{'--fade':0,duration:1.2,ease:'power1.inOut'},'-=.3');
+});
+
+// process: the bar is the light; each step lights in its colour as the bar reaches it
+const track=document.getElementById('track'),steps=[...track.querySelectorAll('.st')];
+const vertical=()=>matchMedia('(max-width:860px)').matches;
+
+track.style.setProperty('--p',0);
+ScrollTrigger.create({trigger:track,start:'top 78%',end:vertical()?'bottom 70%':'bottom 55%',scrub:.5,invalidateOnRefresh:true,
+  onUpdate:s=>{const p=s.progress,v=vertical();track.style.setProperty('--p',p.toFixed(4));
+    // a step lights when the bar's leading edge reaches its dot
+    steps.forEach(el=>{const at=v?el.offsetTop/track.offsetHeight:el.offsetLeft/track.offsetWidth;el.classList.toggle('lit',p>0&&p>=at)})}});
+
+// founder portrait opens like a shutter
+gsap.fromTo('.portrait',{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)',duration:1.4,ease:'expo.out',scrollTrigger:{trigger:'.founder',start:'top 72%'}});
+})();
+
+// nav
+const nav=document.getElementById('nav');
+const navState=()=>nav.classList.toggle('solid',scrollY>40);
+addEventListener('scroll',navState,{passive:true});navState();
+
+// copy email
+const cp=document.getElementById('cp'),cpst=document.getElementById('cpst');let cpT;
+cp.addEventListener('click',async()=>{
+  let msg;
+  try{await navigator.clipboard.writeText('contact@stratumprism.com');msg='Copied ✓'}
+  catch(_){const r=document.createRange();r.selectNodeContents(document.getElementById('em'));const s=getSelection();s.removeAllRanges();s.addRange(r);msg='Select & copy'}
+  cp.textContent=msg;cpst.textContent=msg==='Copied ✓'?'Email address copied':'';
+  clearTimeout(cpT);cpT=setTimeout(()=>{cp.textContent='Copy';cpst.textContent=''},1800);
+});
+
+// form
+const form=document.getElementById('form'),note=document.getElementById('note');
+form.addEventListener('input',e=>{if(e.target.value.trim())e.target.removeAttribute('aria-invalid')});
+form.addEventListener('submit',e=>{
   e.preventDefault();
-  const d=new FormData(e.target);
-  const subj='Call request: '+d.get('topic')+' - '+d.get('name');
-  const b='Name: '+d.get('name')+'\nEmail: '+d.get('email')+'\nInterested in: '+d.get('topic')+'\n\n'+(d.get('msg')||'');
-  window.location.href='mailto:contact@stratumprism.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(b);
-  document.getElementById('note').textContent='Opening your email app. If nothing happens, write to contact@stratumprism.com.';
+  const el=form.elements,bad=[];
+  if(!el.name.value.trim())bad.push(el.name);
+  if(!el.email.value.trim()||!el.email.checkValidity())bad.push(el.email);
+  [el.name,el.email].forEach(f=>bad.includes(f)?f.setAttribute('aria-invalid','true'):f.removeAttribute('aria-invalid'));
+  if(bad.length){note.classList.add('err');note.textContent='Please add your name and email.';bad[0].focus();return}
+  note.classList.remove('err');
+  const subj='Call request: '+el.topic.value+' - '+el.name.value.trim();
+  const body='Name: '+el.name.value.trim()+'\nEmail: '+el.email.value.trim()+'\nInterested in: '+el.topic.value+'\n\n'+el.msg.value;
+  location.href='mailto:contact@stratumprism.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+  note.textContent='Opening your email app. If nothing opens, write to contact@stratumprism.com.';
 });
 </script>
 </body>
