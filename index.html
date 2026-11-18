@@ -243,9 +243,15 @@ footer .co{color:var(--ink)}
   .lens h3,.lens:hover h3,.btn .ar,.btn:hover .ar{transform:none;transition:none}
   .btn::before{transition-duration:.01s}
 }
+/* fluid background */
+#fluid{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;display:block;opacity:0;transition:opacity 1.6s ease}
+#fluid.on{opacity:1}
+.fluid-fb{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60% 50% at 78% 30%,rgba(79,183,255,.10),transparent 70%),radial-gradient(50% 45% at 20% 75%,rgba(255,90,78,.08),transparent 70%),radial-gradient(40% 40% at 60% 90%,rgba(154,123,255,.08),transparent 70%)}
 </style>
 </head>
 <body>
+<div class="fluid-fb" aria-hidden="true"></div>
+<canvas id="fluid" aria-hidden="true"></canvas>
 <div class="grain" aria-hidden="true"></div>
 
 <nav id="nav" aria-label="Primary"><div class="w">
@@ -522,6 +528,53 @@ form.addEventListener('submit',e=>{
   location.href='mailto:contact@stratumprism.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
   note.textContent='Opening your email app. If nothing opens, write to contact@stratumprism.com.';
 });
+</script>
+<script>
+/* liquid light: domain-warped noise in the spectrum colours */
+(function(){
+  var cv=document.getElementById('fluid');if(!cv)return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var gl=cv.getContext('webgl',{alpha:true,antialias:false,premultipliedAlpha:false,powerPreference:'low-power'});if(!gl)return;
+  var vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+  var fs=['precision mediump float;uniform vec2 R;uniform float T;uniform vec2 M;uniform float S;',
+  'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
+  'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}',
+  'float fb(vec2 p){float v=0.,a=.5;mat2 m=mat2(1.6,1.2,-1.2,1.6);for(int i=0;i<4;i++){v+=a*n(p);p=m*p;a*=.5;}return v;}',
+  'vec3 spec(float t){t=fract(t);vec3 c0=vec3(1.,.353,.306),c1=vec3(1.,.71,.278),c2=vec3(.357,.878,.541),c3=vec3(.31,.718,1.),c4=vec3(.604,.482,1.);',
+  ' float k=t*5.;if(k<1.)return mix(c0,c1,k);if(k<2.)return mix(c1,c2,k-1.);if(k<3.)return mix(c2,c3,k-2.);if(k<4.)return mix(c3,c4,k-3.);return mix(c4,c0,k-4.);}',
+  'void main(){vec2 uv=gl_FragCoord.xy/R;vec2 p=(gl_FragCoord.xy-.5*R)/min(R.x,R.y)*1.05;float t=T*.045;',
+  ' p+=(M-.5)*.35;',
+  ' vec2 q=vec2(fb(p+vec2(0.,t)),fb(p+vec2(5.2,1.3)-t*.7));',
+  ' vec2 r=vec2(fb(p+3.*q+vec2(1.7,9.2)+t*.6),fb(p+3.*q+vec2(8.3,2.8)-t*.4));',
+  ' float f=fb(p+3.5*r);',
+  ' vec3 col=spec(.55+f*.7+r.x*.5+S*.4+t*.2);',
+  ' float band=smoothstep(.5,.92,f)*smoothstep(.1,.7,length(r));',
+  ' float vig=smoothstep(1.25,.15,length(uv-vec2(.62,.55)));',
+  ' float a=band*vig*.5+pow(f,3.)*.05;',
+  ' gl_FragColor=vec4(col*a,1.);}'].join('\n');
+  function sh(t,src){var o=gl.createShader(t);gl.shaderSource(o,src);gl.compileShader(o);return gl.getShaderParameter(o,gl.COMPILE_STATUS)?o:null}
+  var a=sh(gl.VERTEX_SHADER,vs),b=sh(gl.FRAGMENT_SHADER,fs);if(!a||!b)return;
+  var pr=gl.createProgram();gl.attachShader(pr,a);gl.attachShader(pr,b);gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return;
+  gl.useProgram(pr);
+  var buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+  var loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+  var uR=gl.getUniformLocation(pr,'R'),uT=gl.getUniformLocation(pr,'T'),uM=gl.getUniformLocation(pr,'M'),uS=gl.getUniformLocation(pr,'S');
+  var small=innerWidth<760,scale=small?.35:.5;
+  function size(){var w=Math.max(1,Math.round(innerWidth*scale)),hh=Math.max(1,Math.round(innerHeight*scale));if(cv.width!==w||cv.height!==hh){cv.width=w;cv.height=hh;gl.viewport(0,0,w,hh);gl.uniform2f(uR,w,hh)}}
+  size();addEventListener('resize',size,{passive:true});
+  var mx=.5,my=.5,tx=.5,ty=.5;
+  addEventListener('pointermove',function(e){tx=e.clientX/innerWidth;ty=1-e.clientY/innerHeight},{passive:true});
+  var t0=performance.now(),raf=0,last=0,step=small?1000/30:0;
+  function frame(now){raf=requestAnimationFrame(frame);if(step&&now-last<step)return;last=now;
+    mx+=(tx-mx)*.03;my+=(ty-my)*.03;
+    var sc=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight);
+    gl.uniform1f(uT,(now-t0)/1000);gl.uniform2f(uM,mx,my);gl.uniform1f(uS,sc);
+    gl.drawArrays(gl.TRIANGLES,0,3);
+    if(!cv.classList.contains('on'))cv.classList.add('on');}
+  raf=requestAnimationFrame(frame);
+  document.addEventListener('visibilitychange',function(){if(document.hidden){cancelAnimationFrame(raf);raf=0}else if(!raf){raf=requestAnimationFrame(frame)}});
+  cv.addEventListener('webglcontextlost',function(e){e.preventDefault();cancelAnimationFrame(raf);cv.classList.remove('on')});
+})();
 </script>
 </body>
 </html>
