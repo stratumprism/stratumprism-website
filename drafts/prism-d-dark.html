@@ -45,6 +45,12 @@ a{color:inherit}
 :is(.h1,.mani,.h2,.diag h2,.m-grid h2,.eng-head h2,.fd blockquote,.ct h2,.mani-band p) em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;font-size:1.08em;padding-right:.06em}
 :is(.h1,.mani,.h2,.fd blockquote,.ct h2) em .wd{padding-right:.06em;margin-right:-.06em}
 
+/* ---------- smoky light behind the whole page; the same canvas draws the hero prism ---------- */
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;display:block;opacity:0;transition:opacity 1.4s ease}
+#gl.on{opacity:1}
+.fluid-fb{position:fixed;inset:-20%;z-index:-1;pointer-events:none;filter:blur(40px);background:radial-gradient(35% 30% at 70% 35%,rgba(90,209,255,.2),transparent 70%),radial-gradient(30% 28% at 30% 70%,rgba(255,92,138,.14),transparent 70%),radial-gradient(28% 26% at 60% 80%,rgba(155,123,255,.2),transparent 70%),radial-gradient(25% 22% at 85% 65%,rgba(77,255,176,.1),transparent 70%);animation:fdrift 26s ease-in-out infinite alternate}
+@keyframes fdrift{0%{transform:translate(0,0) rotate(0) scale(1)}50%{transform:translate(-4%,3%) rotate(8deg) scale(1.08)}100%{transform:translate(3%,-3%) rotate(-6deg) scale(1)}}
+
 /* ---------- ambient light: faint top glow, grid revealed around the cursor ---------- */
 .bgfx{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(80% 50% at 50% -12%,rgba(155,123,255,.11),transparent 62%)}
 .bgfx::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:72px 72px;background-position:center;-webkit-mask:radial-gradient(380px circle at var(--mx,50%) var(--my,28%),#000,transparent 72%);mask:radial-gradient(380px circle at var(--mx,50%) var(--my,28%),#000,transparent 72%)}
@@ -88,6 +94,8 @@ a{color:inherit}
 .chip{display:inline-block;width:1.9em;height:.74em;border-radius:.37em;vertical-align:-.02em;margin:0 .16em 0 0;box-shadow:0 0 0 1px rgba(255,255,255,.18),0 0 60px -8px rgba(125,249,255,.55)}
 .h-sub{max-width:34em;margin:clamp(24px,3vw,36px) auto 0;color:var(--mut);font-size:clamp(17px,1.4vw,20px);line-height:1.5}
 .h-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+@media (min-width:901px){.h-text{align-items:flex-start;text-align:left;padding-left:var(--gut);padding-right:38vw}.h1{font-size:clamp(44px,7vw,128px)}.h-sub{margin-left:0;max-width:30em}.h-cta{justify-content:flex-start}}
+@media (max-width:900px){.js:not(.rm) .h-text{justify-content:flex-end;padding-bottom:max(64px,9svh)}}
 .h-over{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:center;padding:100px var(--gut) 60px;color:var(--ink);pointer-events:none;opacity:0}
 .h-over::before{content:"";position:absolute;inset:0;background:radial-gradient(75% 60% at 32% 50%,rgba(5,6,10,.62),rgba(5,6,10,.2) 60%,transparent 80%);pointer-events:none}
 .h-over>*{position:relative}
@@ -176,12 +184,12 @@ html:not(.js) .chip,.rm .chip{background:#05060a repeating-linear-gradient(180de
 @media (max-width:900px){.diag{grid-template-columns:1fr}.read-body{min-height:0}}
 
 /* ---------- 02 the method: layers light up as AI and people take turns ---------- */
-.method{height:460vh;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.method{height:460vh;background:rgba(8,10,16,.55);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .m-sticky{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;overflow:hidden}
 .m-sticky::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(125,249,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(125,249,255,.06) 1px,transparent 1px);background-size:64px 64px;background-position:center;-webkit-mask:radial-gradient(60% 70% at 72% 50%,#000,transparent 75%);mask:radial-gradient(60% 70% at 72% 50%,#000,transparent 75%);pointer-events:none}
 .m-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center;width:100%}
 .m-grid h2{margin:16px 0 30px;font:500 clamp(38px,4.4vw,74px)/1.02 var(--disp);letter-spacing:-.05em}
-.ms{--tagbg:var(--bg2);list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.ms{--tagbg:#0a0c12;list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .ms li{display:grid;grid-template-columns:26px 1fr auto;gap:14px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);color:var(--dim);transition:color .4s}
 .ms .k{font:500 12px/1 var(--mono);color:var(--dim)}
 .ms h3{margin:0;font:400 clamp(21px,1.9vw,28px)/1.15 var(--disp);letter-spacing:-.025em;transition:color .4s}
@@ -244,7 +252,7 @@ html:not(.js) .chip,.rm .chip{background:#05060a repeating-linear-gradient(180de
 @media (max-width:800px){.rq-row,.rq-labels{grid-template-columns:1fr}.rq-ar{text-align:left;transform:rotate(90deg);width:30px}.rq-labels span:nth-child(2){display:none}.rq-ask .note{position:static;display:block;margin-bottom:10px}}
 
 /* ---------- 05 how we use AI ---------- */
-.ai{background:radial-gradient(60% 55% at 50% 0%,rgba(155,123,255,.2),transparent 70%),radial-gradient(40% 40% at 90% 15%,rgba(125,249,255,.1),transparent 70%),#07080d;color:var(--ink);position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ai{background:radial-gradient(60% 55% at 50% 0%,rgba(155,123,255,.2),transparent 70%),radial-gradient(40% 40% at 90% 15%,rgba(125,249,255,.1),transparent 70%),rgba(7,8,13,.6);color:var(--ink);position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .ai::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,var(--r),var(--o),var(--y),var(--g),var(--b),var(--v));box-shadow:0 0 30px 2px rgba(155,123,255,.6)}
 .ai::after{content:"";position:absolute;inset:2px 0 auto;height:320px;background:repeating-linear-gradient(180deg,rgba(255,255,255,.035) 0 1px,transparent 1px 26px);pointer-events:none;-webkit-mask:linear-gradient(#000,transparent);mask:linear-gradient(#000,transparent)}
 .ai .w{position:relative;z-index:1}
@@ -322,6 +330,8 @@ footer{padding:0 0 calc(30px + env(safe-area-inset-bottom,0px));overflow:hidden}
 }
 </style>
 
+<div class="fluid-fb" aria-hidden="true"></div>
+<canvas id="gl" aria-hidden="true"></canvas>
 <div class="bgfx" id="bgfx" aria-hidden="true"></div>
 <header class="pill" id="pill">
   <a class="logo" href="#top"><svg viewBox="0 0 20 18" aria-hidden="true"><path d="M10 1 19 17H1Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M10 10 19 7" stroke="#ff5a4e"/><path d="M10 10 19 10.5" stroke="#3fbf78"/><path d="M10 10 19 14" stroke="#3f9fff"/></svg>Stratum Prism</a>
@@ -656,4 +666,166 @@ footer{padding:0 0 calc(30px + env(safe-area-inset-bottom,0px));overflow:hidden}
   var form=$('#form'),note=$('#note');
   form.addEventListener('submit',function(e){e.preventDefault();var el=form.elements,bad=[];if(!el.name.value.trim())bad.push(el.name);if(!el.email.value.trim()||!el.email.checkValidity())bad.push(el.email);[el.name,el.email].forEach(function(f){bad.indexOf(f)>-1?f.setAttribute('aria-invalid','true'):f.removeAttribute('aria-invalid')});if(bad.length){note.classList.add('err');note.textContent='Please add your name and email.';bad[0].focus();return}note.classList.remove('err');note.textContent='Thanks. In this preview the form doesn’t send yet; on the live site it will reach contact@.'});
 })();
+</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<script type="module">
+/* One canvas behind the page: smoky liquid light everywhere, and a glass prism on the opening screen only. */
+import * as THREE from 'three';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';
+
+const canvas=document.getElementById('gl'),hero=document.getElementById('top');
+const reduce=document.documentElement.classList.contains('rm');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'high-performance'});
+let W=innerWidth,H=innerHeight;
+const isSmall=()=>W<760,wide=()=>W>900;
+let PR=Math.min(devicePixelRatio||1,isSmall()?1.25:1.5);
+renderer.setPixelRatio(PR);renderer.setSize(W,H,false);
+renderer.setClearColor(0x05060a,1);
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(30,W/H,.1,100);camera.position.set(0,0,12);
+const pmrem=new THREE.PMREMGenerator(renderer);
+scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;
+scene.environmentIntensity=.9;
+
+/* ---------- liquid light, rendered small into a texture, shown on a backdrop plane ---------- */
+const FLUID=`precision highp float;varying vec2 vUv;uniform float T,S,I,A;uniform vec2 M;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fb(vec2 p){float v=0.,a=.5;mat2 m=mat2(1.6,1.2,-1.2,1.6);for(int i=0;i<4;i++){v+=a*n(p);p=m*p;a*=.5;}return v;}
+vec3 spec(float t){t=fract(t);vec3 c0=vec3(.36,.92,1.),c1=vec3(.32,.55,1.),c2=vec3(.61,.46,1.),c3=vec3(.98,.42,.86),c4=vec3(.3,1.,.8);
+float k=t*5.;if(k<1.)return mix(c0,c1,k);if(k<2.)return mix(c1,c2,k-1.);if(k<3.)return mix(c2,c3,k-2.);if(k<4.)return mix(c3,c4,k-3.);return mix(c4,c0,k-4.);}
+void main(){vec2 p=(vUv-.5)*vec2(A,1.)*2.1;float t=T*.045;p+=(M-.5)*.3;
+vec2 q=vec2(fb(p+vec2(0.,t)),fb(p+vec2(5.2,1.3)-t*.7));
+vec2 r=vec2(fb(p+3.*q+vec2(1.7,9.2)+t*.6),fb(p+3.*q+vec2(8.3,2.8)-t*.4));
+float f=fb(p+3.5*r);
+vec3 col=spec(.55+f*.7+r.x*.5+S*.8+t*.2);
+float band=smoothstep(.5,.92,f)*smoothstep(.1,.7,length(r));
+float a=(band*.5+pow(f,3.)*.06)*I;
+gl_FragColor=vec4(col*a+vec3(.008,.01,.018),1.);}`;
+const fluidScene=new THREE.Scene(),fluidCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+const fluidMat=new THREE.ShaderMaterial({uniforms:{T:{value:0},S:{value:0},I:{value:1},A:{value:W/H},M:{value:new THREE.Vector2(.5,.5)}},
+  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}',fragmentShader:FLUID,depthTest:false,depthWrite:false});
+fluidScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),fluidMat));
+let fluidDiv=3;
+const fluidRT=new THREE.WebGLRenderTarget(Math.ceil(W/fluidDiv),Math.ceil(H/fluidDiv),{depthBuffer:false});
+fluidRT.texture.colorSpace=THREE.SRGBColorSpace;
+const backdrop=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:fluidRT.texture,depthWrite:false}));
+backdrop.position.z=-8;scene.add(backdrop);
+
+/* ---------- the prism ---------- */
+const S=2.6,Ht=S*Math.sqrt(3)/2;
+const shape=new THREE.Shape();shape.moveTo(0,2*Ht/3);shape.lineTo(S/2,-Ht/3);shape.lineTo(-S/2,-Ht/3);shape.closePath();
+const geo=new THREE.ExtrudeGeometry(shape,{depth:1.6,bevelEnabled:true,bevelThickness:.08,bevelSize:.08,bevelSegments:6,curveSegments:1});
+geo.center();
+const glass=new THREE.MeshPhysicalMaterial({color:0xffffff,metalness:0,roughness:.035,transmission:1,thickness:2.1,ior:1.5,dispersion:7,clearcoat:1,clearcoatRoughness:.03,envMapIntensity:1.2,specularIntensity:1});
+const prism=new THREE.Mesh(geo,glass);
+const edgeMat=new THREE.LineBasicMaterial({color:0x9ff7ff,transparent:true,opacity:.42});
+prism.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo,25),edgeMat));
+const rig=new THREE.Group();rig.add(prism);scene.add(rig);
+
+/* ---------- light: one white beam in, six coloured rays out ---------- */
+const rayMat=(hex,k,g)=>new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+  uniforms:{C:{value:new THREE.Color(hex)},K:{value:k},G:{value:g},F:{value:1.4}},
+  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+  fragmentShader:'varying vec2 vUv;uniform vec3 C;uniform float K,G,F;void main(){float fade=1.-pow(vUv.x,F);float x=abs(vUv.y-.5)*2.;float c=exp(-x*x*G);gl_FragColor=vec4(C*c*fade*K,1.);}'});
+function beamMesh(hex,len,core,halo){
+  const g=new THREE.Group();
+  const a=new THREE.Mesh(new THREE.PlaneGeometry(len,core).translate(len/2,0,0),rayMat(hex,1.6,5));
+  const b=new THREE.Mesh(new THREE.PlaneGeometry(len,halo).translate(len/2,0,0),rayMat(hex,.22,9));
+  g.add(a,b);g.userData={core:a.material,halo:b.material};return g;
+}
+const light=new THREE.Group();rig.add(light);
+const beam=beamMesh(0xffffff,11,.04,.55);beam.position.set(-S/4,0,0);beam.userData.core.uniforms.F.value=.7;beam.userData.halo.uniforms.F.value=.6;light.add(beam);
+const COLS=[0xff5c8a,0xffb04a,0xf4f06a,0x4dffb0,0x5ad1ff,0x9b7bff];
+const rays=COLS.map(c=>{const r=beamMesh(c,18,.07,.9);r.position.set(S/4,-.02,0);light.add(r);return r});
+
+/* ---------- dust in the light ---------- */
+const DN=isSmall()?240:480,dp=new Float32Array(DN*3),ds=new Float32Array(DN);
+for(let i=0;i<DN;i++){dp[i*3]=(Math.random()-.5)*20;dp[i*3+1]=(Math.random()-.5)*12;dp[i*3+2]=(Math.random()-.5)*8-1;ds[i]=Math.random()}
+const dg=new THREE.BufferGeometry();dg.setAttribute('position',new THREE.BufferAttribute(dp,3));dg.setAttribute('seed',new THREE.BufferAttribute(ds,1));
+const dustMat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,uniforms:{T:{value:0},P:{value:PR},V:{value:1}},
+  vertexShader:'attribute float seed;uniform float T,P;varying float vA;void main(){vec3 p=position;p.y=mod(p.y+T*(.05+seed*.12)+6.,12.)-6.;p.x+=sin(T*.2+seed*30.)*.25;vec4 mv=modelViewMatrix*vec4(p,1.);gl_Position=projectionMatrix*mv;gl_PointSize=(1.+seed*2.2)*P*(10./-mv.z);vA=.18+.5*seed*(.5+.5*sin(T*1.3+seed*50.));}',
+  fragmentShader:'uniform float V;varying float vA;void main(){float d=length(gl_PointCoord-.5);if(d>.5)discard;gl_FragColor=vec4(vec3(.8,.97,1.),(1.-d*2.)*vA*V);}'});
+const dust=new THREE.Points(dg,dustMat);scene.add(dust);
+
+/* ---------- post: bloom (only while the prism is on screen) ---------- */
+const composer=new EffectComposer(renderer);composer.setPixelRatio(PR);composer.setSize(W,H);
+composer.addPass(new RenderPass(scene,camera));
+const bloom=new UnrealBloomPass(new THREE.Vector2(W,H),.75,.5,.45);composer.addPass(bloom);
+composer.addPass(new OutputPass());
+
+let halfH=0,halfW=0;
+function frame3(){halfH=camera.position.z*Math.tan(THREE.MathUtils.degToRad(camera.fov/2));halfW=halfH*camera.aspect;
+  const d=camera.position.z-backdrop.position.z,bh=d*Math.tan(THREE.MathUtils.degToRad(camera.fov/2));backdrop.scale.set(bh*camera.aspect*2.2,bh*2.2,1)}
+frame3();
+
+const mouse=new THREE.Vector2(0,0),mt=new THREE.Vector2(0,0);
+addEventListener('pointermove',e=>{mt.set(e.clientX/W*2-1,-(e.clientY/H)*2+1)},{passive:true});
+function resize(){
+  const nw=innerWidth,nh=innerHeight;
+  if(nw===W&&Math.abs(nh-H)<140&&isSmall())return; // ignore mobile toolbar jiggle
+  W=nw;H=nh;camera.aspect=W/H;camera.updateProjectionMatrix();
+  renderer.setSize(W,H,false);composer.setSize(W,H);
+  fluidRT.setSize(Math.ceil(W/fluidDiv),Math.ceil(H/fluidDiv));fluidMat.uniforms.A.value=W/H;frame3();
+}
+addEventListener('resize',resize);
+
+/* ---------- auto quality: step down if frames are slow, so it never stutters ---------- */
+let level=0,samples=0,acc=0,warm=0;
+function step(){
+  level++;
+  if(level===1){PR=1;renderer.setPixelRatio(1);composer.setPixelRatio(1);composer.setSize(W,H);fluidDiv=4;fluidRT.setSize(Math.ceil(W/4),Math.ceil(H/4))}
+  else if(level===2){glass.transmission=0;glass.transparent=true;glass.opacity=.22;glass.roughness=.15;glass.needsUpdate=true;bloom.strength=.7}
+  else if(level===3){bloom.enabled=false}
+}
+
+/* ---------- loop ---------- */
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),smooth=(a,b,x)=>{const t=clamp((x-a)/(b-a),0,1);return t*t*(3-2*t)};
+let t=0,last=performance.now(),raf=0,first=true,vis=1,rk=1;
+function loop(now){
+  raf=requestAnimationFrame(loop);
+  const dt=Math.min(.05,(now-last)/1000);last=now;
+  const hr=hero.getBoundingClientRect(),vh=innerHeight;
+  // the hero's light window fully covers the screen here: nothing of this canvas shows, so skip the work
+  const hp=window.__heroP||0;if(!reduce&&hp>.46&&hp<.995&&hr.bottom>vh*.98){first||(warm=0);return}
+  if(!reduce)t+=dt;
+  // the prism lives on the opening screen only
+  const want=1-smooth(.04,.55,clamp(-hr.top/vh,0,2));
+  const k=reduce?1:1-Math.pow(.002,dt);
+  vis+=(want-vis)*k;if(Math.abs(want-vis)<.001||hr.bottom<0)vis=want;
+  mouse.lerp(mt,reduce?1:1-Math.pow(.01,dt));
+  const on=vis>.004;
+  rig.visible=on;dust.visible=on;
+  if(on){
+    const D=wide()?{x:.5,y:.16,s:1.05,b:Math.PI-.42,base:-.3}:{x:0,y:.52,s:isSmall()?.52:.62,b:Math.PI-.55,base:-.16};
+    rig.position.set(D.x*halfW,(D.y+(1-vis)*.25)*halfH,0);rig.scale.setScalar(D.s*Math.pow(vis,.6));
+    prism.rotation.set(Math.sin(t*.27)*.12-mouse.y*.22,-.4+Math.sin(t*.33)*.22+mouse.x*.35,Math.sin(t*.21)*.04);
+    beam.rotation.z=D.b;
+    const spread=wide()?.06:.052,tilt=mouse.y*.04;
+    rays.forEach((r,i)=>{r.rotation.z=D.base+(2.5-i)*spread+tilt;r.userData.core.uniforms.K.value=1.5*vis;r.userData.halo.uniforms.K.value=.22*vis});
+    beam.userData.core.uniforms.K.value=.95*vis;beam.userData.halo.uniforms.K.value=.13*vis;
+    edgeMat.opacity=.42*vis;dustMat.uniforms.V.value=vis;dustMat.uniforms.T.value=t;
+  }
+  fluidMat.uniforms.T.value=t;fluidMat.uniforms.I.value=.45+.55*vis;
+  fluidMat.uniforms.S.value=scrollY/Math.max(1,document.documentElement.scrollHeight-vh);
+  fluidMat.uniforms.M.value.set(mouse.x*.5+.5,mouse.y*.5+.5);
+  renderer.setRenderTarget(fluidRT);renderer.render(fluidScene,fluidCam);renderer.setRenderTarget(null);
+  if(on&&bloom.enabled)composer.render(dt);else renderer.render(scene,camera);
+  if(first){first=false;canvas.classList.add('on')}
+  if(reduce){cancelAnimationFrame(raf);raf=0;return}
+  // measure while the prism is showing; step quality down if frames average slower than ~42fps
+  if(!on)return;
+  if(warm<45){warm++;return}
+  if(level<3){acc+=dt;samples++;if(samples>=60){if(acc/samples>.024){step();warm=20}samples=0;acc=0}}
+}
+if(reduce){addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(loop)},{passive:true})}
+document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0}else if(!raf){last=performance.now();raf=requestAnimationFrame(loop)}});
+canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();cancelAnimationFrame(raf);raf=0;canvas.classList.remove('on')});
+raf=requestAnimationFrame(loop);
 </script>
