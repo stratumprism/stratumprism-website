@@ -1,0 +1,970 @@
+<title>Stratum Prism E</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Stratum Prism: AI-driven strategy and transformation for founder-led logistics, manufacturing and industrial services companies in South India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=B612+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: a drawing set. Every section is a numbered sheet; the opening sheet is a third-angle multi-view drawing of one problem,
+   because the buyers (logistics, manufacturing, industrial services founders) read drawings every day. Ground = CAD model space. */
+:root{
+  --ground:#151a20;      /* page: CAD model-space blue-grey, darkened */
+  --sheet:#1b222a;       /* drawing sheets and panels */
+  --rule:#2b3540;        /* sheet borders, table rules */
+  --line:#c9d2db;        /* visible linework */
+  --line2:#67737f;       /* hidden and centre lines */
+  --ink:#eef2f5; --ink2:#c3ccd4; --mute:#8a96a2;
+  /* the five layers of a business, in CAD layer colours: also the five bands of the mark */
+  --l1:#ee6a63; --l2:#e6c252; --l3:#5fc388; --l4:#4fc0d6; --l5:#7598ec;
+  --disp:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"B612 Mono","SFMono-Regular",Menlo,Consolas,monospace;
+  --gut:max(16px,env(safe-area-inset-left,0px));--gutr:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+@media (min-width:900px){:root{--gut:max(36px,env(safe-area-inset-left,0px));--gutr:max(36px,env(safe-area-inset-right,0px))}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{background:var(--ground);scroll-behavior:smooth;scroll-padding-top:64px}
+body{background:var(--ground);color:var(--ink);font:400 16px/1.6 var(--disp);font-stretch:100%;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ground)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--l2);outline-offset:3px}
+.wrap{max-width:1400px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutr)}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{text-wrap:balance;margin:0}
+
+/* ---------- top bar: drawing-set index ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--ground);border-bottom:1px solid var(--rule)}
+.bar .wrap{display:flex;align-items:center;gap:28px;height:56px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:650;font-stretch:112%;font-size:15px;letter-spacing:.01em;white-space:nowrap}
+.mark{width:24px;height:22px;flex:none;display:block}
+.tabs{display:flex;gap:2px;margin-left:auto;list-style:none;padding:0;margin-block:0}
+.tabs a{display:block;padding:18px 10px 16px;text-decoration:none;color:var(--mute);font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;border-bottom:2px solid transparent;white-space:nowrap}
+.tabs a b{color:var(--line2);font-weight:400;margin-right:6px}
+.tabs a:hover,.tabs a.on{color:var(--ink)}
+.tabs a.on{border-bottom-color:var(--ink)}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--ground);text-decoration:none;font-weight:600;font-size:14px;padding:11px 16px;white-space:nowrap;border:1px solid var(--ink)}
+.cta:hover{background:transparent;color:var(--ink)}
+.cta.ghost{background:transparent;color:var(--ink);border-color:var(--line2)}
+.cta.ghost:hover{border-color:var(--ink)}
+.bar .cta{padding:9px 14px;font-size:13px}
+@media (max-width:1180px){.tabs{display:none}.bar .cta{margin-left:auto}}
+
+/* ---------- sheet header strip, shared by every section ---------- */
+.strip{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:9px 0;color:var(--mute)}
+.strip span:last-child{text-align:right}
+.strip b{color:var(--ink);font-weight:400}
+section{scroll-margin-top:56px}
+
+/* ---------- sheet 01: the multi-view drawing ---------- */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.05fr);grid-template-areas:"intro dwg";column-gap:44px;padding-block:34px 44px;align-items:start}
+.intro{grid-area:intro;display:flex;flex-direction:column;gap:22px;min-width:0}
+.dwgwrap{grid-area:dwg;min-width:0}
+.sfoot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);border-top:1px solid var(--rule);margin-top:4px}
+.snotes{padding:12px 14px 14px;color:var(--mute);font-size:13px;line-height:1.5}
+.snotes ol{margin:4px 0 0;padding-left:18px}
+.snotes .mono{color:var(--ink);font-size:10px}
+.sfoot .tb{border:0;border-left:1px solid var(--rule)}
+.eyebrow{color:var(--mute)}
+h1{font-weight:720;font-stretch:112%;font-size:clamp(44px,4.15vw,76px);line-height:.95;letter-spacing:-.025em}
+.lede{font-size:18px;line-height:1.55;color:var(--ink2);max-width:36ch;margin:0}
+.who{margin:0;color:var(--mute);font-size:14.5px;max-width:42ch}
+.pick{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.pick legend{padding:0;margin-bottom:10px;color:var(--mute)}
+.pick .opts{display:flex;flex-wrap:wrap;gap:6px}
+.pick input{position:absolute;opacity:0;pointer-events:none}
+.pick label{display:inline-flex;align-items:center;gap:8px;padding:7px 11px 7px 8px;border:1px solid var(--rule);cursor:pointer;font-size:14px;color:var(--ink2);user-select:none}
+.pick label i{width:13px;height:13px;border:1px solid var(--line2);position:relative;flex:none}
+.pick input:checked+label{border-color:var(--ink);color:var(--ink)}
+.pick input:checked+label i{border-color:var(--ink)}
+.pick input:checked+label i::before,.pick input:checked+label i::after{content:"";position:absolute;left:50%;top:50%;width:15px;height:1.5px;background:var(--ink);transform:translate(-50%,-50%) rotate(45deg)}
+.pick input:checked+label i::after{transform:translate(-50%,-50%) rotate(-45deg)}
+.pick input:focus-visible+label{outline:2px solid var(--l2);outline-offset:2px}
+.pick .else{font-size:14px;color:var(--mute)}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+
+/* drawing sheet with zone references */
+.sheet{position:relative;border:1px solid var(--rule);background:var(--sheet) radial-gradient(circle,rgba(201,210,219,.07) 1px,transparent 1.2px) 0 0/24px 24px;padding:26px 0 0 22px}
+.zones-x{position:absolute;left:22px;right:0;top:0;height:18px;display:grid;grid-template-columns:repeat(8,1fr);border-bottom:1px solid var(--rule)}
+.zones-y{position:absolute;left:0;top:18px;bottom:0;width:18px;display:grid;grid-template-rows:repeat(4,1fr);border-right:1px solid var(--rule)}
+.zones-x span,.zones-y span{font-family:var(--mono);font-size:9px;color:var(--line2);display:flex;align-items:center;justify-content:center}
+.zones-x span+span{border-left:1px solid var(--rule)}
+.zones-y span+span{border-top:1px solid var(--rule)}
+.views{display:grid;grid-template-columns:348fr 208fr 348fr;grid-template-areas:"top iso leg" "topc isoc leg" "front side sect" "frontc sidec sectc"}
+.views svg{display:block;width:100%;height:auto;overflow:visible}
+.v-top{grid-area:top}.v-front{grid-area:front}.v-side{grid-area:side}.v-sect{grid-area:sect}
+.c-top{grid-area:topc}.c-front{grid-area:frontc}.c-side{grid-area:sidec}.c-sect{grid-area:sectc}
+.v-iso{grid-area:iso}
+.legend{grid-area:leg;min-width:0;align-self:center;padding:0 18px 0 6px}
+.c-iso{grid-area:isoc}
+.sym{display:none}
+.cap{padding:6px 14px 18px 14px;min-width:0}
+.cap .vl{display:block;color:var(--mute);font-size:10px;margin-bottom:5px}
+.cap q{display:block;font-size:15px;line-height:1.4;color:var(--ink);quotes:"\201C" "\201D"}
+.cap.noq q{quotes:none}
+.cap q,.legend tr{transition:opacity .25s ease}
+.swap q{opacity:0}
+.lg{width:100%;border-collapse:collapse;font-size:13px}
+.lg td{padding:4px 6px;border-top:1px solid var(--rule);vertical-align:middle;color:var(--ink2)}
+.lg tr:first-child td{border-top:0}
+.lg td:first-child{width:30px;padding-left:0}
+.lg td.n{font-family:var(--mono);font-size:10px;color:var(--mute);width:22px;text-align:center}
+.lg td.nm{color:var(--ink);white-space:nowrap}
+.lg td.lk{color:var(--mute);font-size:12.5px}
+.lg tr.hit td.nm{color:var(--ink)}
+.lg tr.hit td.n{color:var(--ground);background:var(--hit)}
+.lg svg{width:26px;height:14px;display:block}
+
+/* svg drawing classes: stroke widths stay constant in screen pixels via --k (user units per px) */
+.views svg,.mini{--k:1}
+.o{fill:none;stroke:var(--line);stroke-width:calc(var(--k)*1.6px);stroke-linejoin:round}
+.t{fill:none;stroke:var(--line);stroke-width:calc(var(--k)*.8px);opacity:.85}
+.h{fill:none;stroke:var(--line2);stroke-width:calc(var(--k)*.9px);stroke-dasharray:calc(var(--k)*5px) calc(var(--k)*3px)}
+.c{fill:none;stroke:var(--line2);stroke-width:calc(var(--k)*.7px);stroke-dasharray:calc(var(--k)*16px) calc(var(--k)*3px) calc(var(--k)*2px) calc(var(--k)*3px)}
+.cut{fill:none;stroke:var(--ink);stroke-width:calc(var(--k)*1.2px);stroke-dasharray:calc(var(--k)*20px) calc(var(--k)*4px) calc(var(--k)*3px) calc(var(--k)*4px)}
+.cutk{fill:none;stroke:var(--ink);stroke-width:calc(var(--k)*2.6px)}
+.dm{fill:none;stroke:var(--mute);stroke-width:calc(var(--k)*.7px)}
+.ah{fill:var(--mute);stroke:none}
+.ahi{fill:var(--ink);stroke:none}
+.void{fill:var(--sheet);stroke:var(--line);stroke-width:calc(var(--k)*1.6px);stroke-linejoin:round}
+.lbl{font-family:var(--mono);fill:var(--ink);font-size:calc(var(--k)*9px);letter-spacing:.06em}
+.lblm{font-family:var(--mono);fill:var(--mute);font-size:calc(var(--k)*8.5px);letter-spacing:.06em}
+.bal{fill:var(--sheet);stroke:var(--line2);stroke-width:calc(var(--k)*.8px)}
+.flag{fill:var(--sheet);stroke-width:calc(var(--k)*1.1px)}
+
+/* title block */
+.tb{border:1px solid var(--rule);display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:13px;background:var(--sheet)}
+.tb>div{padding:7px 10px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);min-width:0}
+.tb>div:nth-child(3n){border-right:0}
+.tb>div.w2{grid-column:span 2}
+.tb>div.w3{grid-column:1/-1;border-right:0}
+.tb .k{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;color:var(--mute);text-transform:uppercase;margin-bottom:1px}
+.tb .last{border-bottom:0}
+.tb svg{width:46px;height:18px;display:block;margin-top:3px}
+
+@media (max-width:1380px){.lg td.lk{display:none}}
+@media (max-width:1180px){.lg td.lk{display:table-cell}}
+@media (max-width:1180px){
+  .hero{grid-template-columns:1fr;grid-template-areas:"intro" "dwg";row-gap:30px}
+  .lede{max-width:52ch}
+}
+@media (max-width:760px){
+  .hero{padding-block:22px 30px}
+  .sheet{padding:20px 0 0 0;background-size:18px 18px}
+  .zones-y{display:none}.zones-x{left:0;height:14px}
+  .views{grid-template-columns:348fr 208fr;grid-template-areas:"top sym" "front side" "sect sect" "frontc frontc" "sidec sidec" "topc topc" "sectc sectc" "leg leg"}
+  .views .v-iso,.views .c-iso{display:none}
+  .sym{display:flex;grid-area:sym;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--mute)}
+  .sym svg{width:54px}
+  .cap{padding:10px 14px 12px;border-top:1px solid var(--rule)}
+  .legend{padding:10px 14px 14px;border-top:1px solid var(--rule)}
+  .sfoot{grid-template-columns:1fr}.sfoot .tb{border-left:0;border-top:1px solid var(--rule)}
+  .tb{grid-template-columns:1fr 1fr}
+  .tb>div:nth-child(3n){border-right:1px solid var(--rule)}
+  .tb>div:nth-child(2n){border-right:0}
+  .tb>div.w2{grid-column:auto;border-right:1px solid var(--rule)!important}
+  .tb>div.w3{grid-column:1/-1;border-right:0}
+}
+
+/* ---------- generic sheet layout ---------- */
+.sh{padding-block:0 0}
+.sh .body{padding-block:56px 84px}
+h2{font-weight:640;font-stretch:104%;font-size:clamp(30px,3.3vw,50px);line-height:1.04;letter-spacing:-.018em;max-width:22ch}
+.sub{color:var(--ink2);font-size:17.5px;max-width:58ch;margin:18px 0 0}
+.note{color:var(--mute);font-size:14px}
+
+/* sheet 02: first two weeks */
+.weeks{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:56px;align-items:start}
+.weeks h2{transition:opacity .25s}
+.basis{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;color:var(--mute)}
+.basis b{color:var(--ink);font-weight:400}
+.gantt{border:1px solid var(--rule);background:var(--sheet)}
+.g-head,.g-row{display:grid;grid-template-columns:150px repeat(10,minmax(0,1fr))}
+.g-head{border-bottom:1px solid var(--rule)}
+.g-head span{font-family:var(--mono);font-size:9.5px;color:var(--mute);text-align:center;padding:8px 0;border-left:1px solid var(--rule)}
+.g-head span:first-child{text-align:left;padding-left:14px;border-left:0}
+.g-row{border-bottom:1px solid var(--rule);position:relative}
+.g-row:last-of-type{border-bottom:0}
+.g-row .op{grid-column:1;padding:14px 10px 0 14px;display:flex;flex-direction:column;gap:3px}
+.g-row .op b{font-weight:600;font-size:15px}
+.g-row .op span{color:var(--mute)}
+.g-row .cells{grid-column:2/-1;display:grid;grid-template-columns:repeat(10,1fr);align-items:center;position:relative;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1px),var(--rule) calc(10% - 1px) 10%)}
+.g-row .barx{height:16px;margin:16px 0 0;border:1px solid var(--ink2)}
+.g-row .barx.person{background:var(--ink2)}
+.g-row .barx.ai{background:repeating-linear-gradient(135deg,var(--ink2) 0 1.5px,transparent 1.5px 6px)}
+.g-row .barx.both{background:linear-gradient(90deg,var(--ink2) 50%,transparent 50%),repeating-linear-gradient(135deg,var(--ink2) 0 1.5px,transparent 1.5px 6px)}
+.g-row .desc{grid-column:2/-1;padding:8px 14px 16px 0;color:var(--ink2);font-size:14.5px;line-height:1.45;transition:opacity .25s}
+.g-row.ms .cells{min-height:44px}
+.diamond{width:13px;height:13px;background:var(--ink);transform:rotate(45deg);grid-column:10;justify-self:end;margin-right:6px;margin-top:16px}
+.g-key{display:flex;gap:18px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--rule);color:var(--mute)}
+.g-key i{display:inline-block;width:22px;height:9px;border:1px solid var(--ink2);margin-right:7px;vertical-align:-1px}
+.g-key i.person{background:var(--ink2)}
+.g-key i.ai{background:repeating-linear-gradient(135deg,var(--ink2) 0 1.5px,transparent 1.5px 5px)}
+.yours{margin-top:26px;display:grid;gap:10px}
+.yours label{color:var(--mute)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.field{background:transparent;border:1px solid var(--rule);color:var(--ink);font:inherit;font-size:15px;padding:11px 12px;min-width:0;flex:1 1 260px;border-radius:0}
+.field::placeholder{color:var(--line2)}
+.field:focus{border-color:var(--ink);outline:none}
+@media (max-width:980px){.weeks{grid-template-columns:1fr;gap:30px}}
+@media (max-width:560px){
+  .g-head,.g-row{grid-template-columns:78px repeat(10,minmax(0,1fr))}
+  .g-row .op{padding:12px 6px 0 10px}.g-row .op b{font-size:13.5px}
+  .g-row .desc{grid-column:1/-1;padding:6px 10px 14px}
+  .g-head span:first-child{padding-left:10px}
+}
+
+/* sheet 03: revision table */
+.revs{margin-top:40px;border-top:1px solid var(--rule)}
+.rv-h,.rv{display:grid;grid-template-columns:70px minmax(0,1fr) minmax(0,1.25fr);gap:28px;align-items:center}
+.rv-h{padding:10px 0;color:var(--mute);border-bottom:1px solid var(--rule)}
+.rv{padding:30px 0;border-bottom:1px solid var(--rule)}
+.rv .rl{display:flex;align-items:center}
+.rv .rl svg{width:30px;height:27px}
+.rv .was{color:var(--mute);font-size:19px;text-decoration:line-through;text-decoration-color:var(--line2);text-decoration-thickness:1px}
+.rv .now{position:relative;font-size:clamp(20px,2vw,26px);font-weight:560;font-stretch:104%;line-height:1.25;padding:10px 14px;justify-self:start;max-width:calc(100% - 16px);margin-left:8px}
+.rv .now svg.cloud{position:absolute;inset:-8px;width:calc(100% + 16px);height:calc(100% + 16px);overflow:visible;pointer-events:none}
+.cloud path{fill:none;stroke:var(--l1);stroke-width:1.2px}
+@media (max-width:760px){
+  .rv-h{display:none}
+  .rv{grid-template-columns:40px minmax(0,1fr);gap:8px 14px;padding:24px 0}
+  .rv .rl{grid-row:span 2;align-self:start}
+  .rv .now{margin-top:6px}
+}
+
+/* sheet 04: routing sheet */
+.route{margin-top:44px;border:1px solid var(--rule);background:var(--sheet)}
+.rt-h,.rt{display:grid;grid-template-columns:70px minmax(0,1fr) 112px minmax(0,2.1fr) minmax(0,1.3fr);gap:0}
+.rt-h span{padding:10px 14px;color:var(--mute);border-left:1px solid var(--rule)}
+.rt-h span:first-child{border-left:0}
+.rt-h{border-bottom:1px solid var(--rule)}
+.rt{border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
+.rt:last-child{border-bottom:0}
+.rt>*{padding:20px 14px;border-left:1px solid var(--rule);min-width:0}
+.rt>*:first-child{border-left:0}
+.rt .opn{font-family:var(--mono);font-size:13px;color:var(--mute)}
+.rt .nm{font-weight:620;font-size:20px;font-stretch:106%;line-height:1.15}
+.rt .by{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.rt .by i{width:20px;height:9px;border:1px solid var(--ink2);flex:none;margin-top:3px}
+.rt .by i.person{background:var(--ink2)}
+.rt .by i.ai{background:repeating-linear-gradient(135deg,var(--ink2) 0 1.5px,transparent 1.5px 5px)}
+.rt .by i.both{background:linear-gradient(90deg,var(--ink2) 50%,transparent 50%),repeating-linear-gradient(135deg,var(--ink2) 0 1.5px,transparent 1.5px 5px)}
+.rt .wh{color:var(--ink2);font-size:15.5px;line-height:1.5}
+.rt .get{font-size:15px;line-height:1.45}
+.rt .get small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--mute);text-transform:uppercase;margin-bottom:4px}
+.rt::after{content:"";position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--ink);opacity:0;pointer-events:none}
+.rt.scan::after{animation:carriage 1.1s cubic-bezier(.5,0,.3,1) forwards}
+@keyframes carriage{0%{left:0;opacity:.0}8%{opacity:.7}92%{opacity:.7}100%{left:100%;opacity:0}}
+.why{margin-top:34px;display:grid;grid-template-columns:70px minmax(0,1fr);gap:0;max-width:880px}
+.why .opn{font-family:var(--mono);font-size:13px;color:var(--mute);padding-top:4px}
+.why p{margin:0;font-size:19px;line-height:1.5;color:var(--ink2)}
+.why p b{color:var(--ink);font-weight:560}
+@media (max-width:900px){
+  .rt-h{display:none}
+  .rt{grid-template-columns:56px minmax(0,1fr);}
+  .rt>*{border-left:0;padding:4px 14px}
+  .rt .opn{grid-row:span 4;padding-top:20px}
+  .rt .nm{padding-top:18px}
+  .rt .get{padding-bottom:20px}
+  .why{grid-template-columns:56px minmax(0,1fr)}
+}
+
+/* sheet 05: engagements as a schedule */
+.sched{margin-top:44px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);border:1px solid var(--rule)}
+.dx{padding:32px 34px 34px;border-right:1px solid var(--rule);background:var(--sheet);display:flex;flex-direction:column;gap:18px}
+.dx .meta,.ep .meta{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--mute)}
+.dx .meta b,.ep .meta b{color:var(--ink);font-weight:400}
+.dx h3{font-size:clamp(32px,3vw,44px);font-weight:700;font-stretch:112%;letter-spacing:-.02em;line-height:1}
+.dx p{margin:0;color:var(--ink2);font-size:16.5px;max-width:56ch}
+.bom{list-style:none;padding:0;margin:6px 0 0;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule)}
+.bom li{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.bom li:nth-child(odd){padding-right:14px}
+.bom .b{width:24px;height:24px;border:1px solid var(--line2);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;color:var(--ink2);flex:none}
+.dx .go{margin-top:8px}
+.side{display:flex;flex-direction:column}
+.ep{padding:26px 28px;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:10px}
+.ep:last-child{border-bottom:0}
+.ep h3{font-size:22px;font-weight:620;font-stretch:106%}
+.ep p{margin:0;color:var(--ink2);font-size:15px}
+.ep .inc{color:var(--mute);font-size:13.5px}
+.addon{margin-top:-1px;border:1px solid var(--rule);display:grid;grid-template-columns:230px minmax(0,1fr) minmax(0,1.1fr);align-items:center}
+.addon .mono{white-space:nowrap;display:block;margin-bottom:4px}
+.addon>*{padding:22px 26px;min-width:0}
+.addon>*+*{border-left:1px solid var(--rule)}
+.addon h3{font-size:20px;font-weight:620;font-stretch:106%}
+.addon p{margin:0;color:var(--ink2);font-size:15px}
+.fit{margin-top:22px;color:var(--mute);font-size:14.5px;max-width:70ch}
+@media (max-width:900px){
+  .sched{grid-template-columns:1fr}.dx{border-right:0;border-bottom:1px solid var(--rule);padding:26px 20px}
+  .ep{padding:22px 20px}
+  .addon{grid-template-columns:1fr}.addon>*+*{border-left:0;border-top:1px solid var(--rule)}.addon>*{padding:18px 20px}
+  .bom{grid-template-columns:1fr}.bom li:nth-child(odd){padding-right:0}
+}
+
+/* sheet 06: general notes */
+.notes-g{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:56px;align-items:start}
+.nbox{border:1px solid var(--line2);padding:22px 26px 10px;background:var(--sheet)}
+.nbox>.mono{color:var(--ink);display:block;margin-bottom:6px}
+.nbox ol{list-style:none;counter-reset:n;margin:0;padding:0}
+.nbox li{counter-increment:n;display:grid;grid-template-columns:34px minmax(0,1fr);padding:16px 0;border-top:1px solid var(--rule)}
+.nbox li:first-child{border-top:0}
+.nbox li::before{content:counter(n)".";font-family:var(--mono);font-size:13px;color:var(--mute);padding-top:2px}
+.nbox li b{display:block;font-family:var(--mono);font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:4px}
+.nbox li span{color:var(--ink2);font-size:15.5px}
+@media (max-width:900px){.notes-g{grid-template-columns:1fr;gap:30px}.nbox{padding:18px 18px 6px}}
+
+/* sheet 07: founder */
+.fdr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+.quote{font-size:clamp(28px,3vw,44px);font-weight:560;font-stretch:104%;line-height:1.14;letter-spacing:-.015em;margin:0;text-wrap:balance}
+.quote+.mono{display:block;margin-top:18px;color:var(--mute)}
+.bio p{margin:0 0 16px;color:var(--ink2);font-size:16.5px;max-width:58ch}
+.bio p.belief{color:var(--ink);font-size:17.5px;border-top:1px solid var(--rule);padding-top:16px;margin-top:22px}
+.detail{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+.detail .ring{width:84px;height:84px;border-radius:50%;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-weight:700;font-stretch:112%;font-size:26px;position:relative}
+.detail .ring::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1px dashed var(--rule)}
+.detail .mono{color:var(--mute);line-height:1.6}
+.detail .mono b{color:var(--ink);font-weight:400}
+.career{margin-top:58px}
+.dimrow{display:grid;grid-template-columns:5fr 5fr 2.2fr;align-items:end}
+.dseg{position:relative;padding-top:6px}
+.dseg .top{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink);text-align:center;margin-bottom:6px}
+.dline{position:relative;height:13px;border-left:1px solid var(--line2);border-right:1px solid var(--line2)}
+.dseg+.dseg .dline{border-left:0}
+.dline::before{content:"";position:absolute;left:0;right:0;top:6px;border-top:1px solid var(--line);transform-origin:left;transform:scaleX(1)}
+.dline .a1,.dline .a2{position:absolute;top:2px;width:0;height:0;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent}
+.dline .a1{left:0;border-right:9px solid var(--line)}
+.dline .a2{right:0;border-left:9px solid var(--line)}
+.dseg.now .dline{border-right:0}
+.dseg.now .dline::before{border-top-style:dashed}
+.dseg .bot{padding:12px 12px 0 0;font-size:14.5px;color:var(--ink2);line-height:1.45}
+.dseg .bot b{display:block;color:var(--ink);font-weight:600;font-size:16px}
+.career.draw .dline::before{animation:dim 1.2s cubic-bezier(.6,0,.2,1) both}
+.career.draw .dseg:nth-child(2) .dline::before{animation-delay:.5s}
+.career.draw .dseg:nth-child(3) .dline::before{animation-delay:1s}
+@keyframes dim{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.total{margin-top:22px;display:grid;grid-template-columns:5fr 5fr 2.2fr}
+.total .ov{grid-column:1/3;position:relative;height:13px;border-left:1px solid var(--line2);border-right:1px solid var(--line2)}
+.total .ov::before{content:"";position:absolute;left:0;right:0;top:6px;border-top:1px solid var(--line2)}
+.total .ov .a1,.total .ov .a2{position:absolute;top:2px;width:0;height:0;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent}
+.total .ov .a1{left:0;border-right:9px solid var(--line2)}.total .ov .a2{right:0;border-left:9px solid var(--line2)}
+.total .ov span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--ground);padding:0 10px;color:var(--mute);white-space:nowrap}
+@media (max-width:900px){.fdr{grid-template-columns:1fr;gap:34px}}
+@media (max-width:640px){
+  .career{display:grid;grid-template-columns:1fr 1fr}
+  .career .dimrow{display:contents}
+  .career .dseg{order:1}
+  .career .total{order:2;grid-column:1/-1;grid-template-columns:1fr}
+  .career .total .ov{grid-column:1/-1}
+  .career .dseg.now{order:3;grid-column:1/-1;margin-top:28px}
+  .dseg.now .dline{border-left:1px solid var(--line2)}
+}
+
+/* sheet 08: contact */
+.ct{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;align-items:start}
+.direct{margin-top:30px;border-top:1px solid var(--rule)}
+.direct .ln{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule)}
+.direct .ln .mono{color:var(--mute)}
+.direct .ln .v{font-size:17px;user-select:all;overflow-wrap:anywhere}
+.direct .ln a.v{text-decoration:none}
+.direct .ln a.v:hover{text-decoration:underline}
+.btn{background:transparent;border:1px solid var(--rule);color:var(--ink2);font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;cursor:pointer;border-radius:0}
+.btn:hover{border-color:var(--ink);color:var(--ink)}
+.rfq{border:1px solid var(--rule);background:var(--sheet)}
+.rfq .hd{display:flex;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid var(--rule);color:var(--mute)}
+.rfq .hd b{color:var(--ink);font-weight:400}
+.rfq form{display:grid;grid-template-columns:1fr 1fr}
+.rfq .f{display:flex;flex-direction:column;gap:4px;padding:12px 18px 14px;border-bottom:1px solid var(--rule);min-width:0}
+.rfq .f+.f:nth-child(2n){border-left:1px solid var(--rule)}
+.rfq .f.w{grid-column:1/-1;border-left:0!important}
+.rfq label{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.rfq input,.rfq select,.rfq textarea{background:transparent;border:0;border-bottom:1px solid transparent;color:var(--ink);font:inherit;font-size:16px;padding:4px 0;border-radius:0;min-width:0;width:100%}
+.rfq select{appearance:none;background:linear-gradient(45deg,transparent 50%,var(--mute) 50%) right 6px center/6px 6px no-repeat,linear-gradient(-45deg,transparent 50%,var(--mute) 50%) right 0 center/6px 6px no-repeat;padding-right:20px}
+.rfq select option{background:var(--sheet)}
+.rfq textarea{resize:vertical;min-height:84px;line-height:1.5}
+.rfq input:focus,.rfq select:focus,.rfq textarea:focus{outline:none;border-bottom-color:var(--ink)}
+.rfq .sub2{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:16px 18px}
+.rfq .sub2 .note{max-width:36ch}
+.rfq button.cta{cursor:pointer;font-family:inherit}
+.ready{padding:18px;display:grid;gap:12px;border-top:1px solid var(--rule)}
+.ready pre{margin:0;white-space:pre-wrap;font-family:var(--mono);font-size:12px;line-height:1.6;color:var(--ink2);background:var(--ground);border:1px solid var(--rule);padding:12px}
+@media (max-width:900px){.ct{grid-template-columns:1fr;gap:34px}}
+@media (max-width:560px){.direct .ln .v{font-size:15.5px}.rfq form{grid-template-columns:1fr}.rfq .f+.f:nth-child(2n){border-left:0}.direct .ln{grid-template-columns:84px minmax(0,1fr) auto}}
+
+/* footer title block */
+footer{padding-block:0 30px}
+.ftb{border:1px solid var(--rule);display:grid;grid-template-columns:auto 1.3fr 1.2fr 1.2fr .8fr .7fr;font-size:13.5px}
+.ftb>div{padding:12px 14px;border-left:1px solid var(--rule);min-width:0}
+.ftb>div:first-child{border-left:0;display:flex;align-items:center;gap:12px;font-weight:650;font-stretch:112%;font-size:15px;white-space:nowrap}
+.ftb .k{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;color:var(--mute);text-transform:uppercase;margin-bottom:2px}
+.ftb .mark{width:30px;height:27px}
+@media (max-width:1000px){.ftb{grid-template-columns:1fr 1fr}.ftb>div{border-left:0;border-top:1px solid var(--rule)}.ftb>div:nth-child(2n){border-left:1px solid var(--rule)}.ftb>div:first-child,.ftb>div:nth-child(2){border-top:0}}
+@media (max-width:480px){.ftb{grid-template-columns:1fr}.ftb>div:nth-child(2n){border-left:0}.ftb>div:nth-child(2){border-top:1px solid var(--rule)}}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#angles" aria-label="Stratum Prism, back to top">
+      <svg class="mark" viewBox="0 0 24 21" aria-hidden="true"><polygon points="12,0 13.99,3.48 10.01,3.48" fill="var(--l1)"/><polygon points="9.5,4.38 14.5,4.38 16.49,7.86 7.51,7.86" fill="var(--l2)"/><polygon points="6.99,8.76 17.01,8.76 18.99,12.24 5.01,12.24" fill="var(--l3)"/><polygon points="4.49,13.14 19.51,13.14 21.5,16.62 2.5,16.62" fill="var(--l4)"/><polygon points="1.99,17.52 22.01,17.52 24,21 0,21" fill="var(--l5)"/></svg>
+      Stratum Prism
+    </a>
+    <ul class="tabs" aria-label="Sheets">
+      <li><a href="#angles"><b>01</b>Every angle</a></li>
+      <li><a href="#weeks"><b>02</b>First two weeks</a></li>
+      <li><a href="#question"><b>03</b>The question</a></li>
+      <li><a href="#method"><b>04</b>Method</a></li>
+      <li><a href="#work"><b>05</b>Engagements</a></li>
+      <li><a href="#ai"><b>06</b>AI notes</a></li>
+      <li><a href="#founder"><b>07</b>Founder</a></li>
+    </ul>
+    <a class="cta" href="#contact">Talk to Prasanth</a>
+  </div>
+</header>
+
+<main>
+<!-- ======================= SHEET 01 ======================= -->
+<section id="angles" class="wrap" aria-labelledby="h1">
+  <div class="hero">
+    <div class="intro">
+      <span class="eyebrow mono">Sheet 01 of 08 · Strategy &amp; transformation · Chennai</span>
+      <h1 id="h1">One problem,<br> every angle.</h1>
+      <p class="lede">Leadership sees one side of a problem. The floor sees another. The numbers show a third. We put all three on one sheet, cut through to the cause, and stay until your team has fixed it.</p>
+      <p class="who">For founder-led companies of 50 to 500 people in logistics, manufacturing and industrial services, starting in South India.</p>
+      <fieldset class="pick" id="pick">
+        <legend class="mono">Pick what keeps coming up in your meetings. The drawing changes with it.</legend>
+        <div class="opts">
+          <input type="radio" name="pb" id="pb-cash" value="cash" checked><label for="pb-cash"><i></i>Cash flow</label>
+          <input type="radio" name="pb" id="pb-people" value="people"><label for="pb-people"><i></i>Hiring &amp; people</label>
+          <input type="radio" name="pb" id="pb-sales" value="sales"><label for="pb-sales"><i></i>Sales pipeline</label>
+          <input type="radio" name="pb" id="pb-ops" value="ops"><label for="pb-ops"><i></i>Operations</label>
+          <input type="radio" name="pb" id="pb-succ" value="succ"><label for="pb-succ"><i></i>Succession</label>
+        </div>
+        <a class="else" href="#yours">Something else? Describe it in a line.</a>
+      </fieldset>
+      <div class="ctas">
+        <a class="cta" href="#contact">Talk to Prasanth</a>
+        <a class="cta ghost" href="https://wa.me/917550059511" target="_blank" rel="noopener">WhatsApp +91 75500 59511</a>
+      </div>
+    </div>
+
+    <div class="dwgwrap">
+      <div class="sheet" aria-label="Engineering drawing of the selected problem in four views and a section">
+        <div class="zones-x" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+        <div class="zones-y" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+        <div class="views" id="views">
+          <svg class="v-top" id="sv-top" viewBox="-28 -28 356 216" role="img" aria-label="Top view"></svg>
+          <svg class="v-iso" id="sv-iso" viewBox="-12 -135 199 213" aria-hidden="true"></svg>
+          <div class="sym mono" aria-hidden="true">
+            <svg viewBox="0 0 60 24"><path d="M2 3 L24 7 L24 17 L2 21 Z" fill="none" stroke="var(--line)" stroke-width="1"/><line x1="0" y1="12" x2="27" y2="12" stroke="var(--line2)" stroke-width=".6" stroke-dasharray="5 1.5 1.5 1.5"/><circle cx="44" cy="12" r="9" fill="none" stroke="var(--line)" stroke-width="1"/><circle cx="44" cy="12" r="5" fill="none" stroke="var(--line)" stroke-width="1"/><line x1="33" y1="12" x2="55" y2="12" stroke="var(--line2)" stroke-width=".6"/><line x1="44" y1="1" x2="44" y2="23" stroke="var(--line2)" stroke-width=".6"/></svg>
+            Third angle
+          </div>
+          <svg class="v-front" id="sv-front" viewBox="-28 -28 356 256" role="img" aria-label="Front view"></svg>
+          <svg class="v-side" id="sv-side" viewBox="-28 -28 216 256" role="img" aria-label="Right side view"></svg>
+          <svg class="v-sect" id="sv-sect" viewBox="-28 -28 356 256" role="img" aria-label="Section A-A"></svg>
+
+          <div class="cap c-top noq"><span class="vl mono">Top view · what we check in the numbers</span><q id="q-top">How many days of sales sit unpaid, and which customers hold most of it.</q></div>
+          <div class="cap c-iso noq"><span class="vl mono">Isometric · the whole part</span></div>
+          <div class="legend">
+            <span class="vl mono" style="display:block;color:var(--mute);font-size:10px;margin-bottom:6px">Layers · what we read in each</span>
+            <table class="lg" id="legend">
+              <tr data-l="1"><td><svg viewBox="0 0 26 14"><rect width="26" height="14" fill="url(#lg1)" stroke="var(--l1)" stroke-width=".8"/></svg></td><td class="n">1</td><td class="nm">Results</td><td class="lk">Cash, margins, the monthly P&amp;L</td></tr>
+              <tr data-l="2"><td><svg viewBox="0 0 26 14"><rect width="26" height="14" fill="url(#lg2)" stroke="var(--l2)" stroke-width=".8"/></svg></td><td class="n">2</td><td class="nm">Customers &amp; sales</td><td class="lk">Enquiries, quotes, follow-ups</td></tr>
+              <tr data-l="3"><td><svg viewBox="0 0 26 14"><rect width="26" height="14" fill="url(#lg3)" stroke="var(--l3)" stroke-width=".8"/></svg></td><td class="n">3</td><td class="nm">Operations</td><td class="lk">Dispatch, production, service</td></tr>
+              <tr data-l="4"><td><svg viewBox="0 0 26 14"><rect width="26" height="14" fill="url(#lg4)" stroke="var(--l4)" stroke-width=".8"/></svg></td><td class="n">4</td><td class="nm">Data &amp; systems</td><td class="lk">Registers, sheets, Tally or ERP</td></tr>
+              <tr data-l="5"><td><svg viewBox="0 0 26 14"><rect width="26" height="14" fill="url(#lg5)" stroke="var(--l5)" stroke-width=".8"/></svg></td><td class="n">5</td><td class="nm">People &amp; decisions</td><td class="lk">Who decides, who owns what</td></tr>
+            </table>
+          </div>
+          <div class="cap c-front"><span class="vl mono">Front view · what leadership says</span><q id="q-front">We’re profitable on paper and still short of cash every month.</q></div>
+          <div class="cap c-side"><span class="vl mono">Side view · what the floor says</span><q id="q-side">Invoices wait until the delivery papers come back from site.</q></div>
+          <div class="cap c-sect noq"><span class="vl mono">Section A–A · where we’d cut first</span><q id="q-sect">Layer 3, operations: the gap between dispatch and invoice.</q></div>
+        </div>
+        <div class="sfoot">
+          <div class="snotes"><span class="mono">Notes:</span><ol><li>Each view comes from a separate conversation.</li><li>Depth to the cause is confirmed in week one.</li><li>Not to scale. No two businesses are.</li></ol></div>
+          <div class="tb" aria-label="Title block">
+        <div class="w2"><span class="k">Company</span>Stratum Prism Private Limited</div><div><span class="k">Place</span>Chennai</div>
+        <div class="w3"><span class="k">Title</span>One problem, every angle</div>
+        <div><span class="k">Drawn</span>P. Sethuraman</div>
+        <div><span class="k">Approved</span>Your team</div>
+        <div><span class="k">Rev</span>E</div>
+        <div class="last"><span class="k">Projection</span><svg viewBox="0 0 60 24" aria-label="Third angle projection symbol"><path d="M2 3 L24 7 L24 17 L2 21 Z" fill="none" stroke="var(--line)" stroke-width="1.2"/><circle cx="44" cy="12" r="9" fill="none" stroke="var(--line)" stroke-width="1.2"/><circle cx="44" cy="12" r="5" fill="none" stroke="var(--line)" stroke-width="1.2"/></svg></div>
+        <div class="last"><span class="k">Scale</span>Not to scale</div>
+        <div class="last"><span class="k">Sheet</span>1 of 8</div>
+      </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <pattern id="lg1" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="4" stroke="var(--l1)" stroke-width=".8"/></pattern>
+      <pattern id="lg2" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".7" fill="var(--l2)"/></pattern>
+      <pattern id="lg3" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V4M0 0H4" stroke="var(--l3)" stroke-width=".7"/></pattern>
+      <pattern id="lg4" width="8" height="4" patternUnits="userSpaceOnUse"><path d="M0 0H8M0 0V2M4 2V4M0 2H8" stroke="var(--l4)" stroke-width=".7" fill="none"/></pattern>
+      <pattern id="lg5" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0V5M1.4 0V5" stroke="var(--l5)" stroke-width=".6"/></pattern>
+    </defs>
+  </svg>
+</section>
+
+<!-- ======================= SHEET 02 ======================= -->
+<section id="weeks" class="sh wrap" aria-labelledby="h-weeks">
+  <div class="strip mono"><span><b>Sheet 02</b> · First two weeks</span><span id="weeks-pb">Cash flow</span></div>
+  <div class="body weeks">
+    <div>
+      <h2 id="h-weeks">In two weeks, your team sees exactly where the cash waits.</h2>
+      <p class="sub">This is how the Diagnostic would start for the problem you picked above. It is a first view, not advice. Prasanth reviews every recommendation before you see it.</p>
+      <div class="basis mono"><span>Engagement <b>The Diagnostic</b></span><span>Length <b>2–3 weeks</b></span><span>Basis <b>Fixed price</b></span></div>
+      <div class="yours" id="yours">
+        <label class="mono" for="mine">Something else? Describe it in a line</label>
+        <div class="row">
+          <input class="field" id="mine" type="text" maxlength="200" placeholder="e.g. Two branches, same process, very different margins">
+          <a class="cta ghost" id="mine-wa" href="https://wa.me/917550059511" target="_blank" rel="noopener">Send to Prasanth on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="gantt" role="table" aria-label="First two weeks, by working day">
+      <div class="g-head" role="row"><span class="mono" role="columnheader">Working day</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+      <div class="g-row" role="row">
+        <div class="op"><b>Listen</b><span class="mono">Person</span></div>
+        <div class="cells"><div class="barx person" style="grid-column:1/4"></div></div>
+        <div class="desc" id="w-listen">Separate conversations with you, accounts and dispatch.</div>
+      </div>
+      <div class="g-row" role="row">
+        <div class="op"><b>Diagnose</b><span class="mono">AI</span></div>
+        <div class="cells"><div class="barx ai" style="grid-column:3/9"></div></div>
+        <div class="desc" id="w-diag">AI reads twelve months of invoices, receipts and delivery dates from Tally or your ERP.</div>
+      </div>
+      <div class="g-row" role="row">
+        <div class="op"><b>Own</b><span class="mono">Person</span></div>
+        <div class="cells"><div class="barx person" style="grid-column:9/11"></div></div>
+        <div class="desc" id="w-own">Workshop: your team traces one order from dispatch to payment and agrees where it stalls.</div>
+      </div>
+      <div class="g-row ms" role="row">
+        <div class="op"><b>You get</b><span class="mono">Day 10</span></div>
+        <div class="cells"><div class="diamond" aria-hidden="true"></div></div>
+        <div class="desc">A one-page problem statement and a ranked plan. Then you decide whether we stay for the execution.</div>
+      </div>
+      <div class="g-key mono"><span><i class="person"></i>Done by a person</span><span><i class="ai"></i>Done by AI, checked by a person</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SHEET 03 ======================= -->
+<section id="question" class="sh wrap" aria-labelledby="h-q">
+  <div class="strip mono"><span><b>Sheet 03</b> · The real question</span><span>Revisions</span></div>
+  <div class="body">
+    <h2 id="h-q">Most briefs arrive as a solution. Our first job is to redraw them as a question.</h2>
+    <div class="revs" id="revs">
+      <div class="rv-h mono"><span>Rev</span><span>As briefed</span><span>Revised to</span></div>
+      <div class="rv">
+        <span class="rl"><svg viewBox="0 0 30 27" aria-label="Revision A"><path d="M15 2 L28 25 L2 25 Z" fill="none" stroke="var(--l1)" stroke-width="1.2"/><text x="15" y="21.5" text-anchor="middle" font-family="B612 Mono, monospace" font-size="10" fill="var(--ink)">A</text></svg></span>
+        <span class="was">“We need more salespeople.”</span>
+        <span class="now">Why do deals stall after the second meeting?</span>
+      </div>
+      <div class="rv">
+        <span class="rl"><svg viewBox="0 0 30 27" aria-label="Revision B"><path d="M15 2 L28 25 L2 25 Z" fill="none" stroke="var(--l1)" stroke-width="1.2"/><text x="15" y="21.5" text-anchor="middle" font-family="B612 Mono, monospace" font-size="10" fill="var(--ink)">B</text></svg></span>
+        <span class="was">“Our team doesn’t take ownership.”</span>
+        <span class="now">Who actually decides, and do they know it?</span>
+      </div>
+      <div class="rv">
+        <span class="rl"><svg viewBox="0 0 30 27" aria-label="Revision C"><path d="M15 2 L28 25 L2 25 Z" fill="none" stroke="var(--l1)" stroke-width="1.2"/><text x="15" y="21.5" text-anchor="middle" font-family="B612 Mono, monospace" font-size="10" fill="var(--ink)">C</text></svg></span>
+        <span class="was">“We need an ERP.”</span>
+        <span class="now">Which three numbers would change your next decision?</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SHEET 04 ======================= -->
+<section id="method" class="sh wrap" aria-labelledby="h-m">
+  <div class="strip mono"><span><b>Sheet 04</b> · The Stratum method</span><span>Routing sheet</span></div>
+  <div class="body">
+    <h2 id="h-m">AI does the reading. Prasanth makes the call. Your team owns the plan.</h2>
+    <p class="sub">Every engagement runs through the same five operations. The order matters, so we number them the way a routing sheet does.</p>
+    <div class="route" id="route">
+      <div class="rt-h mono"><span>Op</span><span>Operation</span><span>Done by</span><span>What happens</span><span>What you get</span></div>
+      <div class="rt"><span class="opn">010</span><span class="nm">Listen</span><span class="by"><i class="person"></i>Person</span><span class="wh">Separate conversations with leadership and the people on the ground, because the real problem usually sits in the gap between them.</span><span class="get"><small>Output</small>Both sides of the story, side by side</span></div>
+      <div class="rt"><span class="opn">020</span><span class="nm">Diagnose</span><span class="by"><i class="ai"></i>AI</span><span class="wh">AI reads your numbers, documents and workflows: Tally or ERP exports, registers, the sheets your team actually uses. Patterns show up in days, not months.</span><span class="get"><small>Output</small>Where the problem shows up, layer by layer</span></div>
+      <div class="rt"><span class="opn">030</span><span class="nm">Model the options</span><span class="by"><i class="ai"></i>AI</span><span class="wh">Each possible fix is modelled side by side on cost, effort, payback and risk, and checked by Prasanth before it reaches you.</span><span class="get"><small>Output</small>Options you can compare on one page</span></div>
+      <div class="rt"><span class="opn">040</span><span class="nm">Own</span><span class="by"><i class="person"></i>Person</span><span class="wh">A workshop where your team sees the problem, agrees on it and commits to the plan.</span><span class="get"><small>Output</small>A plan your team has signed up to</span></div>
+      <div class="rt"><span class="opn">050</span><span class="nm">Execute</span><span class="by"><i class="both"></i>AI + person</span><span class="wh">We drive the plan with you, and build the dashboards and automations that keep it running.</span><span class="get"><small>Output</small>Change that holds after we leave</span></div>
+    </div>
+    <div class="why"><span class="opn">040</span><p><b>Why Op 040 exists.</b> Most consultants hand over a chart that shows the cause and assume the fix will follow. It rarely does. People have to see the problem and own it first. Then it gets fixed.</p></div>
+  </div>
+</section>
+
+<!-- ======================= SHEET 05 ======================= -->
+<section id="work" class="sh wrap" aria-labelledby="h-w">
+  <div class="strip mono"><span><b>Sheet 05</b> · Engagements</span><span>Schedule</span></div>
+  <div class="body">
+    <h2 id="h-w">Start with a fixed-price diagnostic. Decide on the rest after you’ve seen it.</h2>
+    <div class="sched">
+      <div class="dx">
+        <div class="meta mono"><span>Item <b>01</b></span><span>Length <b>2–3 weeks</b></span><span>Basis <b>Fixed price</b></span></div>
+        <h3>The Diagnostic</h3>
+        <p>Find the real problem. We talk to leadership and the people on the ground separately, find the thread connecting what they say, and run a workshop where your team sees it and owns it.</p>
+        <ul class="bom" aria-label="What the Diagnostic includes">
+          <li><span class="b">1</span>Stakeholder interviews</li>
+          <li><span class="b">2</span>AI data diagnostic</li>
+          <li><span class="b">3</span>Ownership workshop</li>
+          <li><span class="b">4</span>One-page problem statement and ranked plan</li>
+        </ul>
+        <div class="go"><a class="cta" href="#contact">Ask about a Diagnostic</a></div>
+      </div>
+      <div class="side">
+        <div class="ep">
+          <div class="meta mono"><span>Item <b>02</b></span><span>Length <b>3–6 months</b></span><span>Basis <b>Monthly</b></span></div>
+          <h3>Execution Partner</h3>
+          <p>Make the plan happen. We stay on as your part-time strategy head: weekly reviews, clear KPIs, and unblocking people until the change sticks.</p>
+          <span class="inc">Weekly reviews · KPI dashboard · Part-time strategy head</span>
+        </div>
+        <div class="ep">
+          <div class="meta mono"><span>Item <b>03</b></span><span>Basis <b>Ongoing</b></span></div>
+          <h3>Build</h3>
+          <p>Lock the fix in with tools: dashboards, automation, AI assistants and custom software that make the new process the way your company runs every day.</p>
+          <span class="inc">Dashboards · Automation · AI assistants · Custom software</span>
+        </div>
+      </div>
+    </div>
+    <div class="addon">
+      <div><span class="mono note">Add-on · Per deck</span><h3>Insight decks</h3></div>
+      <p>Board, bank and investor presentations built research first, with one clear message per page.</p>
+      <p class="note">Prasanth learned this craft over five years at McKinsey, watching how consultants turn raw research into a page a board will act on.</p>
+    </div>
+    <p class="fit">Built for founder-led companies of 50 to 500 people, starting with logistics, manufacturing and industrial services in South India.</p>
+  </div>
+</section>
+
+<!-- ======================= SHEET 06 ======================= -->
+<section id="ai" class="sh wrap" aria-labelledby="h-ai">
+  <div class="strip mono"><span><b>Sheet 06</b> · How we use AI</span><span>General notes</span></div>
+  <div class="body notes-g">
+    <div>
+      <h2 id="h-ai">AI makes us faster. It never makes the decision.</h2>
+      <p class="sub">Every drawing carries general notes that apply to the whole job. These apply to every engagement we take on.</p>
+    </div>
+    <div class="nbox">
+      <span class="mono">Notes:</span>
+      <ol>
+        <li><div><b>A person signs off every recommendation.</b><span>AI drafts the analysis. Prasanth checks it, challenges it and puts his name to it.</span></div></li>
+        <li><div><b>Your data works only for you.</b><span>We use your information for your engagement and nothing else, and we tell you which tools touch it.</span></div></li>
+        <li><div><b>You own everything we build.</b><span>Dashboards, models and automations are yours, with the documentation to run them without us.</span></div></li>
+        <li><div><b>We’ll tell you when AI isn’t the answer.</b><span>Sometimes the fix is a conversation, a role or a rule. We’ll say so.</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SHEET 07 ======================= -->
+<section id="founder" class="sh wrap" aria-labelledby="h-f">
+  <div class="strip mono"><span><b>Sheet 07</b> · Founder</span><span>Detail B</span></div>
+  <div class="body">
+    <div class="fdr">
+      <div>
+        <p class="quote" id="h-f">“Five people, five problems. My job is to find the one thread that connects them.”</p>
+        <span class="mono">Prasanth Sethuraman · Founder &amp; Director</span>
+      </div>
+      <div class="bio">
+        <div class="detail"><div class="ring" aria-hidden="true">PS</div><div class="mono"><b>Detail B</b><br>Prasanth Sethuraman<br>Chennai · IST</div></div>
+        <p>Prasanth spent five years at McKinsey, starting as a presentation specialist and growing into a junior consultant, learning how the firm’s consultants turn raw research into insight.</p>
+        <p>He then spent five years at Cognizant leading STEP, a standalone strategy and transformation team covering market intelligence, strategy and employee engagement.</p>
+        <p>He founded Stratum Prism in Chennai to pair that discipline with the speed of AI, and to stay for the part most consultants skip: getting it done.</p>
+      </div>
+    </div>
+    <div class="career" id="career" aria-label="Career, dimensioned in years">
+      <div class="dimrow">
+        <div class="dseg"><div class="top">5 YEARS</div><div class="dline"><i class="a1"></i><i class="a2"></i></div><div class="bot"><b>McKinsey</b>Presentation specialist, then junior consultant</div></div>
+        <div class="dseg"><div class="top">5 YEARS</div><div class="dline"><i class="a1"></i><i class="a2"></i></div><div class="bot"><b>Cognizant</b>Led STEP: strategy, transformation, market intelligence</div></div>
+        <div class="dseg now"><div class="top">2026 →</div><div class="dline"><i class="a1"></i></div><div class="bot"><b>Stratum Prism</b>Founded in Chennai</div></div>
+      </div>
+      <div class="total" aria-label="10 years in strategy"><div class="ov"><i class="a1"></i><i class="a2"></i><span class="mono">10 years in strategy</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SHEET 08 ======================= -->
+<section id="contact" class="sh wrap" aria-labelledby="h-c">
+  <div class="strip mono"><span><b>Sheet 08</b> · Contact</span><span>Request for a first call</span></div>
+  <div class="body ct">
+    <div>
+      <h2 id="h-c">Bring one problem. Prasanth replies within one working day.</h2>
+      <div class="direct">
+        <div class="ln"><span class="mono">Email</span><span class="v" id="em">contact@stratumprism.com</span><button class="btn" type="button" id="copy-em">Copy</button></div>
+        <div class="ln"><span class="mono">Phone</span><span class="v">+91 75500 59511</span><span></span></div>
+        <div class="ln"><span class="mono">WhatsApp</span><a class="v" href="https://wa.me/917550059511" target="_blank" rel="noopener">Message Prasanth ↗</a><span></span></div>
+        <div class="ln"><span class="mono">Based in</span><span class="v">Alwarpet, Chennai · IST</span><span></span></div>
+      </div>
+    </div>
+    <div class="rfq">
+      <div class="hd mono"><span><b>Request for a first call</b></span><span>Reply within one working day</span></div>
+      <form id="rfq" novalidate>
+        <div class="f"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="f"><label for="f-co">Company</label><input id="f-co" name="company" autocomplete="organization"></div>
+        <div class="f"><label for="f-reach">Email or phone</label><input id="f-reach" name="reach" autocomplete="email" required></div>
+        <div class="f"><label for="f-topic">What keeps coming up</label>
+          <select id="f-topic" name="topic"><option value="Cash flow">Cash flow</option><option value="Hiring &amp; people">Hiring &amp; people</option><option value="Sales pipeline">Sales pipeline</option><option value="Operations">Operations</option><option value="Succession">Succession</option><option value="Something else">Something else</option></select></div>
+        <div class="f w"><label for="f-msg">What's going on, in your words</label><textarea id="f-msg" name="msg" placeholder="What leadership says, what the floor says, and what the numbers show, if you know."></textarea></div>
+        <div class="sub2"><span class="note">Nothing is sent until you press send in WhatsApp or your email.</span><button class="cta" type="submit">Prepare my request</button></div>
+      </form>
+      <div class="ready" id="ready" hidden>
+        <span class="mono note" id="ready-msg">Your request is ready</span>
+        <pre id="ready-txt"></pre>
+        <div class="row"><a class="cta" id="ready-wa" href="https://wa.me/917550059511" target="_blank" rel="noopener">Send on WhatsApp</a><button class="btn" type="button" id="ready-copy">Copy for email</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <div class="ftb">
+    <div><svg class="mark" viewBox="0 0 24 21" aria-hidden="true"><polygon points="12,0 13.99,3.48 10.01,3.48" fill="var(--l1)"/><polygon points="9.5,4.38 14.5,4.38 16.49,7.86 7.51,7.86" fill="var(--l2)"/><polygon points="6.99,8.76 17.01,8.76 18.99,12.24 5.01,12.24" fill="var(--l3)"/><polygon points="4.49,13.14 19.51,13.14 21.5,16.62 2.5,16.62" fill="var(--l4)"/><polygon points="1.99,17.52 22.01,17.52 24,21 0,21" fill="var(--l5)"/></svg>Stratum Prism</div>
+    <div><span class="k">Company</span>Stratum Prism Private Limited</div>
+    <div><span class="k">CIN</span>U62099TN2026PTC200066</div>
+    <div><span class="k">Registered office</span>Alwarpet, Chennai, Tamil Nadu, India</div>
+    <div><span class="k">Drawing set</span>Rev E · 8 sheets</div>
+    <div><span class="k">Copyright</span>© 2026</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+const root=document.documentElement;root.classList.add('js');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- the problems: every view of each one, and the first two weeks ---------- */
+const PB={
+  cash:{label:'Cash flow',layer:3,
+    front:'We’re profitable on paper and still short of cash every month.',
+    side:'Invoices wait until the delivery papers come back from site.',
+    top:'How many days of sales sit unpaid, and which customers hold most of it.',
+    sect:'Layer 3, operations: the gap between dispatch and invoice.',
+    title:'In two weeks, your team sees exactly where the cash waits.',
+    listen:'Separate conversations with you, accounts and dispatch.',
+    diag:'AI reads twelve months of invoices, receipts and delivery dates from Tally or your ERP.',
+    own:'Workshop: your team traces one order from dispatch to payment and agrees where it stalls.'},
+  people:{label:'Hiring & people',layer:5,
+    front:'We keep hiring, and output doesn’t go up.',
+    side:'New joiners get no training, so the good ones carry the load.',
+    top:'Output per person, month by month, against headcount and attrition.',
+    sect:'Layer 5, people and decisions: who owns onboarding, and who shares out the work.',
+    title:'In two weeks, you see why more people hasn’t meant more output.',
+    listen:'Separate conversations with you, your supervisors and the last ten people who joined.',
+    diag:'AI reads attendance, payroll and output records to show where the work actually lands.',
+    own:'Workshop: supervisors agree who trains new joiners and how work is shared out.'},
+  sales:{label:'Sales pipeline',layer:2,
+    front:'Enquiries are up. Orders aren’t.',
+    side:'Enquiries come in on WhatsApp and nobody logs them, so follow-ups slip.',
+    top:'Where enquiries drop out: first call, quote, negotiation or credit check.',
+    sect:'Layer 2, customers and sales: the follow-up rhythm after the first quote.',
+    title:'In two weeks, you see where deals stall and what they wait for.',
+    listen:'Separate conversations with you, the sales team and two customers who didn’t buy.',
+    diag:'AI reads enquiry registers, quotes and follow-up history, including any WhatsApp exports you choose to share.',
+    own:'Workshop: the team agrees one follow-up rhythm and who owns each stage.'},
+  ops:{label:'Operations',layer:4,
+    front:'Orders keep going out late, and every department blames another.',
+    side:'We already keep three registers for the same order.',
+    top:'How many registers record the same order, and how late each number arrives.',
+    sect:'Layer 4, data and systems: sorted out before any software is bought.',
+    title:'In two weeks, you know which numbers you need before you buy any software.',
+    listen:'A walk through the floor with your supervisors, then separate conversations with you and accounts.',
+    diag:'AI maps every register, sheet and report to the decision it feeds, and finds the duplicates.',
+    own:'Workshop: the team picks the three numbers that run the day, and who updates each one.'},
+  succ:{label:'Succession',layer:5,
+    front:'The next generation is joining, and everyone still calls me.',
+    side:'When the founder is away, nobody knows who can say yes.',
+    top:'How many decisions a week still go to the founder, and which could go to someone else.',
+    sect:'Layer 5, people and decisions: who decides what, written down.',
+    title:'In two weeks, both generations agree on who decides what.',
+    listen:'Separate conversations with you, your successor and your senior staff.',
+    diag:'AI sorts a month of approvals and escalations by who decided, and who could have.',
+    own:'Workshop: a decision map that both generations sign.'}
+};
+
+/* ---------- geometry of the part: a block of five layers with a bore drilled down to the cause ---------- */
+const W=300,D=160,H=200,PL=8,R=20,BX=190,BY=80,PT=R*.6; // 118° drill point
+const C=[0,30,66,110,150,200];
+const LV=['--l1','--l2','--l3','--l4','--l5'];
+const depthOf=L=>(C[L-1]+C[L])/2;
+const f=n=>Math.round(n*100)/100;
+const ln=(a,b,c,d,k)=>`<line x1="${f(a)}" y1="${f(b)}" x2="${f(c)}" y2="${f(d)}" class="${k}"/>`;
+const rc=(x,y,w,h,k,e='')=>`<rect x="${f(x)}" y="${f(y)}" width="${f(w)}" height="${f(h)}" class="${k}" ${e}/>`;
+const ci=(x,y,r,k,e='')=>`<circle cx="${f(x)}" cy="${f(y)}" r="${f(r)}" class="${k}" ${e}/>`;
+const pa=(d,k,e='')=>`<path d="${d}" class="${k}" ${e}/>`;
+const tx=(x,y,s,k,e='')=>`<text x="${f(x)}" y="${f(y)}" class="${k}" ${e}>${s}</text>`;
+function arrow(x,y,ang,k,cls){const L=7*k,w=2.4*k,c=Math.cos(ang),s=Math.sin(ang);
+  return `<path class="${cls||'ah'}" d="M${f(x)} ${f(y)}L${f(x-L*c+w*s)} ${f(y-L*s-w*c)}L${f(x-L*c-w*s)} ${f(y-L*s+w*c)}Z"/>`}
+function balloon(x,y,n,k,hit,col){const r=6.6*k;
+  return `<circle cx="${f(x)}" cy="${f(y)}" r="${f(r)}" class="bal" ${hit?`style="fill:var(${col});stroke:var(${col})"`:''}/>`+
+    tx(x,y+3*k,n,'lbl',`text-anchor="middle" style="font-size:${f(8.5*k)}px${hit?';fill:var(--ground)':''}"`)}
+function hatchDefs(id,k){const s=6*k,sw=.75*k;return `<defs>
+ <pattern id="${id}1" width="${f(s)}" height="${f(s)}" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="${f(s)}" stroke="var(--l1)" stroke-width="${f(sw)}"/></pattern>
+ <pattern id="${id}2" width="${f(s)}" height="${f(s)}" patternUnits="userSpaceOnUse"><circle cx="${f(s/2)}" cy="${f(s/2)}" r="${f(.85*k)}" fill="var(--l2)"/></pattern>
+ <pattern id="${id}3" width="${f(s*1.3)}" height="${f(s*1.3)}" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V${f(s*1.3)}M0 0H${f(s*1.3)}" stroke="var(--l3)" stroke-width="${f(sw)}"/></pattern>
+ <pattern id="${id}4" width="${f(s*2)}" height="${f(s)}" patternUnits="userSpaceOnUse"><path d="M0 0H${f(s*2)}M0 0V${f(s/2)}M${f(s)} ${f(s/2)}V${f(s)}M0 ${f(s/2)}H${f(s*2)}" stroke="var(--l4)" stroke-width="${f(sw)}" fill="none"/></pattern>
+ <pattern id="${id}5" width="${f(s*1.2)}" height="${f(s*1.2)}" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0V${f(s*1.2)}M${f(1.8*k)} 0V${f(s*1.2)}" stroke="var(--l5)" stroke-width="${f(sw*.85)}"/></pattern>
+</defs>`}
+const boreHidden=(cx,dep)=>`<g>${ln(cx-R,0,cx-R,dep,'h')}${ln(cx+R,0,cx+R,dep,'h')}${ln(cx-R,dep,cx,dep+PT,'h')}${ln(cx,dep+PT,cx+R,dep,'h')}</g>`;
+
+function vTop(k){let s='';
+  s+=rc(0,0,W,D,'o pl')+ln(0,D-PL,W,D-PL,'t pl');
+  s+=ci(BX,D-BY,R,'o pl');
+  s+=ln(BX-R-10,D-BY,BX+R+10,D-BY,'c fd')+ln(BX,D-BY-R-10,BX,D-BY+R+10,'c fd');
+  const y=D-BY;
+  s+=`<g class="fd">`+ln(-20,y,W+20,y,'cut')+ln(-20,y,-8,y,'cutk')+ln(W+8,y,W+20,y,'cutk')+
+    ln(-16,y,-16,y-15,'dm')+arrow(-16,y-17,-Math.PI/2,k,'ahi')+ln(W+16,y,W+16,y-15,'dm')+arrow(W+16,y-17,-Math.PI/2,k,'ahi')+
+    tx(-16,y+15*k+2,'A','lbl','text-anchor="middle"')+tx(W+16,y+15*k+2,'A','lbl','text-anchor="middle"')+`</g>`;
+  return s}
+function vFront(dep,k){let s='';
+  s+=rc(0,0,W,H,'o pl')+rc(9,9,W-18,H-18,'t pl');
+  [[22,22],[W-22,22],[22,H-22],[W-22,H-22]].forEach(([x,y])=>{s+=ci(x,y,5,'t pl')});
+  s+=rc(36,34,92,26,'t pl')+ln(46,43,118,43,'t pl')+ln(46,51,96,51,'t pl');
+  s+=`<g class="fd dyn">${boreHidden(BX,dep)}</g>`;
+  s+=`<g class="fd dyn">${ln(BX,-14,BX,dep+PT+14,'c')}</g>`;
+  return s}
+function vSide(dep,k,L){let s='';
+  s+=rc(0,0,D,H,'o pl')+ln(PL,0,PL,H,'t pl');
+  for(let i=1;i<5;i++)s+=ln(PL,C[i],D,C[i],'t pl');
+  s+=`<g class="fd dyn">${boreHidden(BY,dep)}${ln(BY,-14,BY,dep+PT+14,'c')}</g>`;
+  s+=`<g class="fd">`;for(let i=1;i<=5;i++){const m=(C[i-1]+C[i])/2;s+=ln(D-14,m,D+9.5*k,m,'dm')+ci(D-14,m,1.4*k,'ah')+balloon(D+9.5*k+6.6*k,m,i,k,i===L,LV[i-1])}s+=`</g>`;
+  return s}
+function vSect(dep,k,L,id){let s=hatchDefs(id,k);
+  for(let i=1;i<=5;i++){const hit=i===L;
+    s+=`<rect x="0" y="${C[i-1]}" width="${W}" height="${C[i]-C[i-1]}" fill="url(#${id}${i})" class="fd" style="opacity:${hit?1:.42}"/>`;}
+  for(let i=1;i<5;i++)s+=ln(0,C[i],W,C[i],'t pl');
+  s+=`<path class="void dyn" d="M${BX-R} -.5L${BX-R} ${f(dep)}L${BX} ${f(dep+PT)}L${BX+R} ${f(dep)}L${BX+R} -.5"/>`;
+  s+=rc(0,0,W,H,'o pl');
+  s+=`<g class="fd dyn">${ln(BX,-14,BX,dep+PT+14,'c')}</g>`;
+  // highlighted layer outline
+  s+=`<rect class="fd dyn" x="0" y="${C[L-1]}" width="${W}" height="${C[L]-C[L-1]}" fill="none" stroke="var(${LV[L-1]})" stroke-width="${f(1.6*k)}"/>`;
+  // depth dimension on the right
+  const tip=dep+PT,xd=W+13*k;
+  s+=`<g class="fd dyn">${ln(W+3*k,0,W+19*k,0,'dm')}${ln(BX+4*k,tip,W+19*k,tip,'dm')}${ln(xd,0,xd,tip,'dm')}${arrow(xd,0,-Math.PI/2,k)}${arrow(xd,tip,Math.PI/2,k)}</g>`;
+  // cause flag
+  const fy=Math.min(Math.max(tip,C[L-1]+12),H-12),fx=BX+R+10,fw=W-5-fx;
+  s+=`<g class="fd dyn">${ln(BX+3,tip,fx,fy,'dm')}${ci(BX,tip,1.6*k,'ahi')}<rect class="flag" x="${f(fx)}" y="${f(fy-8*k)}" width="${f(fw)}" height="${f(16*k)}" style="stroke:var(${LV[L-1]})"/>${tx(fx+fw/2,fy+3*k,'CAUSE ZONE','lbl',`text-anchor="middle" style="font-size:${f(7.6*k)}px;letter-spacing:.02em"`)}</g>`;
+  return s}
+/* isometric: x right-down, y (depth) right-up, z up */
+const IS=.44,c30=Math.cos(Math.PI/6),s30=.5;
+const P=(x,y,z)=>[(x+y)*c30*IS,((x-y)*s30-z)*IS];
+const poly=(pts,k,e='')=>`<path class="${k}" ${e} d="M${pts.map(p=>{const q=P(...p);return f(q[0])+' '+f(q[1])}).join('L')}Z"/>`;
+const pl3=(a,b,k)=>{const p=P(...a),q=P(...b);return ln(p[0],p[1],q[0],q[1],k)};
+function vIso(dep,k,L){let s='';
+  for(let i=1;i<=5;i++){const zt=H-C[i-1],zb=H-C[i];
+    s+=poly([[W,PL,zb],[W,D,zb],[W,D,zt],[W,PL,zt]],'fd',`style="fill:var(${LV[i-1]});opacity:${i===L?.5:.16};stroke:none"`)}
+  for(let i=1;i<5;i++)s+=pl3([W,PL,H-C[i]],[W,D,H-C[i]],'t pl');
+  s+=pl3([W,PL,0],[W,PL,H],'t pl');
+  s+=poly([[0,0,H],[W,0,H],[W,D,H],[0,D,H]],'o pl');
+  s+=poly([[0,0,0],[W,0,0],[W,0,H],[0,0,H]],'o pl');
+  s+=poly([[W,0,0],[W,D,0],[W,D,H],[W,0,H]],'o pl');
+  s+=poly([[9,0,9],[W-9,0,9],[W-9,0,H-9],[9,0,H-9]],'t pl');
+  s+=pl3([0,PL,H],[W,PL,H],'t pl');
+  // bore on top + its hidden walls
+  let e='';for(let a=0;a<=48;a++){const t=a/48*Math.PI*2,q=P(BX+R*Math.cos(t),BY+R*Math.sin(t),H);e+=(a?'L':'M')+f(q[0])+' '+f(q[1])}
+  s+=`<path class="o pl" d="${e}"/>`;
+  const c=Math.SQRT1_2,a1=[BX+R*c,BY+R*c],a2=[BX-R*c,BY-R*c];
+  s+=`<g class="fd dyn">${pl3([a1[0],a1[1],H],[a1[0],a1[1],H-dep],'h')}${pl3([a2[0],a2[1],H],[a2[0],a2[1],H-dep],'h')}${pl3([a1[0],a1[1],H-dep],[BX,BY,H-dep-PT],'h')}${pl3([a2[0],a2[1],H-dep],[BX,BY,H-dep-PT],'h')}</g>`;
+  s+=pl3([-14,BY,H],[W+14,BY,H],'c fd');
+  return s}
+
+/* ---------- render ---------- */
+const sv={top:document.getElementById('sv-top'),front:document.getElementById('sv-front'),side:document.getElementById('sv-side'),sect:document.getElementById('sv-sect'),iso:document.getElementById('sv-iso')};
+let cur='cash',dep=depthOf(PB.cash.layer),L=PB.cash.layer,plotted=false;
+const kOf=el=>{const w=el.getBoundingClientRect().width||1;return el.viewBox.baseVal.width/w};
+function render(){
+  for(const n in sv){const el=sv[n];if(!el||!el.getBoundingClientRect().width)continue;const k=kOf(el);el.style.setProperty('--k',k);
+    el.innerHTML=n==='top'?vTop(k):n==='front'?vFront(dep,k):n==='side'?vSide(dep,k,L):n==='sect'?vSect(dep,k,L,'hs'):vIso(dep,k,L)}
+}
+function plot(){
+  if(reduce)return;
+  const order=['top','front','side','sect','iso'];
+  order.forEach((n,vi)=>{const el=sv[n];if(!el)return;
+    el.querySelectorAll('.pl').forEach((p,i)=>{let len=0;try{len=p.getTotalLength()}catch(e){}if(!len)return;
+      p.style.strokeDasharray=len;p.style.strokeDashoffset=len;
+      const a=p.animate([{strokeDashoffset:len},{strokeDashoffset:0}],{duration:520+Math.min(len*2.2,700),delay:120+vi*170+i*35,easing:'cubic-bezier(.6,.05,.25,1)',fill:'forwards'});
+      a.onfinish=()=>{p.style.strokeDasharray='';p.style.strokeDashoffset='';a.cancel()}});
+    el.querySelectorAll('.fd').forEach(g=>{g.animate([{opacity:0},{opacity:getComputedStyle(g).opacity||1}],{duration:500,delay:700+vi*170,easing:'ease-out',fill:'backwards'})});
+  });
+}
+render();plot();plotted=true;
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(render,120)});
+
+/* ---------- picking a problem: captions swap, the bore drills to the new layer ---------- */
+const $=id=>document.getElementById(id);
+const capEls=['q-front','q-side','q-top','q-sect'].map($);
+const legend=$('legend');
+function setLegend(){legend.querySelectorAll('tr').forEach(tr=>{const hit=+tr.dataset.l===L;tr.classList.toggle('hit',hit);tr.style.setProperty('--hit',`var(${LV[L-1]})`)})}
+setLegend();
+let anim=0;
+function choose(key){
+  if(!PB[key]||key===cur)return;cur=key;const p=PB[key];
+  const from=dep,to=depthOf(p.layer);L=p.layer;setLegend();
+  // captions
+  const keys=['front','side','top','sect'];
+  capEls.forEach(el=>el.parentNode.classList.add('swap'));
+  setTimeout(()=>{capEls.forEach((el,i)=>{el.textContent=p[keys[i]];el.parentNode.classList.remove('swap')})},reduce?0:220);
+  // sheet 02
+  $('weeks-pb').textContent=p.label;
+  const wf=[$('h-weeks'),$('w-listen'),$('w-diag'),$('w-own')];
+  wf.forEach(el=>el.style.opacity=0);
+  setTimeout(()=>{$('h-weeks').textContent=p.title;$('w-listen').textContent=p.listen;$('w-diag').textContent=p.diag;$('w-own').textContent=p.own;wf.forEach(el=>el.style.opacity=1)},reduce?0:220);
+  const sel=$('f-topic');if(sel)sel.value=p.label;
+  // drill
+  cancelAnimationFrame(anim);
+  if(reduce){dep=to;render();return}
+  const t0=performance.now(),dur=750;
+  (function step(now){const u=Math.min(1,(now-t0)/dur),e=u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;dep=from+(to-from)*e;render();if(u<1)anim=requestAnimationFrame(step)})(t0);
+}
+$('pick').addEventListener('change',e=>{if(e.target.name==='pb')choose(e.target.value)});
+
+/* ---------- something else: prefilled WhatsApp ---------- */
+const mine=$('mine'),mwa=$('mine-wa');
+const waLink=t=>'https://wa.me/917550059511?text='+encodeURIComponent(t);
+mine.addEventListener('input',()=>{const v=mine.value.trim();mwa.href=v?waLink('Hi Prasanth, this keeps coming up for us: '+v):'https://wa.me/917550059511'});
+
+/* ---------- revision clouds around each revised question ---------- */
+function cloudPath(w,h,s){const pts=[];const edge=(x0,y0,x1,y1)=>{const len=Math.hypot(x1-x0,y1-y0),n=Math.max(2,Math.round(len/s));for(let i=1;i<=n;i++)pts.push([x0+(x1-x0)*i/n,y0+(y1-y0)*i/n])};
+  edge(0,0,w,0);edge(w,0,w,h);edge(w,h,0,h);edge(0,h,0,0);
+  let d='M0 0';pts.forEach(([x,y],i)=>{const [px,py]=i?pts[i-1]:[0,0];const r=Math.hypot(x-px,y-py)*.62;d+=`A${f(r)} ${f(r)} 0 0 1 ${f(x)} ${f(y)}`});return d}
+const ns='http://www.w3.org/2000/svg';
+function clouds(drawNow){document.querySelectorAll('.rv .now').forEach(el=>{let svg=el.querySelector('svg.cloud');
+  if(!svg){svg=document.createElementNS(ns,'svg');svg.setAttribute('class','cloud');svg.setAttribute('aria-hidden','true');el.appendChild(svg)}
+  const r=el.getBoundingClientRect(),w=r.width+16,h=r.height+16;svg.setAttribute('viewBox',`-2 -2 ${f(w+4)} ${f(h+4)}`);
+  svg.style.inset='-10px';svg.style.width=f(w+4)+'px';svg.style.height=f(h+4)+'px';
+  svg.innerHTML=`<path d="${cloudPath(w,h,15)}"/>`;
+  if(drawNow&&!reduce){const p=svg.firstChild,len=p.getTotalLength();p.style.strokeDasharray=len;p.style.strokeDashoffset=len;
+    const a=p.animate([{strokeDashoffset:len},{strokeDashoffset:0}],{duration:1100,delay:200,easing:'cubic-bezier(.5,0,.3,1)',fill:'forwards'});a.onfinish=()=>{p.style.strokeDasharray='';p.style.strokeDashoffset='';a.cancel()}}
+})}
+clouds(false);addEventListener('resize',()=>{clearTimeout(clouds.t);clouds.t=setTimeout(()=>clouds(false),150)});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{clouds(false);render()});
+
+/* ---------- one-shot motion per sheet, each its own ---------- */
+if('IntersectionObserver' in window&&!reduce){
+  const once=(el,fn,th)=>{const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){fn();io.disconnect()}})},{threshold:th||.35});io.observe(el)};
+  once($('revs'),()=>clouds(true),.3);
+  once($('route'),()=>document.querySelectorAll('.rt').forEach((r,i)=>setTimeout(()=>r.classList.add('scan'),i*160)),.3);
+  once($('career'),()=>$('career').classList.add('draw'),.5);
+}
+
+/* ---------- current sheet in the index ---------- */
+const tabs=[...document.querySelectorAll('.tabs a')];
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){tabs.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section').forEach(s=>io.observe(s))}
+
+/* ---------- contact: copy, and a prepared request ---------- */
+function copy(text,btn){const done=()=>{const o=btn.textContent;btn.textContent='Copied';setTimeout(()=>btn.textContent=o,1600)};
+  try{navigator.clipboard.writeText(text).then(done,()=>sel(btn))}catch(e){sel(btn)}
+  function sel(){const r=document.createRange();r.selectNodeContents($('em'));const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected'}}
+$('copy-em').addEventListener('click',e=>copy('contact@stratumprism.com',e.currentTarget));
+$('rfq').addEventListener('submit',e=>{e.preventDefault();
+  const v=id=>$(id).value.trim();
+  if(!v('f-name')||!v('f-reach')){const m=$('ready-msg');$('ready').hidden=false;m.textContent='Add your name and an email or phone number so Prasanth can reply.';$('ready-txt').textContent='';$('ready-txt').hidden=true;$('ready-wa').hidden=true;$('ready-copy').hidden=true;return}
+  const t=`Request for a first call\nName: ${v('f-name')}\nCompany: ${v('f-co')||'-'}\nReach me at: ${v('f-reach')}\nWhat keeps coming up: ${v('f-topic')}\n\n${v('f-msg')||''}`.trim();
+  $('ready').hidden=false;$('ready-msg').textContent='Your request is ready. Send it on WhatsApp, or copy it into an email to contact@stratumprism.com.';
+  $('ready-txt').hidden=false;$('ready-txt').textContent=t;$('ready-wa').hidden=false;$('ready-copy').hidden=false;$('ready-wa').href=waLink(t);
+  $('ready-copy').onclick=ev=>{const b=ev.currentTarget;try{navigator.clipboard.writeText(t).then(()=>{b.textContent='Copied'},()=>{b.textContent='Select the text above'})}catch(err){b.textContent='Select the text above'}};
+});
+})();
+</script>
