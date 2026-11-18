@@ -60,7 +60,13 @@ a{color:inherit}
 .pill{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:clamp(12px,2.4vw,36px);padding:7px 7px 7px 18px;border:1px solid var(--line2);border-radius:999px;background:rgba(8,10,15,.86);color:var(--ink);width:max-content;max-width:calc(100vw - 24px);box-shadow:0 10px 40px -10px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.05);transition:border-color .4s}
 .pill.dark{border-color:rgba(125,249,255,.25)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:600 13px/1 var(--sans);letter-spacing:.02em;white-space:nowrap;min-height:40px}
-.logo svg{width:20px;height:18px}
+.logo .mark{width:40px;height:40px;margin:-6px 0 -6px -6px}
+/* the 3D prism mark */
+.mark{overflow:visible;flex:none;filter:drop-shadow(0 0 6px rgba(125,249,255,.42));cursor:default}
+.mark .e1{stroke-width:1.1px;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.mark .e2{stroke-width:.6px;vector-effect:non-scaling-stroke}
+.f-brand{display:flex;align-items:center;gap:14px}
+.f-brand .mark{width:52px;height:52px}
 .pill nav{display:flex;gap:22px}
 .pill nav a{text-decoration:none;font-size:14px;color:inherit;opacity:.66;padding:10px 0;transition:opacity .2s,color .2s}
 .pill nav a:hover{opacity:1;color:var(--acc)}
@@ -317,7 +323,7 @@ footer{padding:0 0 calc(30px + env(safe-area-inset-bottom,0px));overflow:hidden}
 .ghostmark{font:600 clamp(58px,14vw,250px)/.9 var(--disp);letter-spacing:-.065em;color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.14);background:radial-gradient(360px circle at var(--gx,50%) var(--gy,50%),rgba(125,249,255,.6),rgba(155,123,255,.28) 42%,transparent 72%);-webkit-background-clip:text;background-clip:text;white-space:nowrap;text-align:center;margin:20px 0 34px;padding:0 .04em .06em;user-select:none}
 @media (pointer:coarse){.ghostmark{animation:sweep 7s ease-in-out infinite alternate}}
 @keyframes sweep{from{--gx:5%}to{--gx:95%}}
-.f-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 30px;border-top:1px solid var(--line);padding-top:22px;font-size:14px;color:var(--mut)}
+.f-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 30px;border-top:1px solid var(--line);padding-top:22px;font-size:14px;color:var(--mut)}
 .f-row b{color:var(--ink);font-weight:500}
 
 @media (prefers-reduced-motion:reduce){
@@ -334,7 +340,7 @@ footer{padding:0 0 calc(30px + env(safe-area-inset-bottom,0px));overflow:hidden}
 <canvas id="gl" aria-hidden="true"></canvas>
 <div class="bgfx" id="bgfx" aria-hidden="true"></div>
 <header class="pill" id="pill">
-  <a class="logo" href="#top"><svg viewBox="0 0 20 18" aria-hidden="true"><path d="M10 1 19 17H1Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M10 10 19 7" stroke="#ff5a4e"/><path d="M10 10 19 10.5" stroke="#3fbf78"/><path d="M10 10 19 14" stroke="#3f9fff"/></svg>Stratum Prism</a>
+  <a class="logo" href="#top"><svg class="mark" data-mark viewBox="-1.35 -1.25 2.7 2.5" aria-hidden="true"><defs><linearGradient id="m0g0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".22" stop-color="#7df9ff"/><stop offset="1" stop-color="#7df9ff" stop-opacity=".35"/></linearGradient><linearGradient id="m0g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".22" stop-color="#9b7bff"/><stop offset="1" stop-color="#9b7bff" stop-opacity=".35"/></linearGradient><linearGradient id="m0g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".22" stop-color="#ff7ad9"/><stop offset="1" stop-color="#ff7ad9" stop-opacity=".35"/></linearGradient><linearGradient id="m0g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".22" stop-color="#5ad1ff"/><stop offset="1" stop-color="#5ad1ff" stop-opacity=".35"/></linearGradient></defs><path d="M0.255 -1.060L0.975 0.394L-0.409 0.161Z" fill="url(#m0g1)" fill-opacity="0.120"/><path d="M-1.056 0.535L-0.409 0.161L0.975 0.394L0.620 0.917Z" fill="url(#m0g3)" fill-opacity="0.120"/><path d="M-0.336 -0.985L0.255 -1.060L-0.409 0.161L-1.056 0.535Z" fill="url(#m0g1)" fill-opacity="0.213"/><path d="M0.975 0.394L-0.409 0.161" fill="none" stroke="#c8fbff" stroke-opacity=".35" class="e2"/><path d="M-0.409 0.161L0.255 -1.060" fill="none" stroke="#c8fbff" stroke-opacity=".35" class="e2"/><path d="M-0.409 0.161L-1.056 0.535" fill="none" stroke="#c8fbff" stroke-opacity=".35" class="e2"/><path d="M-0.491 -0.070L0.606 0.188" fill="none" stroke="#fff" stroke-opacity=".95" class="e1"/><path d="M-0.336 -0.985L0.620 0.917L0.975 0.394L0.255 -1.060Z" fill="url(#m0g2)" fill-opacity="0.421"/><path d="M-0.336 -0.985L-1.056 0.535L0.620 0.917Z" fill="url(#m0g0)" fill-opacity="0.649"/><path d="M-0.336 -0.985L-1.056 0.535" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/><path d="M-1.056 0.535L0.620 0.917" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/><path d="M0.620 0.917L-0.336 -0.985" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/><path d="M0.255 -1.060L0.975 0.394" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/><path d="M-0.336 -0.985L0.255 -1.060" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/><path d="M0.620 0.917L0.975 0.394" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/><path d="M-1.227 -0.360L-0.491 -0.070" fill="none" stroke="#fff" class="e1"/><path d="M0.606 0.188L1.638 0.323" fill="none" stroke="#ff5c8a" class="e1"/><path d="M0.606 0.188L1.619 0.475" fill="none" stroke="#ffb04a" class="e1"/><path d="M0.606 0.188L1.601 0.623" fill="none" stroke="#4dffb0" class="e1"/><path d="M0.606 0.188L1.583 0.768" fill="none" stroke="#5ad1ff" class="e1"/><path d="M0.606 0.188L1.565 0.909" fill="none" stroke="#9b7bff" class="e1"/></svg>Stratum Prism</a>
   <nav aria-label="Primary"><a href="#start">Start here</a><a href="#method">Method</a><a href="#work">Engagements</a><a href="#ai">AI principles</a><a href="#founder">Founder</a></nav>
   <a class="talk" href="#contact"><span class="av" aria-hidden="true">PS</span><span class="tl">Talk to Prasanth</span></a>
 </header>
@@ -495,7 +501,7 @@ footer{padding:0 0 calc(30px + env(safe-area-inset-bottom,0px));overflow:hidden}
 
 <footer>
   <div class="ghostmark" aria-hidden="true">Stratum Prism</div>
-  <div class="w f-row"><span><b>Stratum Prism Private Limited</b> · CIN U62099TN2026PTC200066</span><span>Alwarpet, Chennai, Tamil Nadu, India</span><span>© 2026 Stratum Prism</span></div>
+  <div class="w f-row"><span class="f-brand"><svg class="mark" data-mark viewBox="-1.35 -1.25 2.7 2.5" aria-hidden="true"><defs><linearGradient id="m1g0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".22" stop-color="#7df9ff"/><stop offset="1" stop-color="#7df9ff" stop-opacity=".35"/></linearGradient><linearGradient id="m1g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".22" stop-color="#9b7bff"/><stop offset="1" stop-color="#9b7bff" stop-opacity=".35"/></linearGradient><linearGradient id="m1g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".22" stop-color="#ff7ad9"/><stop offset="1" stop-color="#ff7ad9" stop-opacity=".35"/></linearGradient><linearGradient id="m1g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".22" stop-color="#5ad1ff"/><stop offset="1" stop-color="#5ad1ff" stop-opacity=".35"/></linearGradient></defs><path d="M0.255 -1.060L0.975 0.394L-0.409 0.161Z" fill="url(#m1g1)" fill-opacity="0.120"/><path d="M-1.056 0.535L-0.409 0.161L0.975 0.394L0.620 0.917Z" fill="url(#m1g3)" fill-opacity="0.120"/><path d="M-0.336 -0.985L0.255 -1.060L-0.409 0.161L-1.056 0.535Z" fill="url(#m1g1)" fill-opacity="0.213"/><path d="M0.975 0.394L-0.409 0.161" fill="none" stroke="#c8fbff" stroke-opacity=".35" class="e2"/><path d="M-0.409 0.161L0.255 -1.060" fill="none" stroke="#c8fbff" stroke-opacity=".35" class="e2"/><path d="M-0.409 0.161L-1.056 0.535" fill="none" stroke="#c8fbff" stroke-opacity=".35" class="e2"/><path d="M-0.491 -0.070L0.606 0.188" fill="none" stroke="#fff" stroke-opacity=".95" class="e1"/><path d="M-0.336 -0.985L0.620 0.917L0.975 0.394L0.255 -1.060Z" fill="url(#m1g2)" fill-opacity="0.421"/><path d="M-0.336 -0.985L-1.056 0.535L0.620 0.917Z" fill="url(#m1g0)" fill-opacity="0.649"/><path d="M-0.336 -0.985L-1.056 0.535" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/><path d="M-1.056 0.535L0.620 0.917" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/><path d="M0.620 0.917L-0.336 -0.985" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/><path d="M0.255 -1.060L0.975 0.394" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/><path d="M-0.336 -0.985L0.255 -1.060" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/><path d="M0.620 0.917L0.975 0.394" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/><path d="M-1.227 -0.360L-0.491 -0.070" fill="none" stroke="#fff" class="e1"/><path d="M0.606 0.188L1.638 0.323" fill="none" stroke="#ff5c8a" class="e1"/><path d="M0.606 0.188L1.619 0.475" fill="none" stroke="#ffb04a" class="e1"/><path d="M0.606 0.188L1.601 0.623" fill="none" stroke="#4dffb0" class="e1"/><path d="M0.606 0.188L1.583 0.768" fill="none" stroke="#5ad1ff" class="e1"/><path d="M0.606 0.188L1.565 0.909" fill="none" stroke="#9b7bff" class="e1"/></svg><span><b>Stratum Prism Private Limited</b> · CIN U62099TN2026PTC200066</span></span><span>Alwarpet, Chennai, Tamil Nadu, India</span><span>© 2026 Stratum Prism</span></div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
@@ -665,6 +671,59 @@ footer{padding:0 0 calc(30px + env(safe-area-inset-bottom,0px));overflow:hidden}
   cp.addEventListener('click',function(){var done=function(ok){cp.textContent=ok?'Copied ✓':'Select & copy';cpst.textContent=ok?'Email address copied':'';clearTimeout(cpT);cpT=setTimeout(function(){cp.textContent='Copy email';cpst.textContent=''},1800)};if(navigator.clipboard)navigator.clipboard.writeText('contact@stratumprism.com').then(function(){done(true)},function(){done(false)});else done(false)});
   var form=$('#form'),note=$('#note');
   form.addEventListener('submit',function(e){e.preventDefault();var el=form.elements,bad=[];if(!el.name.value.trim())bad.push(el.name);if(!el.email.value.trim()||!el.email.checkValidity())bad.push(el.email);[el.name,el.email].forEach(function(f){bad.indexOf(f)>-1?f.setAttribute('aria-invalid','true'):f.removeAttribute('aria-invalid')});if(bad.length){note.classList.add('err');note.textContent='Please add your name and email.';bad[0].focus();return}note.classList.remove('err');note.textContent='Thanks. In this preview the form doesn’t send yet; on the live site it will reach contact@.'});
+})();
+</script>
+<script>
+/* Stratum Prism mark: a glass triangular prism drawn in true 3D (6 vertices), with a white beam in and a spectrum out. */
+function spMark(yaw,pitch,uid){uid=uid||'m';
+  var d=.62,P=[[0,1,d],[-.866,-.5,d],[.866,-.5,d],[0,1,-d],[-.866,-.5,-d],[.866,-.5,-d]];
+  var F=[{v:[0,1,2],c:'#7df9ff'},{v:[3,5,4],c:'#9b7bff'},{v:[0,3,4,1],c:'#9b7bff'},{v:[0,2,5,3],c:'#ff7ad9'},{v:[1,4,5,2],c:'#5ad1ff'}];
+  var cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch),D=4.2;
+  function rot(p){var x=p[0]*cy+p[2]*sy,z=-p[0]*sy+p[2]*cy,y=p[1];return [x,y*cp-z*sp,y*sp+z*cp]}
+  function prj(r){var f=D/(D-r[2]);return [r[0]*f,-r[1]*f]}
+  var R=P.map(rot),Q=R.map(prj);
+  function f2(n){return n.toFixed(3)}
+  function path(idx){return 'M'+idx.map(function(i){return f2(Q[i][0])+' '+f2(Q[i][1])}).join('L')+'Z'}
+  var L=[-.45,.62,.64],ln=Math.hypot(L[0],L[1],L[2]);L=[L[0]/ln,L[1]/ln,L[2]/ln];
+  var faces=F.map(function(f){var a=R[f.v[0]],b=R[f.v[1]],c=R[f.v[2]];
+    var u=[b[0]-a[0],b[1]-a[1],b[2]-a[2]],w=[c[0]-a[0],c[1]-a[1],c[2]-a[2]];
+    var n=[u[1]*w[2]-u[2]*w[1],u[2]*w[0]-u[0]*w[2],u[0]*w[1]-u[1]*w[0]],m=Math.hypot(n[0],n[1],n[2]);n=[n[0]/m,n[1]/m,n[2]/m];
+    var z=f.v.reduce(function(s,i){return s+R[i][2]},0)/f.v.length;
+    return {v:f.v,c:f.c,front:n[2]>0,b:Math.max(0,n[0]*L[0]+n[1]*L[1]+n[2]*L[2]),z:z,n:n}});
+  var edges={};faces.forEach(function(f){for(var i=0;i<f.v.length;i++){var a=f.v[i],b=f.v[(i+1)%f.v.length],k=a<b?a+'-'+b:b+'-'+a;(edges[k]=edges[k]||{a:a,b:b,front:false}).front=edges[k].front||f.front}});
+  // light in model space, on the prism's middle plane
+  function seg(p0,p1){var a=prj(rot(p0)),b=prj(rot(p1));return 'M'+f2(a[0])+' '+f2(a[1])+'L'+f2(b[0])+' '+f2(b[1])}
+  var cols=['#7df9ff','#9b7bff','#ff7ad9','#5ad1ff'];
+  var o='<defs>'+cols.map(function(c,i){return '<linearGradient id="'+uid+'g'+i+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".22" stop-color="'+c+'"/><stop offset="1" stop-color="'+c+'" stop-opacity=".35"/></linearGradient>'}).join('')+'</defs>';
+  function gf(c){return 'url(#'+uid+'g'+cols.indexOf(c)+')'}
+  var back=faces.filter(function(f){return !f.front}).sort(function(a,b){return a.z-b.z});
+  var front=faces.filter(function(f){return f.front}).sort(function(a,b){return a.z-b.z});
+  back.forEach(function(f){o+='<path d="'+path(f.v)+'" fill="'+gf(f.c)+'" fill-opacity="'+f2(.12+.16*f.b)+'"/>'});
+  Object.keys(edges).forEach(function(k){var e=edges[k];if(!e.front)o+='<path d="'+path([e.a,e.b]).replace('Z','')+'" fill="none" stroke="#c8fbff" stroke-opacity=".35" class="e2"/>'});
+  o+='<path d="'+seg([-.577,0,0],[.635,-.1,0])+'" fill="none" stroke="#fff" stroke-opacity=".95" class="e1"/>';
+  front.forEach(function(f){o+='<path d="'+path(f.v)+'" fill="'+gf(f.c)+'" fill-opacity="'+f2(.3+.6*f.b)+'"/>'});
+  Object.keys(edges).forEach(function(k){var e=edges[k];if(e.front)o+='<path d="'+path([e.a,e.b]).replace('Z','')+'" fill="none" stroke="#eafdff" stroke-opacity=".95" class="e1"/>'});
+  o+='<path d="'+seg([-1.55,.22,0],[-.577,0,0])+'" fill="none" stroke="#fff" class="e1"/>';
+  ['#ff5c8a','#ffb04a','#4dffb0','#5ad1ff','#9b7bff'].forEach(function(c,i){o+='<path d="'+seg([.635,-.1,0],[1.55,-.08-i*.14,0])+'" fill="none" stroke="'+c+'" class="e1"/>'});
+  return o;
+}
+if(typeof module!=='undefined')module.exports=spMark;
+</script>
+<script>
+/* 3D prism mark: drawn live, turns gently, spins once when you point at it */
+(function(){
+  var ms=Array.prototype.slice.call(document.querySelectorAll('[data-mark]'));if(!ms.length)return;
+  var reduce=document.documentElement.classList.contains('rm');
+  var st=ms.map(function(m,i){return {el:m,uid:'m'+i,spinT:-1,vis:true}});
+  if(reduce)return;
+  st.forEach(function(s){var host=s.el.closest('a,.f-brand')||s.el;host.addEventListener('pointerenter',function(){if(s.spinT<0)s.spinT=performance.now()})});
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){st.forEach(function(s){if(s.el===e.target)s.vis=e.isIntersecting})})});st.forEach(function(s){io.observe(s.el)})}
+  var last=0;
+  function f(now){requestAnimationFrame(f);if(now-last<33)return;last=now;var t=now/1000;
+    st.forEach(function(s){if(!s.vis)return;var sp=0;
+      if(s.spinT>=0){var k=(now-s.spinT)/1500;if(k>=1)s.spinT=-1;else sp=(1-Math.pow(1-k,3))*Math.PI*2}
+      s.el.innerHTML=spMark(-.45+Math.sin(t*.55)*.3+sp,.3+Math.sin(t*.4)*.05,s.uid)})}
+  requestAnimationFrame(f);
 })();
 </script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
