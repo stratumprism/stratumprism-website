@@ -671,7 +671,6 @@ footer{padding:0 0 calc(30px + env(safe-area-inset-bottom,0px));overflow:hidden}
 <script type="module">
 /* One canvas behind the page: smoky liquid light everywhere, and a glass prism on the opening screen only. */
 import * as THREE from 'three';
-import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
 import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
@@ -688,10 +687,23 @@ renderer.setClearColor(0x05060a,1);
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
 
 const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(30,W/H,.1,100);camera.position.set(0,0,12);
+const camera=new THREE.PerspectiveCamera(38,W/H,.1,100);camera.position.set(0,0,10);
 const pmrem=new THREE.PMREMGenerator(renderer);
-scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;
-scene.environmentIntensity=.9;
+/* a dark studio with bright light strips, so the glass picks up crisp reflections on every facet */
+function studio(){
+  const s=new THREE.Scene();
+  s.add(new THREE.Mesh(new THREE.BoxGeometry(30,30,30),new THREE.MeshBasicMaterial({color:0x07080d,side:THREE.BackSide})));
+  const strip=(w,h,col,k,x,y,z)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(col).multiplyScalar(k),side:THREE.DoubleSide}));m.position.set(x,y,z);m.lookAt(0,0,0);s.add(m)};
+  strip(16,1.6,0xffffff,6,0,9,2);      // top softbox
+  strip(1.3,13,0x7df9ff,4.5,-10,0,3);  // left cyan
+  strip(1.3,13,0xff7ad9,4,10,1,-2);    // right pink
+  strip(7,7,0x9b7bff,2.4,0,-1,-12);    // back violet
+  strip(9,1.1,0xffffff,3.2,-4,-8,7);   // low front strip
+  strip(1,6,0xffffff,5,6,5,8);         // small key light
+  return s;
+}
+scene.environment=pmrem.fromScene(studio(),.02).texture;
+scene.environmentIntensity=1;
 
 /* ---------- liquid light, rendered small into a texture, shown on a backdrop plane ---------- */
 const FLUID=`precision highp float;varying vec2 vUv;uniform float T,S,I,A;uniform vec2 M;
@@ -721,16 +733,29 @@ backdrop.position.z=-8;scene.add(backdrop);
 /* ---------- the prism ---------- */
 const S=2.6,Ht=S*Math.sqrt(3)/2;
 const shape=new THREE.Shape();shape.moveTo(0,2*Ht/3);shape.lineTo(S/2,-Ht/3);shape.lineTo(-S/2,-Ht/3);shape.closePath();
-const geo=new THREE.ExtrudeGeometry(shape,{depth:1.6,bevelEnabled:true,bevelThickness:.08,bevelSize:.08,bevelSegments:6,curveSegments:1});
+const DEP=2.3;
+const geo=new THREE.ExtrudeGeometry(shape,{depth:DEP,bevelEnabled:true,bevelThickness:.1,bevelSize:.1,bevelSegments:8,curveSegments:1});
 geo.center();
-const glass=new THREE.MeshPhysicalMaterial({color:0xffffff,metalness:0,roughness:.035,transmission:1,thickness:2.1,ior:1.5,dispersion:7,clearcoat:1,clearcoatRoughness:.03,envMapIntensity:1.2,specularIntensity:1});
+const sharp=new THREE.ExtrudeGeometry(shape,{depth:DEP,bevelEnabled:false});sharp.center();
+const glass=new THREE.MeshPhysicalMaterial({color:0xffffff,metalness:0,roughness:.05,transmission:1,thickness:2.4,ior:1.52,dispersion:5,clearcoat:1,clearcoatRoughness:.04,envMapIntensity:2.2,specularIntensity:1,iridescence:.7,iridescenceIOR:1.35,iridescenceThicknessRange:[120,420],attenuationColor:new THREE.Color(0xa6ecff),attenuationDistance:3.2});
 const prism=new THREE.Mesh(geo,glass);
-const edgeMat=new THREE.LineBasicMaterial({color:0x9ff7ff,transparent:true,opacity:.42});
-prism.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo,25),edgeMat));
+/* edges, seen through the glass front and back, so the shape reads in depth */
+const eg=new THREE.EdgesGeometry(sharp,20);
+const edgeMat=new THREE.LineBasicMaterial({color:0xc8fbff,transparent:true,opacity:.3,depthTest:false});
+prism.add(new THREE.LineSegments(eg,edgeMat));
+/* fresnel rim: faces turned away from you glow cyan to pink, which gives the glass its volume */
+const rimMat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,uniforms:{K:{value:1}},
+  vertexShader:'varying vec3 vN,vV,vP;void main(){vec4 mv=modelViewMatrix*vec4(position,1.);vN=normalize(normalMatrix*normal);vV=normalize(-mv.xyz);vP=position;gl_Position=projectionMatrix*mv;}',
+  fragmentShader:'uniform float K;varying vec3 vN,vV,vP;void main(){float f=pow(1.-abs(dot(normalize(vN),normalize(vV))),2.);vec3 c=mix(vec3(.49,.98,1.),vec3(1.,.48,.85),clamp(vP.y*.35+.5,0.,1.));gl_FragColor=vec4(c*(.05+f*.6)*K,1.);}'});
+prism.add(new THREE.Mesh(geo,rimMat));
 const rig=new THREE.Group();rig.add(prism);scene.add(rig);
+/* coloured rim lights travel with the prism */
+const l1=new THREE.PointLight(0x7df9ff,45,0,2);l1.position.set(-4,3,5);
+const l2=new THREE.PointLight(0xff7ad9,35,0,2);l2.position.set(5,-2.5,4);
+rig.add(l1,l2);
 
 /* ---------- light: one white beam in, six coloured rays out ---------- */
-const rayMat=(hex,k,g)=>new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+const rayMat=(hex,k,g)=>new THREE.ShaderMaterial({transparent:true,depthWrite:false,depthTest:false,blending:THREE.AdditiveBlending,
   uniforms:{C:{value:new THREE.Color(hex)},K:{value:k},G:{value:g},F:{value:1.4}},
   vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
   fragmentShader:'varying vec2 vUv;uniform vec3 C;uniform float K,G,F;void main(){float fade=1.-pow(vUv.x,F);float x=abs(vUv.y-.5)*2.;float c=exp(-x*x*G);gl_FragColor=vec4(C*c*fade*K,1.);}'});
@@ -742,6 +767,8 @@ function beamMesh(hex,len,core,halo){
 }
 const light=new THREE.Group();rig.add(light);
 const beam=beamMesh(0xffffff,11,.04,.55);beam.position.set(-S/4,0,0);beam.userData.core.uniforms.F.value=.7;beam.userData.halo.uniforms.F.value=.6;light.add(beam);
+/* the beam's path inside the glass */
+const inner=beamMesh(0xffffff,S/2,.05,.42);inner.position.set(-S/4,0,0);inner.userData.core.uniforms.F.value=3;inner.userData.halo.uniforms.F.value=3;light.add(inner);
 const COLS=[0xff5c8a,0xffb04a,0xf4f06a,0x4dffb0,0x5ad1ff,0x9b7bff];
 const rays=COLS.map(c=>{const r=beamMesh(c,18,.07,.9);r.position.set(S/4,-.02,0);light.add(r);return r});
 
@@ -803,14 +830,14 @@ function loop(now){
   const on=vis>.004;
   rig.visible=on;dust.visible=on;
   if(on){
-    const D=wide()?{x:.5,y:.16,s:1.05,b:Math.PI-.42,base:-.3}:{x:0,y:.52,s:isSmall()?.52:.62,b:Math.PI-.55,base:-.16};
+    const D=wide()?{x:.52,y:.12,s:.95,b:Math.PI-.42,base:-.3}:{x:0,y:.52,s:isSmall()?.52:.62,b:Math.PI-.55,base:-.16};
     rig.position.set(D.x*halfW,(D.y+(1-vis)*.25)*halfH,0);rig.scale.setScalar(D.s*Math.pow(vis,.6));
-    prism.rotation.set(Math.sin(t*.27)*.12-mouse.y*.22,-.4+Math.sin(t*.33)*.22+mouse.x*.35,Math.sin(t*.21)*.04);
+    prism.rotation.set(.3+Math.sin(t*.3)*.08-mouse.y*.2,-.8+Math.sin(t*.22)*.42+mouse.x*.4,.05+Math.sin(t*.19)*.03);
     beam.rotation.z=D.b;
     const spread=wide()?.06:.052,tilt=mouse.y*.04;
     rays.forEach((r,i)=>{r.rotation.z=D.base+(2.5-i)*spread+tilt;r.userData.core.uniforms.K.value=1.5*vis;r.userData.halo.uniforms.K.value=.22*vis});
-    beam.userData.core.uniforms.K.value=.95*vis;beam.userData.halo.uniforms.K.value=.13*vis;
-    edgeMat.opacity=.42*vis;dustMat.uniforms.V.value=vis;dustMat.uniforms.T.value=t;
+    beam.userData.core.uniforms.K.value=.95*vis;beam.userData.halo.uniforms.K.value=.13*vis;inner.userData.core.uniforms.K.value=1.4*vis;inner.userData.halo.uniforms.K.value=.3*vis;
+    edgeMat.opacity=.3*vis;rimMat.uniforms.K.value=vis;dustMat.uniforms.V.value=vis;dustMat.uniforms.T.value=t;
   }
   fluidMat.uniforms.T.value=t;fluidMat.uniforms.I.value=.45+.55*vis;
   fluidMat.uniforms.S.value=scrollY/Math.max(1,document.documentElement.scrollHeight-vh);
