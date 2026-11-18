@@ -22,9 +22,9 @@
 /* the site is intentionally dark in both themes */
 :root[data-theme="light"],:root[data-theme="dark"]{--bg:#07080a}
 *,*::before,*::after{box-sizing:border-box}
-html{scrollbar-color:var(--line-2) var(--bg);overflow-x:clip;-webkit-text-size-adjust:100%}
+html{background:var(--bg);scrollbar-color:var(--line-2) var(--bg);overflow-x:clip;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.62 var(--sans);letter-spacing:.005em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip;caret-color:var(--o);accent-color:var(--o);font-kerning:normal}
+body{margin:0;background:transparent;color:var(--ink);font:400 17px/1.62 var(--sans);letter-spacing:.005em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip;caret-color:var(--o);accent-color:var(--o);font-kerning:normal}
 ::selection{background:var(--b);color:#05070a}
 a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}
 :focus-visible{outline:2px solid var(--b);outline-offset:4px;border-radius:1px}
@@ -237,7 +237,9 @@ footer .co{color:var(--ink)}
 /* fluid background */
 #fluid{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;display:block;opacity:0;transition:opacity 1.6s ease}
 #fluid.on{opacity:1}
-.fluid-fb{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60% 50% at 78% 30%,rgba(79,183,255,.10),transparent 70%),radial-gradient(50% 45% at 20% 75%,rgba(255,90,78,.08),transparent 70%),radial-gradient(40% 40% at 60% 90%,rgba(154,123,255,.08),transparent 70%)}
+.fluid-fb{position:fixed;inset:-20%;z-index:-1;pointer-events:none;filter:blur(40px);background:radial-gradient(35% 30% at 70% 35%,rgba(79,183,255,.22),transparent 70%),radial-gradient(30% 28% at 30% 70%,rgba(255,90,78,.18),transparent 70%),radial-gradient(28% 26% at 60% 80%,rgba(154,123,255,.2),transparent 70%),radial-gradient(25% 22% at 85% 65%,rgba(91,224,138,.14),transparent 70%);animation:fdrift 26s ease-in-out infinite alternate}
+@keyframes fdrift{0%{transform:translate(0,0) rotate(0) scale(1)}50%{transform:translate(-4%,3%) rotate(8deg) scale(1.08)}100%{transform:translate(3%,-3%) rotate(-6deg) scale(1)}}
+@media (prefers-reduced-motion:reduce){.fluid-fb{animation:none}}
 </style>
 
 <div class="fluid-fb" aria-hidden="true"></div>
@@ -536,7 +538,7 @@ form.addEventListener('submit',e=>{
   ' vec3 col=spec(.55+f*.7+r.x*.5+S*.4+t*.2);',
   ' float band=smoothstep(.5,.92,f)*smoothstep(.1,.7,length(r));',
   ' float vig=smoothstep(1.25,.15,length(uv-vec2(.62,.55)));',
-  ' float a=band*vig*.5+pow(f,3.)*.05;',
+  ' float a=band*vig*.85+pow(f,3.)*.10;',
   ' gl_FragColor=vec4(col*a,1.);}'].join('\n');
   function sh(t,src){var o=gl.createShader(t);gl.shaderSource(o,src);gl.compileShader(o);return gl.getShaderParameter(o,gl.COMPILE_STATUS)?o:null}
   var a=sh(gl.VERTEX_SHADER,vs),b=sh(gl.FRAGMENT_SHADER,fs);if(!a||!b)return;
